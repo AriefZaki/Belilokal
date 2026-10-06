@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BeliLokal - Shopee & Lazada Clone & Darrez_Shop Seller Centre</title>
+  <title>BeliLokal Kesihatan - Farmasi Digital & Darrez_Health Seller Centre</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome CDN -->
@@ -13,11 +13,11 @@
       theme: {
         extend: {
           colors: {
-            shopee: '#ee4d2d',
-            shopeeDark: '#d73211',
-            shopeeLight: '#fef2ee',
+            shopee: '#059669', // Diselaraskan ke tema farmasi hijau emerald
+            shopeeDark: '#047857',
+            shopeeLight: '#ecfdf5',
             lazadaBlue: '#0f146d',
-            lazadaTeal: '#00ced1',
+            lazadaTeal: '#0d9488',
           }
         }
       }
@@ -27,7 +27,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #f5f5f5;
+      background-color: #f8fafc;
     }
     .scrollbar-hide::-webkit-scrollbar {
       display: none;
@@ -41,93 +41,93 @@
 <body class="text-slate-800 antialiased min-h-screen flex flex-col">
 
   <!-- ================= TOP NOTIFICATION / BAR ================= -->
-  <div class="bg-gradient-to-r from-orange-600 via-shopee to-red-600 text-white text-xs py-1.5 px-4 shadow-sm">
+  <div class="bg-gradient-to-r from-emerald-700 via-emerald-600 to-teal-700 text-white text-xs py-1.5 px-4 shadow-sm">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center space-x-4">
-        <span class="font-medium flex items-center gap-1.5"><i class="fa-solid fa-store"></i> Seller Centre Rasmi Darrez_Shop</span>
-        <span class="hidden md:inline text-orange-200">|</span>
-        <span class="hidden md:flex items-center gap-1"><i class="fa-solid fa-truck-fast"></i> Penghantaran Pantas Seluruh Malaysia (J&T, Pos Laju, ShopeeXpress)</span>
+        <span class="font-medium flex items-center gap-1.5"><i class="fa-solid fa-heart-pulse"></i> Farmasi Digital & Penjual Rasmi Darrez_Health</span>
+        <span class="hidden md:inline text-emerald-200">|</span>
+        <span class="hidden md:flex items-center gap-1"><i class="fa-solid fa-truck-medical"></i> Penghantaran Terkawal & Pantas Seluruh Malaysia</span>
       </div>
       <div class="flex items-center space-x-4 font-medium" id="topNavSellerActions">
-        <button onclick="openSellerAuthModal()" class="hover:text-orange-200 transition flex items-center gap-1 bg-white/20 hover:bg-white/30 px-2.5 py-0.5 rounded text-[11px]">
-          <i class="fa-solid fa-lock"></i> Log Masuk Penjual (Darrez_Shop)
+        <button onclick="openSellerAuthModal()" class="hover:text-emerald-100 transition flex items-center gap-1 bg-white/20 hover:bg-white/30 px-2.5 py-0.5 rounded text-[11px]">
+          <i class="fa-solid fa-lock"></i> Log Masuk Penjual (Darrez_Health)
         </button>
-        <span class="text-orange-200">|</span>
+        <span class="text-emerald-200">|</span>
         <button onclick="switchTab('tracking')" class="hover:underline flex items-center gap-1">
-          <i class="fa-solid fa-route"></i> Semak Pesanan
+          <i class="fa-solid fa-route"></i> Semak Pesanan & Kurier
         </button>
       </div>
     </div>
   </div>
 
   <!-- ================= MAIN HEADER ================= -->
-  <header class="bg-shopee text-white sticky top-0 z-40 shadow-md">
+  <header class="bg-emerald-700 text-white sticky top-0 z-40 shadow-md">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
       <!-- Logo -->
       <a href="javascript:void(0)" onclick="switchTab('marketplace')" class="flex items-center gap-2 group">
-        <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-shopee shadow-sm group-hover:scale-105 transition transform">
-          <i class="fa-solid fa-bag-shopping text-2xl"></i>
+        <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-emerald-600 shadow-sm group-hover:scale-105 transition transform">
+          <i class="fa-solid fa-notes-medical text-2xl"></i>
         </div>
         <div>
-          <h1 class="text-2xl font-black tracking-tight leading-none text-white drop-shadow">BeliLokal</h1>
-          <span class="text-[10px] tracking-wider font-semibold text-orange-100 uppercase">Pasaran & Mall No. 1</span>
+          <h1 class="text-2xl font-black tracking-tight leading-none text-white drop-shadow">BeliLokal Farmasi</h1>
+          <span class="text-[10px] tracking-wider font-semibold text-emerald-100 uppercase">Kesihatan, Vitamin & Ubat Terkawal</span>
         </div>
       </a>
 
       <!-- Search Bar -->
       <div class="flex-1 max-w-2xl relative">
-        <div class="flex bg-white rounded-lg p-1 shadow-inner text-slate-800 focus-within:ring-2 focus-within:ring-orange-300 transition">
+        <div class="flex bg-white rounded-lg p-1 shadow-inner text-slate-800 focus-within:ring-2 focus-within:ring-emerald-400 transition">
           <input 
             type="text" 
             id="searchInput" 
-            placeholder="Cari produk seperti Kopi Arabica, Pelindung Skrin, Baju Kurung..." 
+            placeholder="Cari ubat darah tinggi, vitamin C, paracetamol tahan sakit..." 
             class="w-full px-3 py-1.5 text-sm outline-none rounded-l-md"
             onkeyup="handleSearch(event)"
           >
-          <button onclick="executeSearch()" class="bg-shopee hover:bg-shopeeDark text-white px-5 py-1.5 rounded-md text-sm font-semibold transition flex items-center gap-2">
+          <button onclick="executeSearch()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-1.5 rounded-md text-sm font-semibold transition flex items-center gap-2">
             <i class="fa-solid fa-magnifying-glass"></i>
             <span class="hidden sm:inline">Cari</span>
           </button>
         </div>
         <!-- Quick search tags -->
-        <div class="flex gap-3 text-[11px] text-orange-100 mt-1 overflow-x-auto scrollbar-hide whitespace-nowrap">
-          <span class="cursor-pointer hover:underline" onclick="filterBySearch('Kopi')">Kopi Arabica</span>
-          <span class="cursor-pointer hover:underline" onclick="filterBySearch('Pelindung')">Screen Protector</span>
-          <span class="cursor-pointer hover:underline" onclick="filterBySearch('Baju')">Baju Kurung</span>
-          <span class="cursor-pointer hover:underline" onclick="filterBySearch('Beg')">Beg Kalis Air</span>
-          <span class="cursor-pointer hover:underline" onclick="filterBySearch('Powerbank')">Powerbank</span>
+        <div class="flex gap-3 text-[11px] text-emerald-100 mt-1 overflow-x-auto scrollbar-hide whitespace-nowrap">
+          <span class="cursor-pointer hover:underline" onclick="filterBySearch('Darah Tinggi')">Ubat Darah Tinggi</span>
+          <span class="cursor-pointer hover:underline" onclick="filterBySearch('Tahan Sakit')">Ubat Tahan Sakit</span>
+          <span class="cursor-pointer hover:underline" onclick="filterBySearch('Vitamin C')">Vitamin C 1000mg</span>
+          <span class="cursor-pointer hover:underline" onclick="filterBySearch('Omega-3')">Minyak Ikan</span>
+          <span class="cursor-pointer hover:underline" onclick="filterBySearch('Gastrik')">Ubat Gastrik</span>
         </div>
       </div>
 
       <!-- User Cart & Shop Action -->
       <div class="flex items-center gap-3">
-        <button onclick="switchTab('marketplace')" class="text-white hover:text-orange-200 text-sm font-semibold hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-orange-700/40">
-          <i class="fa-solid fa-compass"></i> Mall
+        <button onclick="switchTab('marketplace')" class="text-white hover:text-emerald-100 text-sm font-semibold hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-800/60">
+          <i class="fa-solid fa-compass"></i> Katalog
         </button>
 
         <!-- Cart Button -->
         <button onclick="openCartModal()" class="relative p-2.5 bg-white/10 hover:bg-white/20 rounded-xl transition flex items-center justify-center text-white">
           <i class="fa-solid fa-cart-shopping text-xl"></i>
-          <span id="cartCountBadge" class="absolute -top-1 -right-1 bg-yellow-300 text-slate-900 font-extrabold text-[11px] w-5 h-5 rounded-full flex items-center justify-center shadow-md">0</span>
+          <span id="cartCountBadge" class="absolute -top-1 -right-1 bg-amber-400 text-slate-900 font-extrabold text-[11px] w-5 h-5 rounded-full flex items-center justify-center shadow-md">0</span>
         </button>
       </div>
     </div>
   </header>
 
   <!-- ================= NOTIFICATION BANNER / SELLER PROMO ================= -->
-  <div id="darrezHighlightBar" class="bg-amber-50 border-b border-amber-200 py-2.5 px-4 text-amber-900 text-xs sm:text-sm">
+  <div id="darrezHighlightBar" class="bg-emerald-50 border-b border-emerald-200 py-2.5 px-4 text-emerald-900 text-xs sm:text-sm">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center gap-2">
-        <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Pilihan Utama</span>
-        <span class="font-medium">Lawati kedai rasmi pilihan: <strong>Darrez_Shop</strong> (Penjual Sah & Preferred+)</span>
+        <span class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Pilihan Farmasi</span>
+        <span class="font-medium">Lawati farmasi berdaftar pilihan: <strong>Darrez_Health Pharma</strong> (Disahkan KKM & Preferred+)</span>
       </div>
       <div class="flex items-center gap-3">
-        <button onclick="viewSellerShop('seller_darrez')" class="text-shopee hover:text-shopeeDark font-bold hover:underline flex items-center gap-1">
+        <button onclick="viewSellerShop('seller_darrez')" class="text-emerald-700 hover:text-emerald-900 font-bold hover:underline flex items-center gap-1">
           Lihat Profil Kedai <i class="fa-solid fa-arrow-right text-xs"></i>
         </button>
-        <span class="text-amber-300">|</span>
+        <span class="text-emerald-300">|</span>
         <button onclick="openSellerAuthModal()" class="text-slate-600 hover:text-slate-900 font-semibold underline">
-          Log Masuk Penjual
+          Log Masuk Portal Farmasi
         </button>
       </div>
     </div>
@@ -142,45 +142,45 @@
       <!-- Promo Hero Carousel & Banners -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <!-- Main Banner -->
-        <div class="lg:col-span-2 bg-gradient-to-r from-shopee via-orange-500 to-amber-500 rounded-2xl p-6 sm:p-8 text-white relative overflow-hidden shadow-md flex flex-col justify-between min-h-[220px]">
-          <div class="absolute -right-12 -bottom-12 opacity-15 text-white pointer-events-none">
-            <i class="fa-solid fa-tags text-[240px]"></i>
+        <div class="lg:col-span-2 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 rounded-2xl p-6 sm:p-8 text-white relative overflow-hidden shadow-md flex flex-col justify-between min-h-[220px]">
+          <div class="absolute -right-10 -bottom-10 opacity-15 text-white pointer-events-none">
+            <i class="fa-solid fa-capsules text-[230px]"></i>
           </div>
           <div class="max-w-md z-10 space-y-2">
             <span class="bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block">
-              Baucar Jualan Mega RM15 Percuma
+              Baucar Sihat Bersama RM15 Percuma
             </span>
-            <h2 class="text-2xl sm:text-3xl font-black leading-tight drop-shadow">Diskaun Sehingga 70% & Penghantaran Percuma</h2>
-            <p class="text-xs sm:text-sm text-orange-100">Beli daripada penjual terpilih di Malaysia termasuk kedai rasmi <strong>Darrez_Shop</strong>.</p>
+            <h2 class="text-2xl sm:text-3xl font-black leading-tight drop-shadow">Penjagaan Kesihatan, Suplemen & Ubat Asas</h2>
+            <p class="text-xs sm:text-sm text-emerald-100">Dapatkan produk kesihatan tulen berdaftar KKM daripada <strong>Darrez_Health</strong> dan pembekal farmaseutikal berlesen.</p>
           </div>
           <div class="pt-4 z-10 flex gap-2">
-            <button onclick="filterCategory('Semua')" class="bg-white text-shopee font-bold px-4 py-2 rounded-xl text-xs sm:text-sm shadow-md hover:bg-orange-50 transition">
-              Beli Sekarang
+            <button onclick="filterCategory('Semua')" class="bg-white text-emerald-700 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm shadow-md hover:bg-emerald-50 transition">
+              Beli Suplemen & Ubat
             </button>
-            <button onclick="applyPromoVoucher('BELI15')" class="bg-orange-800/40 hover:bg-orange-800/60 text-white font-semibold px-4 py-2 rounded-xl text-xs sm:text-sm border border-white/30 transition">
-              Tuntut Kod: BELI15
+            <button onclick="applyPromoVoucher('SIHAT15')" class="bg-emerald-900/40 hover:bg-emerald-900/60 text-white font-semibold px-4 py-2 rounded-xl text-xs sm:text-sm border border-white/30 transition">
+              Tuntut Kod: SIHAT15
             </button>
           </div>
         </div>
 
         <!-- Secondary Side Banners -->
         <div class="flex flex-col gap-4">
-          <div class="bg-gradient-to-br from-indigo-900 to-blue-700 text-white rounded-2xl p-5 shadow-md flex items-center justify-between relative overflow-hidden flex-1">
+          <div class="bg-gradient-to-br from-teal-800 to-emerald-700 text-white rounded-2xl p-5 shadow-md flex items-center justify-between relative overflow-hidden flex-1">
             <div class="space-y-1 z-10">
-              <span class="text-[10px] bg-blue-500/40 text-blue-200 px-2 py-0.5 rounded font-bold uppercase">Dijamin Tulen</span>
-              <h3 class="font-bold text-base leading-tight">Shopee Mall & Preferred+</h3>
-              <p class="text-xs text-blue-200">100% Barangan Berkualiti Tempatan</p>
+              <span class="text-[10px] bg-teal-400/30 text-teal-100 px-2 py-0.5 rounded font-bold uppercase">100% Sah KKM</span>
+              <h3 class="font-bold text-base leading-tight">Ubat & Suplemen Asli</h3>
+              <p class="text-xs text-teal-100">Jaminan kualiti tarikh luput segar</p>
             </div>
-            <i class="fa-solid fa-shield-halved text-5xl text-blue-300/30"></i>
+            <i class="fa-solid fa-shield-virus text-5xl text-teal-300/30"></i>
           </div>
 
-          <div class="bg-gradient-to-br from-emerald-800 to-teal-600 text-white rounded-2xl p-5 shadow-md flex items-center justify-between relative overflow-hidden flex-1">
+          <div class="bg-gradient-to-br from-cyan-900 to-blue-700 text-white rounded-2xl p-5 shadow-md flex items-center justify-between relative overflow-hidden flex-1">
             <div class="space-y-1 z-10">
-              <span class="text-[10px] bg-teal-500/40 text-teal-100 px-2 py-0.5 rounded font-bold uppercase">Kurier Rasmi</span>
-              <h3 class="font-bold text-base leading-tight">J&T, Pos Laju & NinjaVan</h3>
-              <p class="text-xs text-teal-100">Penjejakan Langsung 24 Jam</p>
+              <span class="text-[10px] bg-cyan-400/30 text-cyan-100 px-2 py-0.5 rounded font-bold uppercase">Kurier Berhawa Dingin</span>
+              <h3 class="font-bold text-base leading-tight">Penjejakan Suhu & Aliran</h3>
+              <p class="text-xs text-cyan-100">Gudang Farmasi ke Pintu Rumah</p>
             </div>
-            <i class="fa-solid fa-truck-ramp-box text-5xl text-teal-300/30"></i>
+            <i class="fa-solid fa-truck-fast text-5xl text-cyan-300/30"></i>
           </div>
         </div>
       </div>
@@ -189,9 +189,9 @@
       <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200">
         <div class="flex items-center justify-between mb-3">
           <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider flex items-center gap-2">
-            <i class="fa-solid fa-layer-group text-shopee"></i> Kategori Pilihan
+            <i class="fa-solid fa-layer-group text-emerald-600"></i> Kategori Kesihatan
           </h3>
-          <span class="text-xs text-slate-400">Pilih untuk tapis produk</span>
+          <span class="text-xs text-slate-400">Pilih kategori untuk tapis</span>
         </div>
         <div class="flex gap-2 overflow-x-auto scrollbar-hide pb-1" id="categoryPills">
           <!-- Populated by JS -->
@@ -203,9 +203,9 @@
         <div class="flex items-center justify-between mb-4">
           <div>
             <h3 class="font-black text-slate-800 text-lg flex items-center gap-2">
-              <i class="fa-solid fa-circle-check text-blue-500"></i> Kedai Pilihan & Preferred+
+              <i class="fa-solid fa-circle-check text-emerald-500"></i> Farmasi & Kedai Kesihatan Pilihan
             </h3>
-            <p class="text-xs text-slate-500">Penjual berkualiti dengan respons pantas & rating tinggi</p>
+            <p class="text-xs text-slate-500">Penjual berdaftar, ahli farmasi bertauliah & rating tertinggi</p>
           </div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="sellersOverviewList">
@@ -217,7 +217,7 @@
       <div class="space-y-3">
         <div class="flex items-center justify-between">
           <h3 class="font-black text-slate-800 text-lg flex items-center gap-2" id="productsHeading">
-            <i class="fa-solid fa-fire text-shopee"></i> Produk Terkini & Hangat
+            <i class="fa-solid fa-heart-pulse text-emerald-600"></i> Senarai Produk Kesihatan
           </h3>
           <div class="text-xs text-slate-500" id="productCountInfo">Memaparkan produk</div>
         </div>
@@ -228,23 +228,20 @@
 
     </section>
 
-    <!-- VIEW 2: SELLER PROFILE PUBLIC VIEW (PEMBELI MELIHAT KEDAI PENJUAL) -->
+    <!-- VIEW 2: SELLER PROFILE PUBLIC VIEW -->
     <section id="view-seller-store" class="hidden space-y-6">
-      <!-- Back button -->
-      <button onclick="switchTab('marketplace')" class="text-xs font-bold text-shopee hover:underline flex items-center gap-1.5">
+      <button onclick="switchTab('marketplace')" class="text-xs font-bold text-emerald-600 hover:underline flex items-center gap-1.5">
         <i class="fa-solid fa-arrow-left"></i> Kembali ke Semua Produk
       </button>
 
-      <!-- Shop Header Banner -->
       <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden" id="sellerStoreHeader">
         <!-- Rendered by JS -->
       </div>
 
-      <!-- Products of This Shop -->
       <div class="space-y-3">
         <div class="flex items-center justify-between border-b pb-2 border-slate-200">
           <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">
-            <i class="fa-solid fa-boxes-stacked text-shopee"></i> Produk Daripada Kedai Ini
+            <i class="fa-solid fa-capsules text-emerald-600"></i> Produk Daripada Farmasi Ini
           </h3>
           <span class="text-xs text-slate-500" id="sellerStoreProductCount">0 Produk</span>
         </div>
@@ -254,27 +251,26 @@
       </div>
     </section>
 
-    <!-- VIEW 3: SELLER DASHBOARD (DARREZ_SHOP SELLER CENTRE EXCLUSIVE) -->
+    <!-- VIEW 3: SELLER DASHBOARD (DARREZ_HEALTH EXCLUSIVE) -->
     <section id="view-seller-dashboard" class="hidden space-y-6">
       
-      <!-- Seller Centre Topbar -->
       <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center gap-4">
-          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-orange-500 to-amber-400 text-white flex items-center justify-center font-black text-2xl shadow-md">
-            D
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center font-black text-2xl shadow-md">
+            <i class="fa-solid fa-kit-medical"></i>
           </div>
           <div>
             <div class="flex items-center gap-2">
-              <h2 class="text-xl font-black text-slate-800">Darrez_Shop Seller Centre</h2>
-              <span class="bg-red-100 text-shopee text-[10px] font-bold px-2 py-0.5 rounded border border-red-200">Preferred+</span>
+              <h2 class="text-xl font-black text-slate-800">Darrez_Health Seller Centre</h2>
+              <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded border border-emerald-300">Farmasi Berdaftar</span>
             </div>
-            <p class="text-xs text-slate-500">Pusat Kawalan Penjual: Urus jualan, bungkusan kurier, maklumat peribadi & produk</p>
+            <p class="text-xs text-slate-500">Pusat Kawalan Penjual: Urus jualan suplemen, aliran penghantaran kurier dari gudang & tarikh iklan</p>
           </div>
         </div>
 
         <div class="flex items-center gap-2">
           <button onclick="viewSellerShop('seller_darrez')" class="px-3.5 py-2 text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition flex items-center gap-1.5">
-            <i class="fa-solid fa-eye"></i> Pratonton Kedai Awam
+            <i class="fa-solid fa-eye"></i> Pratonton Kedai
           </button>
           <button onclick="sellerLogout()" class="px-3.5 py-2 text-xs font-semibold bg-red-50 hover:bg-red-100 text-red-600 rounded-xl transition flex items-center gap-1.5 border border-red-200">
             <i class="fa-solid fa-right-from-bracket"></i> Log Keluar
@@ -284,53 +280,51 @@
 
       <!-- Seller Subtabs Navigation -->
       <div class="flex border-b border-slate-200 space-x-2 sm:space-x-4 bg-white p-2 rounded-xl shadow-sm">
-        <button id="subtab-btn-orders" onclick="switchSellerSubtab('orders')" class="px-4 py-2 font-bold text-xs sm:text-sm rounded-lg text-shopee bg-orange-50 flex items-center gap-2 transition">
-          <i class="fa-solid fa-truck-fast"></i> Pengurusan Pesanan & Kurier
+        <button id="subtab-btn-orders" onclick="switchSellerSubtab('orders')" class="px-4 py-2 font-bold text-xs sm:text-sm rounded-lg text-emerald-700 bg-emerald-50 flex items-center gap-2 transition">
+          <i class="fa-solid fa-truck-medical"></i> Pengurusan Pesanan & Aliran Kurier
         </button>
         <button id="subtab-btn-inventory" onclick="switchSellerSubtab('inventory')" class="px-4 py-2 font-semibold text-xs sm:text-sm rounded-lg text-slate-600 hover:text-slate-900 flex items-center gap-2 transition">
-          <i class="fa-solid fa-box-open"></i> Inventori & Tambah Produk
+          <i class="fa-solid fa-boxes-packing"></i> Inventori & Tarikh Pengiklanan
         </button>
         <button id="subtab-btn-account" onclick="switchSellerSubtab('account')" class="px-4 py-2 font-semibold text-xs sm:text-sm rounded-lg text-slate-600 hover:text-slate-900 flex items-center gap-2 transition">
-          <i class="fa-solid fa-id-card"></i> Maklumat Akaun Penjual
+          <i class="fa-solid fa-id-card"></i> Maklumat Akaun & Gudang Farmasi
         </button>
       </div>
 
-      <!-- ================= SUBTAB: ORDERS & SHIPPING ================= -->
+      <!-- SUBTAB: ORDERS & SHIPPING -->
       <div id="seller-subtab-orders" class="space-y-6">
-        <!-- Sales Stats Cards -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
             <span class="text-xs text-slate-500 font-medium">Jumlah Jualan (RM)</span>
-            <p class="text-xl sm:text-2xl font-black text-slate-800 mt-1" id="dashTotalSales">RM 8,429.50</p>
+            <p class="text-xl sm:text-2xl font-black text-slate-800 mt-1" id="dashTotalSales">RM 9,840.00</p>
             <span class="text-[11px] text-emerald-600 font-semibold flex items-center gap-1 mt-1">
-              <i class="fa-solid fa-arrow-trend-up"></i> +14.8% minggu ini
+              <i class="fa-solid fa-arrow-trend-up"></i> +18.2% bulan ini
             </span>
           </div>
           <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
             <span class="text-xs text-slate-500 font-medium">Pesanan Perlu Diproses</span>
-            <p class="text-xl sm:text-2xl font-black text-orange-600 mt-1" id="dashPendingOrders">0</p>
-            <span class="text-[11px] text-slate-400 mt-1 block">Tindakan segera</span>
+            <p class="text-xl sm:text-2xl font-black text-emerald-600 mt-1" id="dashPendingOrders">0</p>
+            <span class="text-[11px] text-slate-400 mt-1 block">Tindakan pembungkusan</span>
           </div>
           <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-            <span class="text-xs text-slate-500 font-medium">Penilaian Kedai</span>
-            <p class="text-xl sm:text-2xl font-black text-yellow-500 mt-1">4.9 / 5.0</p>
-            <span class="text-[11px] text-slate-400 mt-1 block">Dari 1,240 pembeli</span>
+            <span class="text-xs text-slate-500 font-medium">Penilaian Produk</span>
+            <p class="text-xl sm:text-2xl font-black text-amber-500 mt-1">4.9 / 5.0</p>
+            <span class="text-[11px] text-slate-400 mt-1 block">Dari 1,480 ulasan</span>
           </div>
           <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-            <span class="text-xs text-slate-500 font-medium">Kadar Respons Sembang</span>
-            <p class="text-xl sm:text-2xl font-black text-blue-600 mt-1">98%</p>
-            <span class="text-[11px] text-slate-400 mt-1 block">Respons purata: 15 minit</span>
+            <span class="text-xs text-slate-500 font-medium">Respons Ahli Farmasi</span>
+            <p class="text-xl sm:text-2xl font-black text-teal-600 mt-1">99%</p>
+            <span class="text-[11px] text-slate-400 mt-1 block">Respons purata: 8 minit</span>
           </div>
         </div>
 
-        <!-- Orders Table -->
         <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
           <div class="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h3 class="font-bold text-slate-800 text-base">Senarai Pesanan Masuk (Darrez_Shop)</h3>
-              <p class="text-xs text-slate-500">Klik pada <strong>No. Pesanan</strong> untuk melihat maklumat terperinci barang yang dibeli.</p>
+              <h3 class="font-bold text-slate-800 text-base">Senarai Pesanan Masuk (Darrez_Health)</h3>
+              <p class="text-xs text-slate-500">Klik pada <strong>No. Rujukan Penghantar (Tracking)</strong> untuk melihat aliran perjalanan bungkusan dari gudang ke rumah.</p>
             </div>
-            <button onclick="renderSellerOrdersTable()" class="text-xs text-shopee hover:underline font-semibold flex items-center gap-1">
+            <button onclick="renderSellerOrdersTable()" class="text-xs text-emerald-600 hover:underline font-semibold flex items-center gap-1">
               <i class="fa-solid fa-rotate-right"></i> Segarkan Data
             </button>
           </div>
@@ -339,14 +333,14 @@
             <table class="w-full text-left text-xs sm:text-sm">
               <thead class="bg-slate-50 text-slate-500 font-semibold border-b border-slate-200">
                 <tr>
-                  <th class="p-3">No. Pesanan (Klik Info)</th>
-                  <th class="p-3">Tarikh</th>
+                  <th class="p-3">No. Pesanan</th>
+                  <th class="p-3">No. Rujukan Penghantar (Klik Aliran)</th>
+                  <th class="p-3">Tarikh Pesan</th>
                   <th class="p-3">Pembeli</th>
-                  <th class="p-3">Ringkasan Produk</th>
+                  <th class="p-3">Ringkasan Ubat / Suplemen</th>
                   <th class="p-3">Jumlah (RM)</th>
-                  <th class="p-3">Kurier</th>
-                  <th class="p-3">Status Terkini</th>
-                  <th class="p-3 text-right">Tindakan Penghantaran</th>
+                  <th class="p-3">Status</th>
+                  <th class="p-3 text-right">Tindakan Aliran</th>
                 </tr>
               </thead>
               <tbody id="sellerOrdersTableBody" class="divide-y divide-slate-100">
@@ -357,82 +351,83 @@
         </div>
       </div>
 
-      <!-- ================= SUBTAB: INVENTORY & ADD PRODUCT ================= -->
+      <!-- SUBTAB: INVENTORY & ADD PRODUCT -->
       <div id="seller-subtab-inventory" class="hidden space-y-6">
         
-        <!-- Add Product Form Card -->
         <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
           <h3 class="font-bold text-slate-800 text-base mb-1 flex items-center gap-2">
-            <i class="fa-solid fa-plus-circle text-shopee"></i> Tambah Produk Baru ke Darrez_Shop
+            <i class="fa-solid fa-plus-circle text-emerald-600"></i> Tambah Produk Kesihatan & Tetapkan Tarikh Pengiklanan
           </h3>
-          <p class="text-xs text-slate-500 mb-4">Produk yang ditambah akan terus dipaparkan dalam katalog pasaran BeliLokal dan profil kedai anda.</p>
+          <p class="text-xs text-slate-500 mb-4">Setiap produk kesihatan dipaparkan bersama tarikh pengiklanan rasmi bagi memastikan maklumat terkini.</p>
 
           <form id="newProductForm" onsubmit="handleAddNewProduct(event)" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs">
             <div class="sm:col-span-2">
-              <label class="font-semibold text-slate-700 block mb-1">Nama Produk *</label>
-              <input type="text" id="newProdName" required placeholder="Cth: Premium Arabica Coffee Beans 500g" class="w-full border rounded-lg p-2.5 outline-none focus:border-shopee">
+              <label class="font-semibold text-slate-700 block mb-1">Nama Produk Kesihatan / Ubat *</label>
+              <input type="text" id="newProdName" required placeholder="Cth: CoQ10 100mg Kesihatan Jantung & Salur Darah 60 Kapsul" class="w-full border rounded-lg p-2.5 outline-none focus:border-emerald-500">
             </div>
 
             <div>
-              <label class="font-semibold text-slate-700 block mb-1">Kategori *</label>
-              <select id="newProdCategory" class="w-full border rounded-lg p-2.5 outline-none focus:border-shopee">
-                <option value="Makanan & Minuman">Makanan & Minuman</option>
-                <option value="Elektronik">Elektronik</option>
-                <option value="Pakaian Lelaki">Pakaian Lelaki</option>
-                <option value="Pakaian Wanita">Pakaian Wanita</option>
-                <option value="Kesihatan & Kecantikan">Kesihatan & Kecantikan</option>
-                <option value="Aksesori & Beg">Aksesori & Beg</option>
+              <label class="font-semibold text-slate-700 block mb-1">Kategori Kesihatan *</label>
+              <select id="newProdCategory" class="w-full border rounded-lg p-2.5 outline-none focus:border-emerald-500">
+                <option value="Vitamin & Suplemen">Vitamin & Suplemen</option>
+                <option value="Ubat Tahan Sakit">Ubat Tahan Sakit</option>
+                <option value="Ubat Darah Tinggi & Kardio">Ubat Darah Tinggi & Kardio</option>
+                <option value="Penjagaan Sendi & Tulang">Penjagaan Sendi & Tulang</option>
+                <option value="Kesihatan Pencernaan">Kesihatan Pencernaan</option>
               </select>
             </div>
 
             <div>
+              <label class="font-semibold text-slate-700 block mb-1">Tarikh Pengiklanan *</label>
+              <input type="date" id="newProdAdDate" required class="w-full border rounded-lg p-2.5 outline-none focus:border-emerald-500">
+            </div>
+
+            <div>
               <label class="font-semibold text-slate-700 block mb-1">Harga Jualan (RM) *</label>
-              <input type="number" step="0.1" id="newProdPrice" required placeholder="Cth: 28.50" class="w-full border rounded-lg p-2.5 outline-none focus:border-shopee">
+              <input type="number" step="0.1" id="newProdPrice" required placeholder="Cth: 48.00" class="w-full border rounded-lg p-2.5 outline-none focus:border-emerald-500">
             </div>
 
             <div>
               <label class="font-semibold text-slate-700 block mb-1">Harga Asal (Sebelum Diskaun RM)</label>
-              <input type="number" step="0.1" id="newProdOriginalPrice" placeholder="Cth: 35.00" class="w-full border rounded-lg p-2.5 outline-none focus:border-shopee">
+              <input type="number" step="0.1" id="newProdOriginalPrice" placeholder="Cth: 65.00" class="w-full border rounded-lg p-2.5 outline-none focus:border-emerald-500">
             </div>
 
             <div>
-              <label class="font-semibold text-slate-700 block mb-1">Kuantiti Stok *</label>
-              <input type="number" id="newProdStock" required placeholder="Cth: 50" class="w-full border rounded-lg p-2.5 outline-none focus:border-shopee">
+              <label class="font-semibold text-slate-700 block mb-1">Baki Stok Botol / Kotak *</label>
+              <input type="number" id="newProdStock" required placeholder="Cth: 80" class="w-full border rounded-lg p-2.5 outline-none focus:border-emerald-500">
             </div>
 
             <div class="sm:col-span-2">
               <label class="font-semibold text-slate-700 block mb-1">Pautan Imej (URL)</label>
-              <input type="url" id="newProdImage" placeholder="https://images.unsplash.com/..." class="w-full border rounded-lg p-2.5 outline-none focus:border-shopee">
-              <span class="text-[10px] text-slate-400">Biarkan kosong untuk imej contoh automatik mengikut kategori.</span>
+              <input type="url" id="newProdImage" placeholder="https://images.unsplash.com/..." class="w-full border rounded-lg p-2.5 outline-none focus:border-emerald-500">
             </div>
 
             <div>
-              <label class="font-semibold text-slate-700 block mb-1">Variasi / Pilihan (Asingkan dengan koma)</label>
-              <input type="text" id="newProdVariations" placeholder="Cth: 250g, 500g, 1kg" class="w-full border rounded-lg p-2.5 outline-none focus:border-shopee">
+              <label class="font-semibold text-slate-700 block mb-1">Variasi / Dos (Asingkan dengan koma)</label>
+              <input type="text" id="newProdVariations" placeholder="Cth: 30 Biji, 60 Biji, Pek Jimat (2x60)" class="w-full border rounded-lg p-2.5 outline-none focus:border-emerald-500">
             </div>
 
             <div class="sm:col-span-3 flex justify-end gap-2 pt-2">
               <button type="reset" class="px-4 py-2 border rounded-xl font-semibold hover:bg-slate-50 text-slate-600">Tetapkan Semula</button>
-              <button type="submit" class="px-5 py-2 bg-shopee hover:bg-shopeeDark text-white font-bold rounded-xl shadow-sm transition">
-                + Terbitkan Produk Sekarang
+              <button type="submit" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-sm transition">
+                + Terbitkan Iklan Produk Kesihatan
               </button>
             </div>
           </form>
         </div>
 
-        <!-- Inventory List -->
         <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
-          <h3 class="font-bold text-slate-800 text-base mb-3">Senarai Inventori Produk Darrez_Shop</h3>
+          <h3 class="font-bold text-slate-800 text-base mb-3">Senarai Inventori & Tarikh Pengiklanan Darrez_Health</h3>
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs sm:text-sm">
               <thead class="bg-slate-50 text-slate-500 font-semibold border-b">
                 <tr>
-                  <th class="p-3">Produk</th>
+                  <th class="p-3">Produk Kesihatan</th>
                   <th class="p-3">Kategori</th>
+                  <th class="p-3">Tarikh Pengiklanan</th>
                   <th class="p-3">Harga (RM)</th>
                   <th class="p-3">Baki Stok</th>
                   <th class="p-3">Terjual</th>
-                  <th class="p-3">Penilaian</th>
                   <th class="p-3 text-right">Tindakan</th>
                 </tr>
               </thead>
@@ -445,127 +440,69 @@
 
       </div>
 
-      <!-- ================= SUBTAB: SELLER ACCOUNT DETAILS ================= -->
+      <!-- SUBTAB: SELLER ACCOUNT DETAILS -->
       <div id="seller-subtab-account" class="hidden space-y-6">
         
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
           <div class="flex flex-wrap items-center justify-between pb-4 border-b border-slate-200 gap-4">
             <div class="flex items-center gap-4">
-              <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-shopee to-amber-500 text-white flex items-center justify-center text-2xl font-bold shadow-md">
-                MA
+              <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center text-2xl font-bold shadow-md">
+                DH
               </div>
               <div>
-                <h3 class="text-lg font-bold text-slate-800">Mohamad Arief</h3>
-                <p class="text-xs text-slate-500">Pemilik & Pengurus Akaun Rasmi Darrez_Shop</p>
+                <h3 class="text-lg font-bold text-slate-800">Darrez Health & Pharma Logistics</h3>
+                <p class="text-xs text-slate-500">Pengurus Gudang & Pegawai Farmasi: En. Mohamad Arief (B.Pharm)</p>
                 <div class="flex items-center gap-2 mt-1">
                   <span class="inline-flex items-center gap-1 text-[11px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-semibold border border-emerald-200">
-                    <i class="fa-solid fa-check-circle"></i> Akaun Disahkan (SSM & eKYC)
+                    <i class="fa-solid fa-check-circle"></i> Lesen Farmasi KKM Sah (P0921-X)
                   </span>
-                  <span class="inline-flex items-center gap-1 text-[11px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full font-semibold border border-blue-200">
-                    <i class="fa-solid fa-shield"></i> Perlindungan Penjual Aktif
+                  <span class="inline-flex items-center gap-1 text-[11px] bg-teal-50 text-teal-700 px-2 py-0.5 rounded-full font-semibold border border-teal-200">
+                    <i class="fa-solid fa-warehouse"></i> Pusat Pengedaran Suhu Terkawal (Gudang PJ)
                   </span>
                 </div>
               </div>
             </div>
             
-            <button onclick="saveSellerProfileInfo()" class="px-4 py-2 bg-shopee hover:bg-shopeeDark text-white text-xs font-bold rounded-xl shadow-sm transition flex items-center gap-1.5">
-              <i class="fa-solid fa-floppy-disk"></i> Simpan Kemas Kini
+            <button onclick="saveSellerProfileInfo()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-sm transition flex items-center gap-1.5">
+              <i class="fa-solid fa-floppy-disk"></i> Simpan Maklumat Farmasi
             </button>
           </div>
 
-          <!-- Account Fields Grid -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
-            
-            <!-- Personal Info Card -->
             <div class="space-y-4">
               <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
-                <i class="fa-solid fa-user-circle text-shopee"></i> Maklumat Pemilik & Hubungan
+                <i class="fa-solid fa-user-doctor text-emerald-600"></i> Pengurus & Hubungan Farmasi
               </h4>
 
               <div>
-                <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Penuh Pemilik</label>
-                <div class="relative">
-                  <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
-                    <i class="fa-solid fa-user"></i>
-                  </span>
-                  <input type="text" id="accSellerName" value="Mohamad Arief" class="w-full pl-9 pr-3 py-2 text-sm border border-slate-300 rounded-lg outline-none focus:border-shopee focus:ring-1 focus:ring-shopee">
-                </div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Pegawai / Pemilik</label>
+                <input type="text" id="accSellerName" value="Mohamad Arief" class="w-full px-3 py-2 text-sm border rounded-lg outline-none focus:border-emerald-500">
               </div>
 
               <div>
-                <label class="block text-xs font-semibold text-slate-600 mb-1">Nombor Telefon Bimbit</label>
-                <div class="relative">
-                  <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
-                    <i class="fa-solid fa-phone"></i>
-                  </span>
-                  <input type="text" id="accSellerPhone" value="011-12345678" class="w-full pl-9 pr-3 py-2 text-sm border border-slate-300 rounded-lg outline-none focus:border-shopee focus:ring-1 focus:ring-shopee">
-                </div>
-                <p class="text-[11px] text-slate-400 mt-1">Digunakan untuk pengesahan SMS TAC & panggilan kurier bagi bungkusan.</p>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">No. Telefon Farmasi & Bantuan Kecemasan</label>
+                <input type="text" id="accSellerPhone" value="011-12345678" class="w-full px-3 py-2 text-sm border rounded-lg outline-none focus:border-emerald-500">
               </div>
 
               <div>
-                <label class="block text-xs font-semibold text-slate-600 mb-1">Alamat Emel Rasmi</label>
-                <div class="relative">
-                  <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
-                    <i class="fa-solid fa-envelope"></i>
-                  </span>
-                  <input type="email" id="accSellerEmail" value="darrez@coolmail.com" class="w-full pl-9 pr-3 py-2 text-sm border border-slate-300 rounded-lg outline-none focus:border-shopee focus:ring-1 focus:ring-shopee">
-                </div>
-                <p class="text-[11px] text-slate-400 mt-1">Penyata jualan mingguan dan invois cukai akan dihantar ke sini.</p>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Emel Khidmat Sokongan Kesihatan</label>
+                <input type="email" id="accSellerEmail" value="pharma@darrezhealth.my" class="w-full px-3 py-2 text-sm border rounded-lg outline-none focus:border-emerald-500">
               </div>
             </div>
 
-            <!-- Business & Shop Details -->
             <div class="space-y-4">
               <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
-                <i class="fa-solid fa-shop text-shopee"></i> Maklumat Kedai & Gudang Penghantaran
+                <i class="fa-solid fa-warehouse text-emerald-600"></i> Lokasi Warehouse Utama (Pusat Pelepasan Ubat)
               </h4>
 
               <div>
-                <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Kedai di Pasaran</label>
-                <input type="text" id="accShopName" value="Darrez_Shop" readonly class="w-full px-3 py-2 text-sm border border-slate-200 bg-slate-50 text-slate-700 rounded-lg outline-none font-semibold">
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Gudang Farmaseutikal</label>
+                <input type="text" id="accShopName" value="Gudang Berpusat Darrez Health (Hub Petaling Jaya)" readonly class="w-full px-3 py-2 text-sm border bg-slate-50 font-semibold text-slate-700 rounded-lg">
               </div>
 
               <div>
-                <label class="block text-xs font-semibold text-slate-600 mb-1">Alamat Gudang / Pusat Pengambilan Kurier</label>
-                <textarea id="accWarehouseAddress" rows="3" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg outline-none focus:border-shopee focus:ring-1 focus:ring-shopee">No. 18, Jalan Niaga Utama, Seksyen 51A, 46100 Petaling Jaya, Selangor Darul Ehsan, Malaysia.</textarea>
-              </div>
-
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-xs font-semibold text-slate-600 mb-1">Pilihan Kurier Utama</label>
-                  <select class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg outline-none focus:border-shopee">
-                    <option selected>J&T Express (Door-to-Door)</option>
-                    <option>Pos Laju Cawangan</option>
-                    <option>Shopee Xpress Drop-off</option>
-                  </select>
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold text-slate-600 mb-1">Waktu Operasi Bungkusan</label>
-                  <input type="text" value="Isnin - Sabtu (9AM - 6PM)" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg outline-none focus:border-shopee">
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Payout & Banking Section -->
-          <div class="mt-8 pt-6 border-t border-slate-200">
-            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2 mb-4">
-              <i class="fa-solid fa-building-columns text-shopee"></i> Maklumat Pembayaran Balik (Bank Payout)
-            </h4>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs">
-              <div>
-                <span class="text-slate-500 font-medium block">Nama Bank</span>
-                <span class="font-bold text-slate-800 text-sm">Maybank Berhad</span>
-              </div>
-              <div>
-                <span class="text-slate-500 font-medium block">Nama Pemegang Akaun</span>
-                <span class="font-bold text-slate-800 text-sm">MOHAMAD ARIEF</span>
-              </div>
-              <div>
-                <span class="text-slate-500 font-medium block">Nombor Akaun Bank</span>
-                <span class="font-mono font-bold text-slate-800 text-sm">5140 **** 8921</span>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Alamat Warehouse / Pusat Pengambilan Kurier</label>
+                <textarea id="accWarehouseAddress" rows="3" class="w-full px-3 py-2 text-sm border rounded-lg outline-none focus:border-emerald-500">Gudang Kesihatan Darrez_Health, No. 18, Jalan Niaga Utama, Seksyen 51A, 46100 Petaling Jaya, Selangor.</textarea>
               </div>
             </div>
           </div>
@@ -579,11 +516,11 @@
     <section id="view-tracking" class="hidden space-y-6">
       <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
         <div class="max-w-xl mx-auto text-center space-y-2 mb-6">
-          <div class="w-12 h-12 bg-orange-100 text-shopee rounded-2xl flex items-center justify-center mx-auto text-xl font-bold">
+          <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center mx-auto text-xl font-bold">
             <i class="fa-solid fa-truck-ramp-box"></i>
           </div>
-          <h2 class="text-2xl font-black text-slate-800">Semak Status Bungkusan & Penghantaran</h2>
-          <p class="text-xs text-slate-500">Ketahui perkembangan pesanan anda dari gudang penjual terus ke pintu rumah anda.</p>
+          <h2 class="text-2xl font-black text-slate-800">Status Aliran Penghantaran Dari Warehouse Ke Rumah</h2>
+          <p class="text-xs text-slate-500">Klik nombor rujukan kurier untuk melihat butiran lengkap setiap laluan hentian bungkusan ubat dan suplemen anda.</p>
         </div>
 
         <div class="space-y-4 max-w-3xl mx-auto" id="buyerTrackingList">
@@ -594,33 +531,113 @@
 
   </main>
 
-  <!-- ================= MODAL: SELLER AUTH / LOGIN ================= -->
-  <div id="sellerAuthModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl animate-scale-up">
-      <!-- Modal Header -->
-      <div class="bg-gradient-to-r from-shopee to-red-600 p-5 text-white flex justify-between items-center">
+  <!-- ================= MODAL: MODAL ALIRAN PENGHANTARAN DARI WAREHOUSE KE RUMAH (BARU) ================= -->
+  <div id="shipmentTrackingModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-xl w-full overflow-hidden shadow-2xl flex flex-col max-h-[90vh] animate-scale-up">
+      <!-- Header -->
+      <div class="bg-gradient-to-r from-emerald-700 to-teal-800 text-white p-4 flex justify-between items-center">
         <div class="flex items-center gap-2">
-          <i class="fa-solid fa-store text-xl"></i>
+          <div class="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center">
+            <i class="fa-solid fa-route text-lg"></i>
+          </div>
           <div>
-            <h3 class="font-bold text-base">Shopee Seller Centre</h3>
-            <p class="text-xs text-orange-100">Log masuk portal penjual rasmi</p>
+            <h3 class="font-bold text-sm sm:text-base">Aliran Penghantaran Produk</h3>
+            <p class="text-[11px] text-emerald-100">Dari Warehouse Penjual ke Rumah Pembeli</p>
           </div>
         </div>
-        <button onclick="closeSellerAuthModal()" class="text-white hover:text-orange-200 text-lg">
+        <button onclick="closeShipmentTrackingModal()" class="text-white hover:text-emerald-200 text-lg">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <!-- Modal Body -->
+      <!-- Tracking Header Card -->
+      <div class="bg-emerald-50/70 p-4 border-b border-emerald-100 flex flex-wrap justify-between items-center gap-3 text-xs">
+        <div>
+          <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wide">Nombor Rujukan Penghantar:</span>
+          <span id="flowTrackingNumber" class="text-sm font-mono font-black text-emerald-800 bg-white px-2 py-0.5 rounded border border-emerald-300 inline-block mt-0.5">
+            -
+          </span>
+        </div>
+        <div>
+          <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wide">Syarikat Kurier:</span>
+          <span id="flowCourierName" class="font-bold text-slate-800">-</span>
+        </div>
+        <div>
+          <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wide">Anggaran Tiba:</span>
+          <span id="flowEstimatedDelivery" class="font-bold text-emerald-700">Dalam masa 24 - 48 Jam</span>
+        </div>
+      </div>
+
+      <!-- Route Diagram: Warehouse -> Hub -> Delivery -> Home -->
+      <div class="p-4 bg-slate-50 border-b flex items-center justify-between text-center text-[11px] font-semibold text-slate-600 px-6">
+        <div class="flex flex-col items-center">
+          <div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs mb-1 shadow">
+            <i class="fa-solid fa-warehouse"></i>
+          </div>
+          <span>Warehouse</span>
+        </div>
+        <div class="flex-1 h-0.5 bg-emerald-400 mx-2 -mt-4"></div>
+        <div class="flex flex-col items-center">
+          <div class="w-8 h-8 rounded-full bg-teal-600 text-white flex items-center justify-center text-xs mb-1 shadow">
+            <i class="fa-solid fa-boxes-packing"></i>
+          </div>
+          <span>Pusat Isih</span>
+        </div>
+        <div class="flex-1 h-0.5 bg-emerald-400 mx-2 -mt-4"></div>
+        <div class="flex flex-col items-center">
+          <div class="w-8 h-8 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs mb-1 shadow">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+          <span>Kurier Runner</span>
+        </div>
+        <div class="flex-1 h-0.5 bg-slate-300 mx-2 -mt-4"></div>
+        <div class="flex flex-col items-center">
+          <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-xs mb-1">
+            <i class="fa-solid fa-house-chimney-user"></i>
+          </div>
+          <span>Rumah Anda</span>
+        </div>
+      </div>
+
+      <!-- Timeline Steps (Detailed Flow) -->
+      <div class="p-5 overflow-y-auto space-y-4 max-h-80" id="flowTimelineContainer">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-3 bg-slate-100 border-t border-slate-200 flex justify-between items-center text-xs">
+        <span class="text-slate-500 text-[11px]"><i class="fa-solid fa-shield-halved text-emerald-600"></i> Suhu bungkusan disahkan stabil 22°C - 25°C</span>
+        <button onclick="closeShipmentTrackingModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl text-xs">
+          Tutup
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: SELLER AUTH / LOGIN ================= -->
+  <div id="sellerAuthModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl animate-scale-up">
+      <div class="bg-gradient-to-r from-emerald-700 to-teal-700 p-5 text-white flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-store text-xl"></i>
+          <div>
+            <h3 class="font-bold text-base">Portal Penjual Darrez_Health</h3>
+            <p class="text-xs text-emerald-100">Log masuk pengurusan farmasi rasmi</p>
+          </div>
+        </div>
+        <button onclick="closeSellerAuthModal()" class="text-white hover:text-emerald-200 text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
       <div class="p-6 space-y-4">
-        <!-- Credentials hint badge -->
-        <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-900 space-y-1">
+        <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-xs text-emerald-900 space-y-1">
           <p class="font-bold flex items-center gap-1.5"><i class="fa-solid fa-key"></i> Kredensial Log Masuk Penjual:</p>
           <div class="grid grid-cols-2 gap-2 mt-1">
             <div>Username: <code class="bg-white px-1.5 py-0.5 rounded font-mono font-bold text-slate-800 border">darrez</code></div>
             <div>Password: <code class="bg-white px-1.5 py-0.5 rounded font-mono font-bold text-slate-800 border">ABCD@1234</code></div>
           </div>
-          <button onclick="quickFillCredentials()" class="mt-1 text-[11px] text-shopee font-bold hover:underline">
+          <button onclick="quickFillCredentials()" class="mt-1 text-[11px] text-emerald-700 font-bold hover:underline">
             ⚡ Tekan sini untuk isi automatik
           </button>
         </div>
@@ -628,22 +645,14 @@
         <form id="sellerLoginForm" onsubmit="handleSellerLogin(event)" class="space-y-3.5 text-xs">
           <div>
             <label class="block font-semibold text-slate-700 mb-1">Username Penjual</label>
-            <div class="relative">
-              <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
-                <i class="fa-solid fa-user"></i>
-              </span>
-              <input type="text" id="sellerUsernameInput" required placeholder="darrez" class="w-full pl-9 pr-3 py-2.5 border rounded-xl outline-none focus:border-shopee focus:ring-1 focus:ring-shopee text-sm">
-            </div>
+            <input type="text" id="sellerUsernameInput" required placeholder="darrez" class="w-full px-3 py-2.5 border rounded-xl outline-none focus:border-emerald-500 text-sm">
           </div>
 
           <div>
             <label class="block font-semibold text-slate-700 mb-1">Kata Laluan (Password)</label>
             <div class="relative">
-              <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
-                <i class="fa-solid fa-lock"></i>
-              </span>
-              <input type="password" id="sellerPasswordInput" required placeholder="ABCD@1234" class="w-full pl-9 pr-10 py-2.5 border rounded-xl outline-none focus:border-shopee focus:ring-1 focus:ring-shopee text-sm">
-              <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600">
+              <input type="password" id="sellerPasswordInput" required placeholder="ABCD@1234" class="w-full px-3 py-2.5 border rounded-xl outline-none focus:border-emerald-500 text-sm">
+              <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400">
                 <i class="fa-solid fa-eye" id="togglePasswordIcon"></i>
               </button>
             </div>
@@ -653,24 +662,23 @@
             Username atau kata laluan tidak tepat. Sila gunakan <code>darrez</code> & <code>ABCD@1234</code>.
           </div>
 
-          <button type="submit" class="w-full bg-shopee hover:bg-shopeeDark text-white font-bold py-2.5 rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2">
-            <i class="fa-solid fa-right-to-bracket"></i> Log Masuk ke Darrez_Shop
+          <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2">
+            <i class="fa-solid fa-right-to-bracket"></i> Log Masuk ke Farmasi Seller Centre
           </button>
         </form>
       </div>
     </div>
   </div>
 
-  <!-- ================= MODAL: ORDER DETAILS (KLIK DARI NO. PESANAN) ================= -->
+  <!-- ================= MODAL: ORDER DETAILS ================= -->
   <div id="orderDetailsModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
-      <!-- Header -->
       <div class="bg-slate-900 text-white p-4 flex justify-between items-center">
         <div class="flex items-center gap-2">
-          <i class="fa-solid fa-receipt text-orange-400 text-lg"></i>
+          <i class="fa-solid fa-receipt text-emerald-400 text-lg"></i>
           <div>
             <h3 class="font-bold text-sm sm:text-base flex items-center gap-2">
-              Perincian Pesanan <span id="modalOrderCode" class="text-orange-400 font-mono">#ORD-00000</span>
+              Perincian Pesanan Farmasi <span id="modalOrderCode" class="text-emerald-400 font-mono">#ORD-00000</span>
             </h3>
             <p class="text-[11px] text-slate-300" id="modalOrderDate">Ditempah pada: 2026-10-05</p>
           </div>
@@ -680,40 +688,43 @@
         </button>
       </div>
 
-      <!-- Scrollable Body -->
       <div class="p-5 overflow-y-auto space-y-5 text-xs sm:text-sm">
         
-        <!-- Status & Delivery summary badge -->
-        <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex flex-wrap items-center justify-between gap-3">
+        <!-- Status & Delivery summary badge with clickable tracking -->
+        <div class="bg-emerald-50/60 p-3.5 rounded-xl border border-emerald-200 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <span class="text-xs text-slate-400 font-medium block">Status Pesanan:</span>
+            <span class="text-xs text-slate-500 font-medium block">Status Pesanan:</span>
             <span id="modalOrderStatusBadge" class="inline-block mt-0.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">
               Sedang Diproses
             </span>
           </div>
           <div>
-            <span class="text-xs text-slate-400 font-medium block">Syarikat Kurier:</span>
+            <span class="text-xs text-slate-500 font-medium block">Syarikat Kurier:</span>
             <span id="modalOrderCourier" class="font-bold text-slate-800">J&T Express</span>
           </div>
           <div>
-            <span class="text-xs text-slate-400 font-medium block">No. Penjejakan (Tracking):</span>
-            <span id="modalOrderTracking" class="font-mono font-bold text-blue-600">JT-9928192MY</span>
+            <span class="text-xs text-slate-500 font-medium block">No. Rujukan Penghantar:</span>
+            <button id="modalOrderTrackingBtn" class="font-mono font-bold text-emerald-700 bg-white px-2 py-0.5 rounded border border-emerald-300 hover:bg-emerald-100 transition flex items-center gap-1">
+              <span id="modalOrderTracking">JT-9928192MY</span>
+              <i class="fa-solid fa-location-arrow text-[10px] text-emerald-600"></i>
+            </button>
+            <span class="text-[10px] text-emerald-600 font-medium block mt-0.5">*(Klik untuk aliran warehouse ke rumah)</span>
           </div>
         </div>
 
         <!-- Buyer & Shipping Info -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="bg-white p-3.5 rounded-xl border border-slate-200 space-y-1">
-            <span class="font-bold text-slate-700 flex items-center gap-1.5 text-xs text-slate-500 uppercase">
-              <i class="fa-solid fa-user text-shopee"></i> Maklumat Pembeli
+            <span class="font-bold text-slate-500 flex items-center gap-1.5 text-xs uppercase">
+              <i class="fa-solid fa-user text-emerald-600"></i> Maklumat Pesakit / Pembeli
             </span>
             <p class="font-bold text-slate-800" id="modalBuyerName">Ahmad Zharif</p>
             <p class="text-slate-500 text-xs" id="modalBuyerPhone">012-9876543</p>
           </div>
 
           <div class="bg-white p-3.5 rounded-xl border border-slate-200 space-y-1">
-            <span class="font-bold text-slate-700 flex items-center gap-1.5 text-xs text-slate-500 uppercase">
-              <i class="fa-solid fa-location-dot text-shopee"></i> Alamat Penghantaran
+            <span class="font-bold text-slate-500 flex items-center gap-1.5 text-xs uppercase">
+              <i class="fa-solid fa-location-dot text-emerald-600"></i> Alamat Rumah Penerima
             </span>
             <p class="text-slate-600 text-xs" id="modalShippingAddress">No. 25, Jalan Mutiara 3, Taman Seri Melati, 43000 Kajang, Selangor.</p>
           </div>
@@ -722,14 +733,14 @@
         <!-- Items Purchased Table -->
         <div>
           <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-1.5 text-xs uppercase tracking-wider text-slate-500">
-            <i class="fa-solid fa-box-open text-shopee"></i> Senarai Produk Yang Dibeli
+            <i class="fa-solid fa-pills text-emerald-600"></i> Senarai Ubat & Vitamin Yang Dipesan
           </h4>
           <div class="border border-slate-200 rounded-xl overflow-hidden">
             <table class="w-full text-left text-xs">
               <thead class="bg-slate-50 text-slate-500 font-semibold border-b border-slate-200">
                 <tr>
-                  <th class="p-3">Produk</th>
-                  <th class="p-3 text-center">Variasi</th>
+                  <th class="p-3">Produk Kesihatan</th>
+                  <th class="p-3 text-center">Dos / Saiz</th>
                   <th class="p-3 text-center">Kuantiti</th>
                   <th class="p-3 text-right">Harga Seunit</th>
                   <th class="p-3 text-right">Jumlah</th>
@@ -745,20 +756,20 @@
         <!-- Payment Breakdown -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5 text-xs">
           <div class="flex justify-between text-slate-600">
-            <span>Jumlah Nilai Produk (Subtotal):</span>
+            <span>Jumlah Nilai Ubat (Subtotal):</span>
             <span id="modalSubtotal" class="font-medium">RM 0.00</span>
           </div>
           <div class="flex justify-between text-slate-600">
-            <span>Kos Penghantaran Kurier:</span>
+            <span>Kos Penghantaran Selamat Kurier:</span>
             <span id="modalShippingFee" class="font-medium">RM 4.90</span>
           </div>
           <div class="flex justify-between text-emerald-600 font-medium">
-            <span>Diskaun Baucar:</span>
+            <span>Diskaun Baucar Sihat:</span>
             <span id="modalDiscount">-RM 0.00</span>
           </div>
           <div class="flex justify-between text-slate-800 text-sm font-black pt-2 border-t border-slate-200">
-            <span>Jumlah Keseluruhan Pembayaran:</span>
-            <span id="modalGrandTotal" class="text-shopee">RM 0.00</span>
+            <span>Jumlah Keseluruhan:</span>
+            <span id="modalGrandTotal" class="text-emerald-700">RM 0.00</span>
           </div>
           <div class="text-[11px] text-slate-400 pt-1">
             Kaedah Pembayaran: <span id="modalPaymentMethod" class="font-semibold text-slate-700">TNG eWallet</span>
@@ -767,7 +778,6 @@
 
       </div>
 
-      <!-- Footer -->
       <div class="p-3 bg-slate-100 border-t border-slate-200 flex justify-end">
         <button onclick="closeOrderDetailsModal()" class="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold rounded-xl">
           Tutup
@@ -791,7 +801,7 @@
       <div class="md:w-1/2 p-6 flex flex-col justify-between overflow-y-auto">
         <div>
           <div class="flex justify-between items-start">
-            <span id="detailCategory" class="text-[10px] uppercase tracking-wider font-bold bg-orange-100 text-shopee px-2.5 py-0.5 rounded-full">Kategori</span>
+            <span id="detailCategory" class="text-[10px] uppercase tracking-wider font-bold bg-emerald-100 text-emerald-700 px-2.5 py-0.5 rounded-full">Kategori</span>
             <button onclick="closeProductModal()" class="text-slate-400 hover:text-slate-600 text-lg">
               <i class="fa-solid fa-xmark"></i>
             </button>
@@ -799,21 +809,27 @@
 
           <h3 id="detailTitle" class="text-lg font-black text-slate-800 mt-2 leading-tight">Nama Produk</h3>
 
+          <!-- Tarikh Pengiklanan Badge -->
+          <div class="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 text-[11px] font-semibold border border-emerald-200">
+            <i class="fa-regular fa-calendar-days text-emerald-600"></i>
+            <span>Tarikh Pengiklanan: <strong id="detailAdDate">2026-10-01</strong></span>
+          </div>
+
           <!-- Seller Snippet -->
-          <div class="flex items-center gap-2 mt-2 pb-3 border-b border-slate-100">
-            <div class="w-7 h-7 rounded-full bg-shopee text-white flex items-center justify-center font-bold text-xs" id="detailSellerAvatar">D</div>
+          <div class="flex items-center gap-2 mt-3 pb-3 border-b border-slate-100">
+            <div class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs" id="detailSellerAvatar">DH</div>
             <div>
-              <span id="detailSellerName" class="text-xs font-bold text-slate-800">Darrez_Shop</span>
-              <span class="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded ml-1 font-semibold">Preferred+</span>
+              <span id="detailSellerName" class="text-xs font-bold text-slate-800">Darrez_Health</span>
+              <span class="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded ml-1 font-semibold">KKM Verified</span>
             </div>
-            <button id="detailVisitShopBtn" class="ml-auto text-[11px] text-shopee hover:underline font-semibold">
+            <button id="detailVisitShopBtn" class="ml-auto text-[11px] text-emerald-600 hover:underline font-semibold">
               Lawati Kedai
             </button>
           </div>
 
           <!-- Price & Rating -->
           <div class="my-3 flex items-baseline gap-3">
-            <span id="detailPrice" class="text-2xl font-black text-shopee">RM 0.00</span>
+            <span id="detailPrice" class="text-2xl font-black text-emerald-700">RM 0.00</span>
             <span id="detailOrigPrice" class="text-xs text-slate-400 line-through">RM 0.00</span>
           </div>
 
@@ -829,7 +845,7 @@
 
           <!-- Variations -->
           <div class="space-y-2 mb-4">
-            <label class="block text-xs font-bold text-slate-700">Pilihan Variasi:</label>
+            <label class="block text-xs font-bold text-slate-700">Pilihan Dos / Saiz Kotak:</label>
             <div class="flex flex-wrap gap-2" id="detailVariations">
               <!-- Rendered by JS -->
             </div>
@@ -847,11 +863,11 @@
         </div>
 
         <div class="grid grid-cols-2 gap-3 pt-3 border-t">
-          <button onclick="addToCartFromDetail()" class="py-2.5 px-4 bg-orange-100 hover:bg-orange-200 text-shopee font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition">
+          <button onclick="addToCartFromDetail()" class="py-2.5 px-4 bg-emerald-100 hover:bg-emerald-200 text-emerald-800 font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition">
             <i class="fa-solid fa-cart-plus"></i> Troli
           </button>
-          <button onclick="buyNowFromDetail()" class="py-2.5 px-4 bg-shopee hover:bg-shopeeDark text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-md transition">
-            <i class="fa-solid fa-bolt"></i> Beli Terus
+          <button onclick="buyNowFromDetail()" class="py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-md transition">
+            <i class="fa-solid fa-bolt"></i> Beli Segera
           </button>
         </div>
       </div>
@@ -862,22 +878,20 @@
   <div id="cartModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
       <!-- Header -->
-      <div class="bg-shopee text-white p-4 flex justify-between items-center">
+      <div class="bg-emerald-700 text-white p-4 flex justify-between items-center">
         <h3 class="font-bold text-base flex items-center gap-2">
-          <i class="fa-solid fa-cart-shopping"></i> Troli Pembelian & Semak Keluar
+          <i class="fa-solid fa-cart-shopping"></i> Troli Ubat & Pengesahan Pesanan
         </h3>
-        <button onclick="closeCartModal()" class="text-white hover:text-orange-200 text-lg">
+        <button onclick="closeCartModal()" class="text-white hover:text-emerald-200 text-lg">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
       <!-- Body -->
       <div class="p-5 overflow-y-auto space-y-5 text-xs">
-        
-        <!-- Cart Items List -->
         <div>
           <h4 class="font-bold text-slate-800 text-xs mb-2 flex items-center justify-between">
-            <span>Barang Dipilih</span>
+            <span>Ubat & Suplemen Dipilih</span>
             <button onclick="clearCart()" class="text-red-500 hover:underline font-normal text-[11px]">Kosongkan Troli</button>
           </h4>
           <div id="cartItemsList" class="space-y-2 max-h-52 overflow-y-auto pr-1">
@@ -888,32 +902,32 @@
         <!-- Shipping & Courier Selection -->
         <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
           <h4 class="font-bold text-slate-800 text-xs flex items-center gap-1.5">
-            <i class="fa-solid fa-truck-fast text-shopee"></i> Pilihan Syarikat Kurier Penghantaran
+            <i class="fa-solid fa-truck-medical text-emerald-600"></i> Pilihan Rakan Kurier Farmasi (Pantas Dari Warehouse)
           </h4>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-            <label class="border p-2.5 rounded-lg flex flex-col items-center cursor-pointer bg-white hover:border-shopee transition text-center">
-              <input type="radio" name="courierOption" value="J&T Express" checked onchange="updateShippingFee(4.90, 'J&T Express')" class="text-shopee">
+            <label class="border p-2.5 rounded-lg flex flex-col items-center cursor-pointer bg-white hover:border-emerald-500 transition text-center">
+              <input type="radio" name="courierOption" value="J&T Express" checked onchange="updateShippingFee(4.90, 'J&T Express')" class="text-emerald-600">
               <span class="font-bold text-slate-800 mt-1">J&T Express</span>
               <span class="text-[10px] text-slate-400">1-2 Hari Bekerja</span>
-              <span class="text-[10px] text-shopee font-bold mt-1">RM 4.90</span>
+              <span class="text-[10px] text-emerald-700 font-bold mt-1">RM 4.90</span>
             </label>
-            <label class="border p-2.5 rounded-lg flex flex-col items-center cursor-pointer bg-white hover:border-shopee transition text-center">
-              <input type="radio" name="courierOption" value="Pos Laju" onchange="updateShippingFee(5.50, 'Pos Laju')" class="text-shopee">
+            <label class="border p-2.5 rounded-lg flex flex-col items-center cursor-pointer bg-white hover:border-emerald-500 transition text-center">
+              <input type="radio" name="courierOption" value="Pos Laju" onchange="updateShippingFee(5.50, 'Pos Laju')" class="text-emerald-600">
               <span class="font-bold text-slate-800 mt-1">Pos Laju</span>
               <span class="text-[10px] text-slate-400">2-3 Hari Bekerja</span>
-              <span class="text-[10px] text-shopee font-bold mt-1">RM 5.50</span>
+              <span class="text-[10px] text-emerald-700 font-bold mt-1">RM 5.50</span>
             </label>
-            <label class="border p-2.5 rounded-lg flex flex-col items-center cursor-pointer bg-white hover:border-shopee transition text-center">
-              <input type="radio" name="courierOption" value="Shopee Xpress" onchange="updateShippingFee(4.50, 'Shopee Xpress')" class="text-shopee">
+            <label class="border p-2.5 rounded-lg flex flex-col items-center cursor-pointer bg-white hover:border-emerald-500 transition text-center">
+              <input type="radio" name="courierOption" value="Shopee Xpress" onchange="updateShippingFee(4.50, 'Shopee Xpress')" class="text-emerald-600">
               <span class="font-bold text-slate-800 mt-1">SPX Express</span>
-              <span class="text-[10px] text-slate-400">1-3 Hari Bekerja</span>
-              <span class="text-[10px] text-shopee font-bold mt-1">RM 4.50</span>
+              <span class="text-[10px] text-slate-400">1-2 Hari Bekerja</span>
+              <span class="text-[10px] text-emerald-700 font-bold mt-1">RM 4.50</span>
             </label>
-            <label class="border p-2.5 rounded-lg flex flex-col items-center cursor-pointer bg-white hover:border-shopee transition text-center">
-              <input type="radio" name="courierOption" value="Ninja Van" onchange="updateShippingFee(5.00, 'Ninja Van')" class="text-shopee">
+            <label class="border p-2.5 rounded-lg flex flex-col items-center cursor-pointer bg-white hover:border-emerald-500 transition text-center">
+              <input type="radio" name="courierOption" value="Ninja Van" onchange="updateShippingFee(5.00, 'Ninja Van')" class="text-emerald-600">
               <span class="font-bold text-slate-800 mt-1">Ninja Van</span>
               <span class="text-[10px] text-slate-400">2-4 Hari Bekerja</span>
-              <span class="text-[10px] text-shopee font-bold mt-1">RM 5.00</span>
+              <span class="text-[10px] text-emerald-700 font-bold mt-1">RM 5.00</span>
             </label>
           </div>
         </div>
@@ -921,38 +935,38 @@
         <!-- Buyer Address & Payment Option -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label class="font-bold text-slate-700 block mb-1">Nama & No. Telefon Pembeli</label>
-            <input type="text" id="checkoutBuyerName" value="Ahmad Zharif (012-9876543)" class="w-full border rounded-lg p-2 outline-none focus:border-shopee text-xs">
+            <label class="font-bold text-slate-700 block mb-1">Nama Pembeli & No Telefon</label>
+            <input type="text" id="checkoutBuyerName" value="Ahmad Zharif (012-9876543)" class="w-full border rounded-lg p-2 outline-none focus:border-emerald-500 text-xs">
           </div>
           <div>
             <label class="font-bold text-slate-700 block mb-1">Kaedah Pembayaran</label>
-            <select id="checkoutPaymentMethod" class="w-full border rounded-lg p-2 outline-none focus:border-shopee text-xs">
+            <select id="checkoutPaymentMethod" class="w-full border rounded-lg p-2 outline-none focus:border-emerald-500 text-xs">
               <option value="TNG eWallet">Touch 'n Go eWallet</option>
-              <option value="FPX Online Banking">FPX Online Banking (Maybank, CIMB, dll.)</option>
+              <option value="FPX Online Banking">FPX Online Banking (Maybank2u, CIMB, dll.)</option>
               <option value="Kad Debit / Kredit">Kad Debit / Kredit</option>
               <option value="Bayar Waktu Terima (COD)">Bayar Waktu Terima (Cash On Delivery)</option>
             </select>
           </div>
           <div class="sm:col-span-2">
-            <label class="font-bold text-slate-700 block mb-1">Alamat Lengkap Penghantaran</label>
-            <input type="text" id="checkoutAddress" value="No. 25, Jalan Mutiara 3, Taman Seri Melati, 43000 Kajang, Selangor." class="w-full border rounded-lg p-2 outline-none focus:border-shopee text-xs">
+            <label class="font-bold text-slate-700 block mb-1">Alamat Rumah Lengkap Untuk Penghantaran</label>
+            <input type="text" id="checkoutAddress" value="No. 25, Jalan Mutiara 3, Taman Seri Melati, 43000 Kajang, Selangor." class="w-full border rounded-lg p-2 outline-none focus:border-emerald-500 text-xs">
           </div>
         </div>
 
         <!-- Summary & Voucher -->
         <div class="border-t pt-3 space-y-2">
           <div class="flex gap-2">
-            <input type="text" id="voucherCodeInput" placeholder="Masukkan kod baucar (cth: BELI15)" class="flex-1 border rounded-lg px-3 py-1.5 uppercase outline-none focus:border-shopee">
+            <input type="text" id="voucherCodeInput" placeholder="Kod baucar sihat (cth: SIHAT15)" class="flex-1 border rounded-lg px-3 py-1.5 uppercase outline-none focus:border-emerald-500">
             <button onclick="applyVoucherInput()" class="bg-slate-800 hover:bg-slate-900 text-white font-semibold px-4 py-1.5 rounded-lg">Guna</button>
           </div>
 
           <div class="space-y-1 text-slate-600 pt-2">
             <div class="flex justify-between">
-              <span>Subtotal Produk:</span>
+              <span>Subtotal Ubat:</span>
               <span id="cartSubtotal" class="font-semibold">RM 0.00</span>
             </div>
             <div class="flex justify-between">
-              <span>Caj Penghantaran (<span id="cartCourierName">J&T Express</span>):</span>
+              <span>Caj Kurier (<span id="cartCourierName">J&T Express</span>):</span>
               <span id="cartShippingFee" class="font-semibold">RM 4.90</span>
             </div>
             <div class="flex justify-between text-emerald-600">
@@ -961,7 +975,7 @@
             </div>
             <div class="flex justify-between text-sm font-black text-slate-900 pt-1 border-t">
               <span>Jumlah Perlu Dibayar:</span>
-              <span id="cartGrandTotal" class="text-shopee text-base">RM 0.00</span>
+              <span id="cartGrandTotal" class="text-emerald-700 text-base">RM 0.00</span>
             </div>
           </div>
         </div>
@@ -971,8 +985,8 @@
       <!-- Footer Buttons -->
       <div class="p-3 bg-slate-50 border-t flex justify-end gap-2">
         <button onclick="closeCartModal()" class="px-4 py-2 border rounded-xl font-semibold text-slate-600 hover:bg-slate-100">Batal</button>
-        <button onclick="proceedToCheckout()" class="px-6 py-2 bg-shopee hover:bg-shopeeDark text-white font-bold rounded-xl shadow-md flex items-center gap-2">
-          <i class="fa-solid fa-lock"></i> Sahkan Pesanan Sekarang
+        <button onclick="proceedToCheckout()" class="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md flex items-center gap-2">
+          <i class="fa-solid fa-lock"></i> Sahkan Tempahan Ubat Sekarang
         </button>
       </div>
     </div>
@@ -980,7 +994,7 @@
 
   <!-- Toast Notification -->
   <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl z-50 text-xs sm:text-sm font-medium hidden flex items-center gap-3 transition">
-    <i class="fa-solid fa-circle-info text-shopee text-base" id="toastIcon"></i>
+    <i class="fa-solid fa-circle-info text-emerald-400 text-base" id="toastIcon"></i>
     <span id="toastMessage">Mesej notifikasi</span>
   </div>
 
@@ -990,147 +1004,153 @@
     // 1. DATA STATE & STORE DATABASE
     // ----------------------------------------------------
     
-    // Penjual Rasmi (Sellers)
+    // Penjual Farmasi Rasmi
     let sellersData = {
       'seller_darrez': {
         id: 'seller_darrez',
-        shopName: 'Darrez_Shop',
-        ownerName: 'Mohamad Arief',
+        shopName: 'Darrez_Health Pharma',
+        ownerName: 'Mohamad Arief (B.Pharm)',
         phone: '011-12345678',
-        email: 'darrez@coolmail.com',
-        avatar: 'D',
+        email: 'pharma@darrezhealth.my',
+        avatar: 'DH',
         badge: 'Preferred+',
         rating: 4.9,
-        reviewsCount: 1240,
-        responseRate: '98%',
+        reviewsCount: 1480,
+        responseRate: '99%',
         joined: '2 Tahun Lepas',
         location: 'Petaling Jaya, Selangor',
         verifiedSSM: true,
-        bannerColor: 'from-amber-600 to-orange-500'
+        bannerColor: 'from-emerald-700 to-teal-600'
       },
-      'seller_tech': {
-        id: 'seller_tech',
-        shopName: 'TechMart Official Store',
-        ownerName: 'Kevin Wong',
-        phone: '012-3456789',
-        email: 'support@techmart.my',
-        avatar: 'T',
+      'seller_caring': {
+        id: 'seller_caring',
+        shopName: 'CarePlus Wellness Pharmacy',
+        ownerName: 'Dr. Raymond Tan',
+        phone: '012-4455667',
+        email: 'care@careplus.my',
+        avatar: 'CP',
         badge: 'Mall',
-        rating: 4.8,
-        reviewsCount: 3410,
-        responseRate: '95%',
+        rating: 4.9,
+        reviewsCount: 4210,
+        responseRate: '97%',
         joined: '3 Tahun Lepas',
         location: 'Kuala Lumpur',
         verifiedSSM: true,
-        bannerColor: 'from-blue-700 to-indigo-600'
+        bannerColor: 'from-teal-800 to-cyan-700'
       },
-      'seller_dapur': {
-        id: 'seller_dapur',
-        shopName: 'Dapur Bonda Spices',
-        ownerName: 'Siti Aminah',
-        phone: '013-8889922',
-        email: 'bonda@spices.my',
-        avatar: 'B',
+      'seller_herba': {
+        id: 'seller_herba',
+        shopName: 'Herba Medika Nusantara',
+        ownerName: 'Hajjah Mariam',
+        phone: '013-7766554',
+        email: 'info@herbamedika.my',
+        avatar: 'HM',
         badge: 'Preferred',
-        rating: 5.0,
-        reviewsCount: 890,
-        responseRate: '99%',
+        rating: 4.8,
+        reviewsCount: 960,
+        responseRate: '96%',
         joined: '1 Tahun Lepas',
-        location: 'Shah Alam, Selangor',
+        location: 'Bangi, Selangor',
         verifiedSSM: true,
-        bannerColor: 'from-emerald-700 to-teal-600'
+        bannerColor: 'from-emerald-800 to-green-700'
       }
     };
 
-    // Produk Pasaran
+    // Produk Kesihatan (Vitamin, Ubat Tahan Sakit, Darah Tinggi, dll.)
     let products = [
       {
         id: 'prod_1',
         sellerId: 'seller_darrez',
-        name: 'Kopi Arabica Premium Roasted Blend 500g',
-        category: 'Makanan & Minuman',
-        price: 28.50,
-        originalPrice: 38.00,
+        name: 'Amlodipine Besylate 5mg / 10mg (Kawalan Tekanan Darah Tinggi)',
+        category: 'Ubat Darah Tinggi & Kardio',
+        price: 32.00,
+        originalPrice: 45.00,
+        adDate: '2026-09-28', // Tarikh Pengiklanan
         rating: 4.9,
-        sold: 840,
-        stock: 45,
-        image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=600&q=80',
-        variations: ['Biji Kopi (Whole Beans)', 'Kisar Halus (Fine Grind)', 'Kisar Kasar (Coarse)'],
-        description: 'Biji kopi terpilih dipanggang segar setiap minggu di Selangor. Aroma wangi dengan rasa coklat gelap dan kacang.'
+        sold: 1420,
+        stock: 95,
+        image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80',
+        variations: ['5mg (Kotak 30 Tablet)', '10mg (Kotak 30 Tablet)', 'Pek Nilai 5mg (60 Tablet)'],
+        description: 'Ubat penstabil tekanan darah tinggi kumpulan calcium channel blocker berkualiti klinikal dengan kelulusan KKM.'
       },
       {
         id: 'prod_2',
         sellerId: 'seller_darrez',
-        name: '9H Tempered Glass Screen Protector (Anti-Spy / Matte)',
-        category: 'Elektronik',
-        price: 12.90,
-        originalPrice: 25.00,
-        rating: 4.8,
-        sold: 2310,
-        stock: 120,
-        image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=600&q=80',
-        variations: ['Clear HD', 'Matte Anti-Fingerprint', 'Privacy Anti-Spy'],
-        description: 'Pelindung skrin tahan lasak 9H tidak mudah calar, sangat mudah dipasang tanpa buih.'
+        name: 'Paracetamol Extra + Kafein 500mg/65mg (Ubat Tahan Sakit Pantas & Migrain)',
+        category: 'Ubat Tahan Sakit',
+        price: 14.50,
+        originalPrice: 19.80,
+        adDate: '2026-10-01', // Tarikh Pengiklanan
+        rating: 4.9,
+        sold: 3890,
+        stock: 210,
+        image: 'https://images.unsplash.com/photo-1550572017-ed24058f62f3?auto=format&fit=crop&w=600&q=80',
+        variations: ['Pek Jalur 20 Kaplet', 'Pek Kotak 40 Kaplet'],
+        description: 'Formula bertindak pantas untuk melegakan sakit kepala berdenyut, sakit gigi, senggugut dan menurunkan suhu demam panas.'
       },
       {
         id: 'prod_3',
         sellerId: 'seller_darrez',
-        name: 'Beg Sandang Kalis Air Tahan Lasak (Oxford Sling Bag)',
-        category: 'Aksesori & Beg',
-        price: 34.00,
-        originalPrice: 49.90,
-        rating: 4.9,
-        sold: 620,
-        stock: 30,
-        image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=600&q=80',
-        variations: ['Hitam Midnight', 'Kelabu Smokey', 'Biru Tentera'],
-        description: 'Material kain Oxford kalis air, mempunyai slot USB pengecas dan banyak poket kemas.'
+        name: 'High Strength Vitamin C 1000mg + Zinc Effervescent (Imuniti Badan)',
+        category: 'Vitamin & Suplemen',
+        price: 26.90,
+        originalPrice: 38.00,
+        adDate: '2026-10-03', // Tarikh Pengiklanan
+        rating: 5.0,
+        sold: 2150,
+        stock: 120,
+        image: 'https://images.unsplash.com/photo-1577401239170-897942555fb3?auto=format&fit=crop&w=600&q=80',
+        variations: ['Perisa Oren Segar (30 Tablet Larut)', 'Perisa Blackcurrant (30 Tablet Larut)'],
+        description: 'Membantu menguatkan sistem imun harian, anti-oksidan tinggi serta mempercepatkan pemulihan sel kulit dan selsema.'
       },
       {
         id: 'prod_4',
         sellerId: 'seller_darrez',
-        name: 'Baju Kurung Moden Cotton Sulam Bunga Senja',
-        category: 'Pakaian Wanita',
-        price: 79.00,
-        originalPrice: 120.00,
-        rating: 5.0,
-        sold: 410,
-        stock: 18,
-        image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80',
-        variations: ['Saiz S (Sage Green)', 'Saiz M (Dusty Pink)', 'Saiz L (Navy Blue)', 'Saiz XL (Hitam)'],
-        description: 'Kain sejuk cotton selesa dipakai sepanjang hari untuk pejabat atau kenduri.'
+        name: 'Ibuprofen 400mg Anti-Radang & Sakit Sendi / Otot',
+        category: 'Ubat Tahan Sakit',
+        price: 18.00,
+        originalPrice: 24.50,
+        adDate: '2026-09-25', // Tarikh Pengiklanan
+        rating: 4.8,
+        sold: 980,
+        stock: 75,
+        image: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=600&q=80',
+        variations: ['Kotak 20 Kapsul Lembut', 'Kotak 40 Kapsul Lembut'],
+        description: 'Kapsul bertindak segera bagi mengurangkan bengkak radang, ketegangan otot bahu dan sakit sendi kronik.'
       },
       {
         id: 'prod_5',
-        sellerId: 'seller_tech',
-        name: 'Earbuds Bluetooth Wireless ANC Stereo Bass',
-        category: 'Elektronik',
-        price: 68.00,
-        originalPrice: 99.00,
-        rating: 4.7,
-        sold: 1420,
-        stock: 65,
-        image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=600&q=80',
-        variations: ['Hitam Elegan', 'Putih Mutiara'],
-        description: 'Bateri bertahan sehingga 30 jam bersama bekas pengecas dengan pembatalan hingar aktif.'
+        sellerId: 'seller_caring',
+        name: 'Wild Alaskan Fish Oil Omega-3 1200mg (Kesihatan Salur Darah & Jantung)',
+        category: 'Vitamin & Suplemen',
+        price: 78.00,
+        originalPrice: 110.00,
+        adDate: '2026-09-30', // Tarikh Pengiklanan
+        rating: 4.9,
+        sold: 1670,
+        stock: 50,
+        image: 'https://images.unsplash.com/photo-1550572017-4fcdbb590e59?auto=format&fit=crop&w=600&q=80',
+        variations: ['Botol 60 Softgels', 'Botol Jimat 120 Softgels'],
+        description: 'Minyak ikan tulen bergred farmaseutikal kaya dengan EPA dan DHA untuk kestabilan kolesterol dan saluran darah.'
       },
       {
         id: 'prod_6',
-        sellerId: 'seller_dapur',
-        name: 'Sambal Garing Ikan Bilis Tempatan Rangup 200g',
-        category: 'Makanan & Minuman',
-        price: 15.50,
-        originalPrice: 20.00,
-        rating: 5.0,
-        sold: 3900,
-        stock: 90,
-        image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80',
-        variations: ['Pedas Manja', 'Ekstra Berapi Pedas'],
-        description: 'Resipi tradisional turun-temurun, ikan bilis gred A rangup tanpa pengawet tiruan.'
+        sellerId: 'seller_herba',
+        name: 'Glucosamine + Chondroitin Complex (Penjagaan Lutut & Rawan Tulang)',
+        category: 'Penjagaan Sendi & Tulang',
+        price: 65.00,
+        originalPrice: 85.00,
+        adDate: '2026-10-02', // Tarikh Pengiklanan
+        rating: 4.8,
+        sold: 720,
+        stock: 40,
+        image: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&w=600&q=80',
+        variations: ['Botol 60 Tablet', 'Pek Kembar (2 x 60 Tablet)'],
+        description: 'Melincirkan pergerakan sendi lutut, meredakan ketegangan bunyi meletup di sendi warga emas.'
       }
     ];
 
-    // Senarai Pesanan (Orders)
+    // Aliran Penghantaran Spesifik Dari Warehouse Ke Rumah Pembeli
     let orders = [
       {
         orderId: 'ORD-88219',
@@ -1141,27 +1161,65 @@
         address: 'No. 25, Jalan Mutiara 3, Taman Seri Melati, 43000 Kajang, Selangor.',
         courier: 'J&T Express',
         trackingNumber: 'JT892019482MY',
-        statusStep: 2, // 1: Diterima, 2: Sedia Dibungkus, 3: Diserah ke Kurier, 4: Dalam Penghantaran, 5: Selesai
-        statusText: 'Sedia Dibungkus',
+        statusStep: 3, // 1: Diterima, 2: Sedia Dibungkus, 3: Diserah ke Kurier, 4: Dalam Penghantaran, 5: Selesai
+        statusText: 'Diserah ke Kurier',
         paymentMethod: 'TNG eWallet',
         shippingFee: 4.90,
         discount: 0,
         items: [
           {
             prodId: 'prod_1',
-            name: 'Kopi Arabica Premium Roasted Blend 500g',
-            variation: 'Biji Kopi (Whole Beans)',
-            price: 28.50,
+            name: 'Amlodipine Besylate 5mg (Ubat Darah Tinggi)',
+            variation: '5mg (Kotak 30 Tablet)',
+            price: 32.00,
             qty: 2,
-            image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=200&q=80'
+            image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=200&q=80'
           },
           {
-            prodId: 'prod_2',
-            name: '9H Tempered Glass Screen Protector',
-            variation: 'Matte Anti-Fingerprint',
-            price: 12.90,
+            prodId: 'prod_3',
+            name: 'High Strength Vitamin C 1000mg + Zinc Effervescent',
+            variation: 'Perisa Oren Segar (30 Tablet Larut)',
+            price: 26.90,
             qty: 1,
-            image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=200&q=80'
+            image: 'https://images.unsplash.com/photo-1577401239170-897942555fb3?auto=format&fit=crop&w=200&q=80'
+          }
+        ],
+        // Butiran jejak aliran warehouse ke rumah
+        trackingTimeline: [
+          {
+            stepName: 'Warehouse / Gudang Farmasi',
+            location: 'Warehouse PJ Seksyen 51A, Selangor',
+            time: '04 Okt 2026, 11:45 AM',
+            detail: 'Bungkusan ubat diperiksa oleh Pembantu Farmasi, dipacking kemas dengan pek gelembung kedap suhu.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Pelepasan Warehouse ke Kurier',
+            location: 'Loading Bay Gudang Darrez_Health PJ',
+            time: '04 Okt 2026, 03:30 PM',
+            detail: 'Bungkusan telah diimbas dan diserahkan kepada lori kutipan J&T Express Logistics.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Pusat Isih Wilayah (Hub Sortation)',
+            location: 'J&T Gateway Hub Shah Alam, Selangor',
+            time: '04 Okt 2026, 09:15 PM',
+            detail: 'Bungkusan selamat tiba di Pusat Pengasingan Wilayah Tengah untuk laluan destinasi Kajang.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Penghantaran Terakhir ke Rumah (Last-Mile)',
+            location: 'Pusat Edaran J&T Kajang, Selangor',
+            time: '05 Okt 2026, 08:30 AM',
+            detail: 'Bungkusan diambil oleh penghantar kurier (Rider: Muhammad Hafiz) dan sedang menuju ke pintu rumah pembeli.',
+            status: 'active'
+          },
+          {
+            stepName: 'Pintu Rumah Pembeli',
+            location: 'No. 25, Taman Seri Melati, 43000 Kajang',
+            time: 'Anggaran: 05 Okt 2026, petang',
+            detail: 'Pesanan akan diturunkan dan ditandatangani oleh penerima di rumah.',
+            status: 'pending'
           }
         ]
       },
@@ -1181,12 +1239,49 @@
         discount: 15.00,
         items: [
           {
-            prodId: 'prod_4',
-            name: 'Baju Kurung Moden Cotton Sulam Bunga Senja',
-            variation: 'Saiz M (Dusty Pink)',
-            price: 79.00,
-            qty: 1,
-            image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=200&q=80'
+            prodId: 'prod_2',
+            name: 'Paracetamol Extra + Kafein 500mg/65mg (Ubat Tahan Sakit)',
+            variation: 'Pek Kotak 40 Kaplet',
+            price: 14.50,
+            qty: 2,
+            image: 'https://images.unsplash.com/photo-1550572017-ed24058f62f3?auto=format&fit=crop&w=200&q=80'
+          }
+        ],
+        trackingTimeline: [
+          {
+            stepName: 'Warehouse / Gudang Farmasi',
+            location: 'Warehouse Darrez_Health PJ',
+            time: '03 Okt 2026, 04:45 PM',
+            detail: 'Ubat diproses dan dilabelkan dengan kod bar farmasi.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Serahan Cawangan Kurier',
+            location: 'Pos Laju Cawangan Petaling Jaya',
+            time: '03 Okt 2026, 06:10 PM',
+            detail: 'Diterima di kaunter bungkusan Pos Laju.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Pusat Mel Nasional (PMN Hub)',
+            location: 'Pusat Pemprosesan Mel Pos Malaysia KLIA',
+            time: '04 Okt 2026, 03:00 AM',
+            detail: 'Penyusunan automatik mengikut poskod 50480 Bangsar.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Dalam Van Penghantaran',
+            location: 'Hub Pos Laju Brickfields / Bangsar',
+            time: '05 Okt 2026, 09:00 AM',
+            detail: 'Bungkusan keluar untuk serahan ke unit kediaman pembeli.',
+            status: 'active'
+          },
+          {
+            stepName: 'Diserahkan di Rumah Pembeli',
+            location: 'Kondominium Impian, Bangsar',
+            time: 'Dijangka Hari Ini',
+            detail: 'Penerima menandatangani bukti penyerahan bungkusan.',
+            status: 'pending'
           }
         ]
       },
@@ -1206,23 +1301,58 @@
         discount: 0,
         items: [
           {
-            prodId: 'prod_3',
-            name: 'Beg Sandang Kalis Air Tahan Lasak',
-            variation: 'Hitam Midnight',
-            price: 34.00,
+            prodId: 'prod_4',
+            name: 'Ibuprofen 400mg Anti-Radang & Sakit Sendi',
+            variation: 'Kotak 20 Kapsul Lembut',
+            price: 18.00,
             qty: 1,
-            image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=200&q=80'
+            image: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=200&q=80'
+          }
+        ],
+        trackingTimeline: [
+          {
+            stepName: 'Warehouse Farmasi',
+            location: 'Warehouse Darrez_Health PJ',
+            time: '01 Okt 2026, 09:40 AM',
+            detail: 'Bungkusan dikeluarkan dari zon simpanan dingin.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Pengambilan Lori SPX',
+            location: 'Hub SPX Express Selangor',
+            time: '01 Okt 2026, 02:00 PM',
+            detail: 'Bungkusan berlepas melalui laluan lebuhraya selatan.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Hub Selatan Johor Bahru',
+            location: 'SPX Hub Kempas Utama, Johor',
+            time: '02 Okt 2026, 04:30 AM',
+            detail: 'Bungkusan tiba di hub negeri Johor dan disortir.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Penghantar Motosikal / Van',
+            location: 'Iskandar Puteri Delivery Zone',
+            time: '02 Okt 2026, 10:15 AM',
+            detail: 'Penghantar menuju ke alamat rumah.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Selamat Diterima Di Rumah',
+            location: 'No. 8, Lorong Bukit Indah 4',
+            time: '02 Okt 2026, 01:25 PM',
+            detail: 'Bungkusan selamat diterima oleh Tan Wei Hong (POD Gambar Tersimpan).',
+            status: 'completed'
           }
         ]
       }
     ];
 
-    // Troli Pembeli (Cart)
     let cart = [];
     let appliedVoucher = null;
     let selectedShipping = { fee: 4.90, courier: 'J&T Express' };
 
-    // Sesi Penjual Aktif
     let isSellerLoggedIn = false;
     let currentCategoryFilter = 'Semua';
     let currentSelectedDetailProduct = null;
@@ -1232,6 +1362,11 @@
     // 2. INITIALIZATION
     // ----------------------------------------------------
     window.addEventListener('DOMContentLoaded', () => {
+      // Tetapkan tarikh default form tambah produk ke hari ini
+      const todayStr = new Date().toISOString().split('T')[0];
+      const adDateInput = document.getElementById('newProdAdDate');
+      if (adDateInput) adDateInput.value = todayStr;
+
       renderCategoryPills();
       renderSellersOverview();
       renderProductsGrid();
@@ -1272,24 +1407,22 @@
       document.getElementById('seller-subtab-inventory').classList.add('hidden');
       document.getElementById('seller-subtab-account').classList.add('hidden');
 
-      // reset buttons styling
       const btns = ['orders', 'inventory', 'account'];
       btns.forEach(b => {
         const btnElem = document.getElementById(`subtab-btn-${b}`);
         btnElem.className = "px-4 py-2 font-semibold text-xs sm:text-sm rounded-lg text-slate-600 hover:text-slate-900 flex items-center gap-2 transition";
       });
 
-      // active button styling
       const activeBtn = document.getElementById(`subtab-btn-${tabName}`);
-      activeBtn.className = "px-4 py-2 font-bold text-xs sm:text-sm rounded-lg text-shopee bg-orange-50 flex items-center gap-2 transition";
+      activeBtn.className = "px-4 py-2 font-bold text-xs sm:text-sm rounded-lg text-emerald-700 bg-emerald-50 flex items-center gap-2 transition";
 
       document.getElementById(`seller-subtab-${tabName}`).classList.remove('hidden');
     }
 
     // ----------------------------------------------------
-    // 4. MARKETPLACE RENDERING
+    // 4. MARKETPLACE RENDERING WITH AD DATE
     // ----------------------------------------------------
-    const categories = ['Semua', 'Makanan & Minuman', 'Elektronik', 'Pakaian Wanita', 'Pakaian Lelaki', 'Aksesori & Beg', 'Kesihatan & Kecantikan'];
+    const categories = ['Semua', 'Vitamin & Suplemen', 'Ubat Tahan Sakit', 'Ubat Darah Tinggi & Kardio', 'Penjagaan Sendi & Tulang'];
 
     function renderCategoryPills() {
       const container = document.getElementById('categoryPills');
@@ -1297,7 +1430,7 @@
         const isActive = cat === currentCategoryFilter;
         return `
           <button onclick="filterCategory('${cat}')" class="px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition ${
-            isActive ? 'bg-shopee text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+            isActive ? 'bg-emerald-600 text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
           }">
             ${cat}
           </button>
@@ -1309,7 +1442,7 @@
       currentCategoryFilter = cat;
       renderCategoryPills();
       renderProductsGrid();
-      document.getElementById('productsHeading').innerHTML = `<i class="fa-solid fa-fire text-shopee"></i> Produk Kategori: ${cat}`;
+      document.getElementById('productsHeading').innerHTML = `<i class="fa-solid fa-heart-pulse text-emerald-600"></i> Produk Kategori: ${cat}`;
     }
 
     function renderSellersOverview() {
@@ -1324,7 +1457,7 @@
               <div>
                 <div class="flex items-center gap-1.5">
                   <h4 class="font-bold text-sm text-slate-800">${seller.shopName}</h4>
-                  <span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded ${seller.badge === 'Mall' ? 'bg-red-600 text-white' : 'bg-red-100 text-shopee'}">${seller.badge}</span>
+                  <span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded ${seller.badge === 'Mall' ? 'bg-emerald-600 text-white' : 'bg-emerald-100 text-emerald-800'}">${seller.badge}</span>
                 </div>
                 <div class="text-[11px] text-slate-500 flex items-center gap-2 mt-0.5">
                   <span class="text-amber-500 font-bold"><i class="fa-solid fa-star"></i> ${seller.rating}</span>
@@ -1333,7 +1466,7 @@
                 </div>
               </div>
             </div>
-            <button onclick="viewSellerShop('${seller.id}')" class="px-3 py-1.5 bg-orange-50 hover:bg-orange-100 text-shopee font-bold text-xs rounded-lg transition border border-orange-200">
+            <button onclick="viewSellerShop('${seller.id}')" class="px-3 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold text-xs rounded-lg transition border border-emerald-200">
               Masuk Kedai
             </button>
           </div>
@@ -1355,14 +1488,14 @@
         container.innerHTML = `
           <div class="col-span-full py-12 text-center text-slate-400">
             <i class="fa-solid fa-box-open text-4xl mb-2"></i>
-            <p class="text-sm">Tiada produk sepadan dijumpai.</p>
+            <p class="text-sm">Tiada produk kesihatan sepadan dijumpai.</p>
           </div>
         `;
         return;
       }
 
       container.innerHTML = displayList.map(prod => {
-        const seller = sellersData[prod.sellerId] || { shopName: 'Penjual Sah', badge: 'Preferred' };
+        const seller = sellersData[prod.sellerId] || { shopName: 'Farmasi Sah', badge: 'Preferred' };
         const discountPct = Math.round(((prod.originalPrice - prod.price) / prod.originalPrice) * 100);
 
         return `
@@ -1376,15 +1509,19 @@
                   </span>
                 ` : ''}
                 <span class="absolute bottom-2 left-2 text-[10px] bg-slate-900/80 backdrop-blur-sm text-white px-2 py-0.5 rounded flex items-center gap-1 font-medium">
-                  <i class="fa-solid fa-shop text-[9px] text-orange-400"></i> ${seller.shopName}
+                  <i class="fa-solid fa-clinic-medical text-[9px] text-emerald-400"></i> ${seller.shopName}
                 </span>
               </div>
               <div class="p-3">
-                <h4 class="font-medium text-xs sm:text-sm text-slate-800 line-clamp-2 leading-snug group-hover:text-shopee transition">
+                <!-- Tarikh Pengiklanan pada kad produk -->
+                <div class="flex items-center gap-1 text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded w-max mb-1.5 border border-emerald-100">
+                  <i class="fa-regular fa-calendar text-[9px]"></i> Iklan: ${prod.adDate || '2026-10-01'}
+                </div>
+                <h4 class="font-medium text-xs sm:text-sm text-slate-800 line-clamp-2 leading-snug group-hover:text-emerald-700 transition">
                   ${prod.name}
                 </h4>
                 <div class="mt-2 flex items-baseline gap-2">
-                  <span class="text-sm sm:text-base font-black text-shopee">RM ${prod.price.toFixed(2)}</span>
+                  <span class="text-sm sm:text-base font-black text-emerald-700">RM ${prod.price.toFixed(2)}</span>
                   ${prod.originalPrice ? `<span class="text-[10px] text-slate-400 line-through">RM ${prod.originalPrice.toFixed(2)}</span>` : ''}
                 </div>
               </div>
@@ -1402,85 +1539,7 @@
     }
 
     // ----------------------------------------------------
-    // 5. SELLER PROFILE VIEW (PUBLIC)
-    // ----------------------------------------------------
-    function viewSellerShop(sellerId) {
-      const seller = sellersData[sellerId];
-      if (!seller) return;
-
-      document.getElementById('view-marketplace').classList.add('hidden');
-      document.getElementById('view-seller-dashboard').classList.add('hidden');
-      document.getElementById('view-tracking').classList.add('hidden');
-      document.getElementById('view-seller-store').classList.remove('hidden');
-
-      // Render Header
-      const headerContainer = document.getElementById('sellerStoreHeader');
-      headerContainer.innerHTML = `
-        <div class="p-6 bg-gradient-to-r ${seller.bannerColor} text-white">
-          <div class="flex flex-wrap items-center justify-between gap-4">
-            <div class="flex items-center gap-4">
-              <div class="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 text-white font-black text-3xl flex items-center justify-center shadow-lg">
-                ${seller.avatar}
-              </div>
-              <div class="space-y-1">
-                <div class="flex items-center gap-2">
-                  <h2 class="text-2xl font-black">${seller.shopName}</h2>
-                  <span class="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded shadow">${seller.badge}</span>
-                </div>
-                <p class="text-xs text-orange-100 flex items-center gap-2">
-                  <span><i class="fa-solid fa-location-dot"></i> ${seller.location}</span>
-                  <span>•</span>
-                  <span><i class="fa-solid fa-circle-check"></i> Disahkan SSM</span>
-                </p>
-                <div class="flex items-center gap-4 text-xs pt-1 font-medium">
-                  <span class="flex items-center gap-1"><i class="fa-solid fa-star text-yellow-300"></i> ${seller.rating} / 5.0 (${seller.reviewsCount} Penilaian)</span>
-                  <span class="flex items-center gap-1"><i class="fa-solid fa-comments"></i> Respon: ${seller.responseRate}</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="flex gap-2">
-              <button onclick="showToast('Mesej sembang dibuka dengan ${seller.shopName}!')" class="px-4 py-2 bg-white/20 hover:bg-white/30 border border-white/40 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5">
-                <i class="fa-solid fa-comment-dots"></i> Chat Sekarang
-              </button>
-              ${sellerId === 'seller_darrez' ? `
-                <button onclick="openSellerAuthModal()" class="px-4 py-2 bg-white text-slate-900 hover:bg-orange-50 rounded-xl text-xs font-bold shadow-md transition flex items-center gap-1.5">
-                  <i class="fa-solid fa-gear"></i> Portal Penjual
-                </button>
-              ` : ''}
-            </div>
-          </div>
-        </div>
-      `;
-
-      // Filter products of this seller
-      const sellerProds = products.filter(p => p.sellerId === sellerId);
-      document.getElementById('sellerStoreProductCount').innerText = `${sellerProds.length} Produk`;
-
-      const gridContainer = document.getElementById('sellerStoreProductsGrid');
-      gridContainer.innerHTML = sellerProds.map(prod => {
-        return `
-          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-md transition flex flex-col justify-between cursor-pointer" onclick="openProductModal('${prod.id}')">
-            <div class="aspect-square bg-slate-100">
-              <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover">
-            </div>
-            <div class="p-3">
-              <h4 class="font-medium text-xs text-slate-800 line-clamp-2">${prod.name}</h4>
-              <div class="mt-2 text-sm font-black text-shopee">RM ${prod.price.toFixed(2)}</div>
-              <div class="text-[10px] text-slate-400 mt-1 flex justify-between">
-                <span>★ ${prod.rating}</span>
-                <span>${prod.sold} terjual</span>
-              </div>
-            </div>
-          </div>
-        `;
-      }).join('');
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // ----------------------------------------------------
-    // 6. PRODUCT DETAIL MODAL (PEMBELI)
+    // 5. MODAL DETAIL PRODUK (DENGAN TARIKH PENGIKLANAN)
     // ----------------------------------------------------
     function openProductModal(prodId) {
       const prod = products.find(p => p.id === prodId);
@@ -1489,21 +1548,21 @@
       currentSelectedDetailProduct = prod;
       selectedDetailVariation = prod.variations ? prod.variations[0] : 'Standard';
 
-      const seller = sellersData[prod.sellerId] || { shopName: 'Kedai Tempatan', avatar: 'K' };
+      const seller = sellersData[prod.sellerId] || { shopName: 'Farmasi Sah', avatar: 'F' };
 
       document.getElementById('detailImg').src = prod.image;
       document.getElementById('detailCategory').innerText = prod.category;
       document.getElementById('detailTitle').innerText = prod.name;
+      document.getElementById('detailAdDate').innerText = prod.adDate || '2026-10-01'; // Tunjuk tarikh iklan
       document.getElementById('detailSellerName').innerText = seller.shopName;
       document.getElementById('detailSellerAvatar').innerText = seller.avatar;
       document.getElementById('detailPrice').innerText = `RM ${prod.price.toFixed(2)}`;
       document.getElementById('detailOrigPrice').innerText = prod.originalPrice ? `RM ${prod.originalPrice.toFixed(2)}` : '';
       document.getElementById('detailRating').innerText = prod.rating;
       document.getElementById('detailSold').innerText = `${prod.sold} terjual`;
-      document.getElementById('detailStock').innerText = `${prod.stock} baki unit`;
+      document.getElementById('detailStock').innerText = `${prod.stock} baki botol/kotak`;
       document.getElementById('detailQtyInput').value = 1;
 
-      // Discount badge
       const discountPct = Math.round(((prod.originalPrice - prod.price) / prod.originalPrice) * 100);
       const discountBadge = document.getElementById('detailBadgeDiscount');
       if (discountPct > 0) {
@@ -1513,24 +1572,22 @@
         discountBadge.classList.add('hidden');
       }
 
-      // Link to seller profile
       document.getElementById('detailVisitShopBtn').onclick = () => {
         closeProductModal();
         viewSellerShop(prod.sellerId);
       };
 
-      // Variations
       const varContainer = document.getElementById('detailVariations');
       if (prod.variations && prod.variations.length > 0) {
         varContainer.innerHTML = prod.variations.map((v, i) => `
           <button onclick="selectVariation('${v}', this)" class="var-btn px-3 py-1.5 rounded-lg border text-xs font-semibold transition ${
-            i === 0 ? 'border-shopee text-shopee bg-orange-50' : 'border-slate-300 text-slate-700 hover:border-slate-400'
+            i === 0 ? 'border-emerald-600 text-emerald-700 bg-emerald-50' : 'border-slate-300 text-slate-700 hover:border-slate-400'
           }">
             ${v}
           </button>
         `).join('');
       } else {
-        varContainer.innerHTML = `<span class="text-xs text-slate-400">Pilihan Standard</span>`;
+        varContainer.innerHTML = `<span class="text-xs text-slate-400">Dos Standard</span>`;
       }
 
       document.getElementById('productDetailModal').classList.remove('hidden');
@@ -1542,7 +1599,7 @@
       allBtns.forEach(b => {
         b.className = 'var-btn px-3 py-1.5 rounded-lg border text-xs font-semibold border-slate-300 text-slate-700 hover:border-slate-400 transition';
       });
-      btnElem.className = 'var-btn px-3 py-1.5 rounded-lg border text-xs font-semibold border-shopee text-shopee bg-orange-50 transition';
+      btnElem.className = 'var-btn px-3 py-1.5 rounded-lg border text-xs font-semibold border-emerald-600 text-emerald-700 bg-emerald-50 transition';
     }
 
     function changeDetailQty(delta) {
@@ -1574,7 +1631,7 @@
           price: currentSelectedDetailProduct.price,
           image: currentSelectedDetailProduct.image,
           sellerId: currentSelectedDetailProduct.sellerId,
-          variation: selectedDetailVariation || 'Standard',
+          variation: selectedDetailVariation || 'Dos Standard',
           qty: qty
         });
       }
@@ -1590,7 +1647,361 @@
     }
 
     // ----------------------------------------------------
-    // 7. CART & CHECKOUT
+    // 6. MODAL ALIRAN PENGHANTARAN WAREHOUSE KE RUMAH (KLIK NO. RUJUKAN)
+    // ----------------------------------------------------
+    function openShipmentTrackingModal(trackingNumber) {
+      // Cari pesanan berdasarkan no rujukan tracking
+      const order = orders.find(o => o.trackingNumber === trackingNumber);
+      if (!order) {
+        showToast(`Maklumat penjejakan untuk ${trackingNumber} sedang dikemaskini oleh kurier.`);
+        return;
+      }
+
+      document.getElementById('flowTrackingNumber').innerText = order.trackingNumber;
+      document.getElementById('flowCourierName').innerText = order.courier;
+
+      // Bina senarai aliran (timeline)
+      const container = document.getElementById('flowTimelineContainer');
+      const timeline = order.trackingTimeline || [
+        {
+          stepName: 'Warehouse / Gudang Farmasi',
+          location: 'Gudang Pusat PJ Seksyen 51A',
+          time: order.date,
+          detail: 'Pesanan telah dibungkus kemas di warehouse.',
+          status: 'completed'
+        },
+        {
+          stepName: 'Diserahkan Kepada Syarikat Kurier',
+          location: 'Hub Kurier Utama',
+          time: 'Dalam Proses',
+          detail: 'Lori kurier mengambil barangan dari loading dock.',
+          status: 'active'
+        },
+        {
+          stepName: 'Penghantaran Ke Pintu Rumah Pembeli',
+          location: order.address,
+          time: 'Dijangka Segera',
+          detail: 'Penyerahan akhir ke alamat penerima.',
+          status: 'pending'
+        }
+      ];
+
+      container.innerHTML = `
+        <div class="relative pl-6 space-y-6 before:absolute before:left-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-200">
+          ${timeline.map((item, idx) => {
+            let iconClass = 'fa-solid fa-check text-white';
+            let dotBg = 'bg-emerald-600 shadow-md shadow-emerald-200 ring-4 ring-white';
+            let titleColor = 'text-slate-800 font-bold';
+
+            if (item.status === 'active') {
+              iconClass = 'fa-solid fa-truck-fast text-white text-[10px] animate-pulse';
+              dotBg = 'bg-blue-600 shadow-md shadow-blue-200 ring-4 ring-white';
+              titleColor = 'text-blue-700 font-black';
+            } else if (item.status === 'pending') {
+              iconClass = 'fa-regular fa-clock text-slate-400 text-[10px]';
+              dotBg = 'bg-slate-200 ring-4 ring-white';
+              titleColor = 'text-slate-400 font-semibold';
+            }
+
+            return `
+              <div class="relative">
+                <div class="absolute -left-6 top-0 w-6 h-6 rounded-full ${dotBg} flex items-center justify-center text-[10px]">
+                  <i class="${iconClass}"></i>
+                </div>
+                <div class="bg-white p-3 rounded-xl border ${item.status === 'active' ? 'border-blue-300 bg-blue-50/30' : 'border-slate-200'} shadow-sm">
+                  <div class="flex flex-wrap items-center justify-between gap-1">
+                    <h5 class="text-xs ${titleColor}">${item.stepName}</h5>
+                    <span class="text-[10px] text-slate-400 font-mono">${item.time}</span>
+                  </div>
+                  <p class="text-[11px] font-semibold text-emerald-700 mt-0.5 flex items-center gap-1">
+                    <i class="fa-solid fa-location-dot text-[10px]"></i> ${item.location}
+                  </p>
+                  <p class="text-[11px] text-slate-600 mt-1 leading-relaxed">${item.detail}</p>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+
+      document.getElementById('shipmentTrackingModal').classList.remove('hidden');
+    }
+
+    function closeShipmentTrackingModal() {
+      document.getElementById('shipmentTrackingModal').classList.add('hidden');
+    }
+
+    // ----------------------------------------------------
+    // 7. SELLER DASHBOARD: ORDERS, INVENTORY & ACCOUNT
+    // ----------------------------------------------------
+    function renderSellerOrdersTable() {
+      const tbody = document.getElementById('sellerOrdersTableBody');
+      const sellerOrders = orders.filter(o => o.sellerId === 'seller_darrez');
+
+      if (sellerOrders.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" class="text-center py-6 text-slate-400">Tiada pesanan aktif.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = sellerOrders.map(o => {
+        const totalItemsCount = o.items.reduce((s, it) => s + it.qty, 0);
+        const subtotal = o.items.reduce((s, it) => s + (it.price * it.qty), 0);
+        const grandTotal = Math.max(0, subtotal + o.shippingFee - o.discount);
+
+        return `
+          <tr class="hover:bg-slate-50 transition">
+            <td class="p-3">
+              <button onclick="openOrderDetails('${o.orderId}')" class="font-bold font-mono text-emerald-700 hover:text-emerald-900 hover:underline flex items-center gap-1">
+                <i class="fa-solid fa-circle-info text-xs"></i> #${o.orderId}
+              </button>
+            </td>
+            <!-- No. Rujukan Penghantar Boleh Klik Untuk Detail Aliran Warehouse Ke Rumah -->
+            <td class="p-3">
+              <button onclick="openShipmentTrackingModal('${o.trackingNumber}')" class="group text-left px-2 py-1 rounded bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition">
+                <span class="text-xs font-mono font-bold text-emerald-800 flex items-center gap-1.5">
+                  <i class="fa-solid fa-route text-emerald-600 group-hover:scale-110 transition"></i> ${o.trackingNumber}
+                </span>
+                <span class="text-[10px] text-emerald-600 block underline font-medium">Lihat Aliran Gudang &rarr; Rumah</span>
+              </button>
+            </td>
+            <td class="p-3 text-slate-500 text-xs">${o.date}</td>
+            <td class="p-3">
+              <span class="font-bold text-slate-800 block">${o.buyerName}</span>
+              <span class="text-[10px] text-slate-400">${o.buyerPhone || '012-3456789'}</span>
+            </td>
+            <td class="p-3">
+              <span class="font-medium text-slate-700">${o.items[0]?.name.substring(0, 24)}...</span>
+              <span class="text-[10px] text-slate-400 block">${totalItemsCount} botol / pek</span>
+            </td>
+            <td class="p-3 font-bold text-slate-900">RM ${grandTotal.toFixed(2)}</td>
+            <td class="p-3">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold ${
+                o.statusStep === 5 ? 'bg-emerald-100 text-emerald-800' :
+                o.statusStep >= 3 ? 'bg-blue-100 text-blue-800' : 'bg-amber-100 text-amber-800'
+              }">
+                ${o.statusText}
+              </span>
+            </td>
+            <td class="p-3 text-right">
+              ${o.statusStep < 5 ? `
+                <button onclick="advanceOrderStatus('${o.orderId}')" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-bold rounded-lg shadow-sm transition">
+                  Gerak Aliran <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+              ` : `
+                <span class="text-xs text-emerald-600 font-bold"><i class="fa-solid fa-check"></i> Selesai Tiba</span>
+              `}
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function advanceOrderStatus(orderId) {
+      const order = orders.find(o => o.orderId === orderId);
+      if (!order) return;
+
+      const steps = [
+        { step: 1, text: 'Pesanan Diterima di Gudang' },
+        { step: 2, text: 'Sedia Dibungkus di Warehouse' },
+        { step: 3, text: 'Diserah ke Kurier Lori' },
+        { step: 4, text: 'Dalam Penghantaran Ke Rumah' },
+        { step: 5, text: 'Selesai Diterima di Rumah' }
+      ];
+
+      if (order.statusStep < 5) {
+        order.statusStep += 1;
+        order.statusText = steps[order.statusStep - 1].text;
+
+        // Kemaskini langkah dalam timeline aliran
+        if (order.trackingTimeline && order.trackingTimeline[order.statusStep - 1]) {
+          order.trackingTimeline[order.statusStep - 1].status = 'completed';
+          order.trackingTimeline[order.statusStep - 1].time = 'Kemaskini Baru Sahaja';
+        }
+
+        renderSellerOrdersTable();
+        updateDashboardStats();
+        showToast(`Aliran pesanan #${order.orderId} dikemaskini: ${order.statusText}`);
+      }
+    }
+
+    function updateDashboardStats() {
+      const sellerOrders = orders.filter(o => o.sellerId === 'seller_darrez');
+      const pending = sellerOrders.filter(o => o.statusStep < 5).length;
+      document.getElementById('dashPendingOrders').innerText = pending;
+    }
+
+    function renderSellerInventoryTable() {
+      const tbody = document.getElementById('inventoryTableBody');
+      const myProds = products.filter(p => p.sellerId === 'seller_darrez');
+
+      tbody.innerHTML = myProds.map(prod => `
+        <tr class="hover:bg-slate-50">
+          <td class="p-3">
+            <div class="flex items-center gap-2.5">
+              <img src="${prod.image}" alt="${prod.name}" class="w-10 h-10 rounded-lg object-cover border">
+              <div>
+                <span class="font-bold text-slate-800 line-clamp-1">${prod.name}</span>
+                <span class="text-[10px] text-slate-400">ID: ${prod.id}</span>
+              </div>
+            </div>
+          </td>
+          <td class="p-3 text-slate-600">${prod.category}</td>
+          <td class="p-3 font-semibold text-emerald-800">
+            <span class="bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 text-xs">
+              <i class="fa-regular fa-calendar-check mr-1 text-emerald-600"></i>${prod.adDate || '2026-10-01'}
+            </span>
+          </td>
+          <td class="p-3 font-bold text-emerald-700">RM ${prod.price.toFixed(2)}</td>
+          <td class="p-3 font-semibold ${prod.stock < 10 ? 'text-red-500' : 'text-slate-800'}">${prod.stock} unit</td>
+          <td class="p-3 text-slate-600">${prod.sold}</td>
+          <td class="p-3 text-right">
+            <button onclick="deleteProduct('${prod.id}')" class="text-red-500 hover:text-red-700 text-xs font-semibold p-1">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function handleAddNewProduct(e) {
+      e.preventDefault();
+      const name = document.getElementById('newProdName').value.trim();
+      const category = document.getElementById('newProdCategory').value;
+      const adDate = document.getElementById('newProdAdDate').value || new Date().toISOString().split('T')[0];
+      const price = parseFloat(document.getElementById('newProdPrice').value);
+      const originalPrice = parseFloat(document.getElementById('newProdOriginalPrice').value) || (price * 1.25);
+      const stock = parseInt(document.getElementById('newProdStock').value);
+      let img = document.getElementById('newProdImage').value.trim();
+      const variationsStr = document.getElementById('newProdVariations').value.trim();
+
+      if (!img) {
+        img = 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80';
+      }
+
+      const varArray = variationsStr ? variationsStr.split(',').map(s => s.trim()) : ['Dos Standard'];
+
+      const newProd = {
+        id: `prod_${Date.now()}`,
+        sellerId: 'seller_darrez',
+        name: name,
+        category: category,
+        adDate: adDate,
+        price: price,
+        originalPrice: originalPrice,
+        rating: 5.0,
+        sold: 0,
+        stock: stock,
+        image: img,
+        variations: varArray,
+        description: 'Produk farmaseutikal tulen berdaftar daripada Darrez_Health.'
+      };
+
+      products.unshift(newProd);
+      renderSellerInventoryTable();
+      renderProductsGrid();
+      document.getElementById('newProductForm').reset();
+      showToast(`Produk "${name}" dengan tarikh iklan ${adDate} berjaya diterbitkan!`);
+    }
+
+    function deleteProduct(prodId) {
+      if (confirm('Adakah anda pasti untuk memadam produk ini?')) {
+        products = products.filter(p => p.id !== prodId);
+        renderSellerInventoryTable();
+        renderProductsGrid();
+        showToast('Produk dipadam dari inventori.');
+      }
+    }
+
+    function saveSellerProfileInfo() {
+      const name = document.getElementById('accSellerName').value.trim();
+      const phone = document.getElementById('accSellerPhone').value.trim();
+      const email = document.getElementById('accSellerEmail').value.trim();
+
+      sellersData['seller_darrez'].ownerName = name;
+      sellersData['seller_darrez'].phone = phone;
+      sellersData['seller_darrez'].email = email;
+
+      showToast('Maklumat rasmi farmasi Darrez_Health berjaya dikemaskini!');
+    }
+
+    // ----------------------------------------------------
+    // 8. BUYER TRACKING VIEW (DENGAN KLIK NO RUJUKAN)
+    // ----------------------------------------------------
+    function renderBuyerTrackingView() {
+      const container = document.getElementById('buyerTrackingList');
+      if (orders.length === 0) {
+        container.innerHTML = `<p class="text-center text-slate-400 py-6">Tiada rekod pesanan buat masa ini.</p>`;
+        return;
+      }
+
+      container.innerHTML = orders.map(ord => {
+        const steps = ['Pesanan Diterima di Gudang', 'Sedia Dibungkus', 'Diserah ke Kurier', 'Dalam Penghantaran', 'Selesai di Rumah'];
+
+        return `
+          <div class="border border-slate-200 rounded-2xl p-4 sm:p-5 bg-white shadow-sm space-y-4">
+            <div class="flex flex-wrap items-center justify-between pb-3 border-b border-slate-100 gap-2">
+              <div>
+                <button onclick="openOrderDetails('${ord.orderId}')" class="font-bold text-emerald-700 hover:underline text-sm font-mono flex items-center gap-1.5">
+                  <i class="fa-solid fa-receipt"></i> #${ord.orderId}
+                </button>
+                <span class="text-xs text-slate-400">${ord.date}</span>
+              </div>
+              <div class="text-right">
+                <span class="text-xs font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded">Kurier: ${ord.courier}</span>
+                <!-- No Rujukan Boleh Klik -->
+                <button onclick="openShipmentTrackingModal('${ord.trackingNumber}')" class="mt-1 font-mono text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-2 py-0.5 rounded flex items-center gap-1 transition">
+                  <i class="fa-solid fa-route text-emerald-600"></i> No: ${ord.trackingNumber}
+                  <span class="text-[10px] text-emerald-600 underline font-normal">(Detail Aliran)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Progress Step Bar -->
+            <div class="py-2">
+              <div class="flex justify-between items-center relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-slate-200 w-full z-0"></div>
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-emerald-600 z-0 transition-all duration-500" style="width: ${((ord.statusStep - 1) / 4) * 100}%"></div>
+
+                ${steps.map((st, idx) => {
+                  const isDone = ord.statusStep >= idx + 1;
+                  return `
+                    <div class="flex flex-col items-center relative z-10">
+                      <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition ${
+                        isDone ? 'bg-emerald-600 text-white shadow-sm' : 'bg-white border-2 border-slate-300 text-slate-400'
+                      }">
+                        ${isDone ? '<i class="fa-solid fa-check text-[10px]"></i>' : (idx + 1)}
+                      </div>
+                      <span class="text-[10px] font-semibold mt-1 hidden sm:block ${isDone ? 'text-slate-800' : 'text-slate-400'} text-center max-w-[80px]">${st}</span>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-2 text-xs">
+              <div class="flex items-center gap-2">
+                <img src="${ord.items[0]?.image}" class="w-10 h-10 rounded-lg object-cover border">
+                <div>
+                  <span class="font-bold text-slate-800 line-clamp-1">${ord.items[0]?.name}</span>
+                  <span class="text-[11px] text-slate-500">${ord.items.length > 1 ? `+${ord.items.length - 1} ubat/suplemen lagi` : '1 jenis ubat'}</span>
+                </div>
+              </div>
+              <div class="flex gap-2">
+                <button onclick="openShipmentTrackingModal('${ord.trackingNumber}')" class="px-3 py-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-lg font-bold border border-emerald-200 transition flex items-center gap-1">
+                  <i class="fa-solid fa-map-location-dot"></i> Aliran Warehouse &rarr; Rumah
+                </button>
+                <button onclick="openOrderDetails('${ord.orderId}')" class="px-3 py-1.5 border border-slate-300 text-slate-700 hover:bg-slate-50 rounded-lg font-semibold transition">
+                  Invois
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // ----------------------------------------------------
+    // 9. CART & CHECKOUT LOGIC
     // ----------------------------------------------------
     function updateCartBadge() {
       const count = cart.reduce((acc, item) => acc + item.qty, 0);
@@ -1612,7 +2023,7 @@
       updateCartBadge();
       renderCartItems();
       calculateCartTotal();
-      showToast('Troli dikosongkan.');
+      showToast('Troli ubat dikosongkan.');
     }
 
     function renderCartItems() {
@@ -1633,8 +2044,8 @@
             <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded-lg">
             <div>
               <p class="font-bold text-slate-800 text-xs line-clamp-1">${item.name}</p>
-              <p class="text-[10px] text-slate-500">Pilihan: ${item.variation}</p>
-              <p class="text-xs font-black text-shopee mt-0.5">RM ${item.price.toFixed(2)}</p>
+              <p class="text-[10px] text-slate-500">Dos: ${item.variation}</p>
+              <p class="text-xs font-black text-emerald-700 mt-0.5">RM ${item.price.toFixed(2)}</p>
             </div>
           </div>
           <div class="flex items-center gap-3">
@@ -1678,7 +2089,7 @@
       const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
       let discount = 0;
 
-      if (appliedVoucher === 'BELI15') {
+      if (appliedVoucher === 'SIHAT15') {
         discount = subtotal > 15 ? 15.00 : subtotal;
       }
 
@@ -1696,12 +2107,12 @@
     }
 
     function applyPromoVoucher(code) {
-      if (code === 'BELI15') {
-        appliedVoucher = 'BELI15';
+      if (code === 'SIHAT15') {
+        appliedVoucher = 'SIHAT15';
         calculateCartTotal();
-        showToast('Baucar RM15 berjaya dituntut!');
+        showToast('Baucar Sihat RM15 berjaya dituntut!');
       } else {
-        showToast('Kod baucar tidak sah. Cuba BELI15.');
+        showToast('Kod baucar tidak sah. Cuba SIHAT15.');
       }
     }
 
@@ -1716,44 +2127,78 @@
       const paymentMethod = document.getElementById('checkoutPaymentMethod').value;
       const orderCode = `ORD-${Math.floor(10000 + Math.random() * 90000)}`;
       const trackingCode = `JT${Math.floor(10000000 + Math.random() * 90000000)}MY`;
+      const dateNow = new Date().toLocaleString('ms-MY', { dateStyle: 'short', timeStyle: 'short' });
 
       const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-      const discount = appliedVoucher === 'BELI15' ? 15.00 : 0;
+      const discount = appliedVoucher === 'SIHAT15' ? 15.00 : 0;
 
-      // Masukkan ke senarai pesanan sistem (Darrez_Shop)
       const newOrder = {
         orderId: orderCode,
         sellerId: 'seller_darrez',
-        date: new Date().toLocaleString('ms-MY', { dateStyle: 'short', timeStyle: 'short' }),
+        date: dateNow,
         buyerName: buyerName.split('(')[0].trim(),
         buyerPhone: buyerName.includes('(') ? buyerName.split('(')[1].replace(')', '').trim() : '012-3456789',
         address: address,
         courier: selectedShipping.courier,
         trackingNumber: trackingCode,
-        statusStep: 1, // Pesanan Diterima
-        statusText: 'Pesanan Diterima',
+        statusStep: 1, // Pesanan Diterima di Gudang
+        statusText: 'Pesanan Diterima di Gudang',
         paymentMethod: paymentMethod,
         shippingFee: selectedShipping.fee,
         discount: discount,
-        items: [...cart]
+        items: [...cart],
+        trackingTimeline: [
+          {
+            stepName: 'Warehouse / Gudang Farmasi',
+            location: 'Warehouse PJ Seksyen 51A, Selangor',
+            time: dateNow,
+            detail: 'Pesanan telah diterima dan sedia untuk dibungkus oleh staf farmasi berlesen.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Pembungkusan & Pelepasan Kurier',
+            location: 'Loading Bay Warehouse',
+            time: 'Menunggu Pengambilan Kurier',
+            detail: `Bungkusan ubat sedang disediakan untuk penyerahan lori ${selectedShipping.courier}.`,
+            status: 'active'
+          },
+          {
+            stepName: 'Pusat Isih Kurier Terdekat',
+            location: 'Hub Kurier Wilayah',
+            time: 'Dijangka Hari Bekerja Berikutnya',
+            detail: 'Pemeriksaan suhu dan pengelompokan alamat destinasi.',
+            status: 'pending'
+          },
+          {
+            stepName: 'Penghantaran Terakhir',
+            location: 'Hub Cawangan Kawasan Anda',
+            time: 'Dalam Perjalanan',
+            detail: 'Kurier runner membawa bungkusan keluar ke destinasi.',
+            status: 'pending'
+          },
+          {
+            stepName: 'Pintu Rumah Pembeli',
+            location: address,
+            time: 'Dijangka Tiba',
+            detail: 'Penyerahan rasmi kepada penerima di alamat rumah.',
+            status: 'pending'
+          }
+        ]
       };
 
       orders.unshift(newOrder);
 
-      // Bersihkan troli
       cart = [];
       appliedVoucher = null;
       updateCartBadge();
       closeCartModal();
 
-      showToast(`Pesanan ${orderCode} berjaya disahkan!`);
-      
-      // Paparkan skrin penjejakan pesanan
+      showToast(`Pesanan ubat ${orderCode} berjaya disahkan!`);
       switchTab('tracking');
     }
 
     // ----------------------------------------------------
-    // 8. ORDER DETAILS MODAL (KLIK PADA NO. PESANAN)
+    // 10. ORDER DETAILS MODAL
     // ----------------------------------------------------
     function openOrderDetails(orderId) {
       const order = orders.find(o => o.orderId === orderId);
@@ -1765,12 +2210,16 @@
       document.getElementById('modalOrderCourier').innerText = order.courier;
       document.getElementById('modalOrderTracking').innerText = order.trackingNumber;
 
+      // Link terus untuk klik modal aliran
+      document.getElementById('modalOrderTrackingBtn').onclick = () => {
+        openShipmentTrackingModal(order.trackingNumber);
+      };
+
       document.getElementById('modalBuyerName').innerText = order.buyerName;
       document.getElementById('modalBuyerPhone').innerText = order.buyerPhone || '012-3456789';
       document.getElementById('modalShippingAddress').innerText = order.address;
       document.getElementById('modalPaymentMethod').innerText = order.paymentMethod;
 
-      // Items list
       const itemsBody = document.getElementById('modalOrderItemsBody');
       let subtotal = 0;
 
@@ -1810,7 +2259,7 @@
     }
 
     // ----------------------------------------------------
-    // 9. SELLER LOGIN & AUTHENTICATION (DARREZ_SHOP)
+    // 11. SELLER AUTH & UTILITIES
     // ----------------------------------------------------
     function openSellerAuthModal() {
       if (isSellerLoggedIn) {
@@ -1852,7 +2301,7 @@
         isSellerLoggedIn = true;
         closeSellerAuthModal();
         updateTopNavForSeller();
-        showToast('Berjaya log masuk sebagai Darrez_Shop!');
+        showToast('Berjaya log masuk sebagai Darrez_Health!');
         switchTab('seller-dashboard');
       } else {
         document.getElementById('loginErrorMessage').classList.remove('hidden');
@@ -1863,10 +2312,10 @@
       const topNav = document.getElementById('topNavSellerActions');
       if (isSellerLoggedIn) {
         topNav.innerHTML = `
-          <button onclick="switchTab('seller-dashboard')" class="text-white hover:text-orange-200 font-bold flex items-center gap-1.5 bg-black/20 px-2.5 py-0.5 rounded text-[11px]">
-            <i class="fa-solid fa-gauge-high"></i> Papan Pemuka Darrez_Shop
+          <button onclick="switchTab('seller-dashboard')" class="text-white hover:text-emerald-100 font-bold flex items-center gap-1.5 bg-black/20 px-2.5 py-0.5 rounded text-[11px]">
+            <i class="fa-solid fa-gauge-high"></i> Papan Pemuka Darrez_Health
           </button>
-          <span class="text-orange-200">|</span>
+          <span class="text-emerald-200">|</span>
           <button onclick="sellerLogout()" class="hover:underline text-[11px]">Log Keluar</button>
         `;
       }
@@ -1876,270 +2325,92 @@
       isSellerLoggedIn = false;
       const topNav = document.getElementById('topNavSellerActions');
       topNav.innerHTML = `
-        <button onclick="openSellerAuthModal()" class="hover:text-orange-200 transition flex items-center gap-1 bg-white/20 hover:bg-white/30 px-2.5 py-0.5 rounded text-[11px]">
-          <i class="fa-solid fa-lock"></i> Log Masuk Penjual (Darrez_Shop)
+        <button onclick="openSellerAuthModal()" class="hover:text-emerald-100 transition flex items-center gap-1 bg-white/20 hover:bg-white/30 px-2.5 py-0.5 rounded text-[11px]">
+          <i class="fa-solid fa-lock"></i> Log Masuk Penjual (Darrez_Health)
         </button>
-        <span class="text-orange-200">|</span>
+        <span class="text-emerald-200">|</span>
         <button onclick="switchTab('tracking')" class="hover:underline flex items-center gap-1">
-          <i class="fa-solid fa-route"></i> Semak Pesanan
+          <i class="fa-solid fa-route"></i> Semak Pesanan & Kurier
         </button>
       `;
       showToast('Anda telah log keluar daripada Seller Centre.');
       switchTab('marketplace');
     }
 
-    // ----------------------------------------------------
-    // 10. SELLER DASHBOARD: ORDERS, INVENTORY & ACCOUNT
-    // ----------------------------------------------------
-    function renderSellerOrdersTable() {
-      const tbody = document.getElementById('sellerOrdersTableBody');
-      const sellerOrders = orders.filter(o => o.sellerId === 'seller_darrez');
+    function viewSellerShop(sellerId) {
+      const seller = sellersData[sellerId];
+      if (!seller) return;
 
-      if (sellerOrders.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="8" class="text-center py-6 text-slate-400">Tiada pesanan aktif.</td></tr>`;
-        return;
-      }
+      document.getElementById('view-marketplace').classList.add('hidden');
+      document.getElementById('view-seller-dashboard').classList.add('hidden');
+      document.getElementById('view-tracking').classList.add('hidden');
+      document.getElementById('view-seller-store').classList.remove('hidden');
 
-      tbody.innerHTML = sellerOrders.map(o => {
-        const totalItemsCount = o.items.reduce((s, it) => s + it.qty, 0);
-        const subtotal = o.items.reduce((s, it) => s + (it.price * it.qty), 0);
-        const grandTotal = Math.max(0, subtotal + o.shippingFee - o.discount);
-
-        return `
-          <tr class="hover:bg-slate-50 transition">
-            <td class="p-3">
-              <button onclick="openOrderDetails('${o.orderId}')" class="font-bold font-mono text-shopee hover:text-shopeeDark hover:underline flex items-center gap-1">
-                <i class="fa-solid fa-circle-info text-xs"></i> #${o.orderId}
-              </button>
-              <span class="text-[10px] text-slate-400 block">${o.trackingNumber}</span>
-            </td>
-            <td class="p-3 text-slate-500 text-xs">${o.date}</td>
-            <td class="p-3">
-              <span class="font-bold text-slate-800 block">${o.buyerName}</span>
-              <span class="text-[10px] text-slate-400">${o.buyerPhone || '012-3456789'}</span>
-            </td>
-            <td class="p-3">
-              <span class="font-medium text-slate-700">${o.items[0]?.name.substring(0, 24)}...</span>
-              <span class="text-[10px] text-slate-400 block">${totalItemsCount} item keseluruhan</span>
-            </td>
-            <td class="p-3 font-bold text-slate-900">RM ${grandTotal.toFixed(2)}</td>
-            <td class="p-3">
-              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] bg-blue-50 text-blue-700 font-semibold border border-blue-200">
-                ${o.courier}
-              </span>
-            </td>
-            <td class="p-3">
-              <span class="px-2 py-0.5 rounded text-[10px] font-bold ${
-                o.statusStep === 5 ? 'bg-emerald-100 text-emerald-800' :
-                o.statusStep >= 3 ? 'bg-blue-100 text-blue-800' : 'bg-amber-100 text-amber-800'
-              }">
-                ${o.statusText}
-              </span>
-            </td>
-            <td class="p-3 text-right">
-              ${o.statusStep < 5 ? `
-                <button onclick="advanceOrderStatus('${o.orderId}')" class="px-2.5 py-1 bg-shopee hover:bg-shopeeDark text-white text-[11px] font-bold rounded-lg shadow-sm transition">
-                  Kemaskini Status <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                </button>
-              ` : `
-                <span class="text-xs text-emerald-600 font-bold"><i class="fa-solid fa-check"></i> Selesai</span>
-              `}
-            </td>
-          </tr>
-        `;
-      }).join('');
-    }
-
-    function advanceOrderStatus(orderId) {
-      const order = orders.find(o => o.orderId === orderId);
-      if (!order) return;
-
-      const steps = [
-        { step: 1, text: 'Pesanan Diterima' },
-        { step: 2, text: 'Sedia Dibungkus' },
-        { step: 3, text: 'Diserah ke Kurier' },
-        { step: 4, text: 'Dalam Penghantaran' },
-        { step: 5, text: 'Selesai Diserah' }
-      ];
-
-      if (order.statusStep < 5) {
-        order.statusStep += 1;
-        order.statusText = steps[order.statusStep - 1].text;
-        renderSellerOrdersTable();
-        updateDashboardStats();
-        showToast(`Pesanan #${order.orderId} dikemaskini: ${order.statusText}`);
-      }
-    }
-
-    function updateDashboardStats() {
-      const sellerOrders = orders.filter(o => o.sellerId === 'seller_darrez');
-      const pending = sellerOrders.filter(o => o.statusStep < 5).length;
-      document.getElementById('dashPendingOrders').innerText = pending;
-    }
-
-    function renderSellerInventoryTable() {
-      const tbody = document.getElementById('inventoryTableBody');
-      const myProds = products.filter(p => p.sellerId === 'seller_darrez');
-
-      tbody.innerHTML = myProds.map(prod => `
-        <tr class="hover:bg-slate-50">
-          <td class="p-3">
-            <div class="flex items-center gap-2.5">
-              <img src="${prod.image}" alt="${prod.name}" class="w-10 h-10 rounded-lg object-cover border">
-              <div>
-                <span class="font-bold text-slate-800 line-clamp-1">${prod.name}</span>
-                <span class="text-[10px] text-slate-400">ID: ${prod.id}</span>
+      const headerContainer = document.getElementById('sellerStoreHeader');
+      headerContainer.innerHTML = `
+        <div class="p-6 bg-gradient-to-r ${seller.bannerColor} text-white">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <div class="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 text-white font-black text-3xl flex items-center justify-center shadow-lg">
+                ${seller.avatar}
               </div>
-            </div>
-          </td>
-          <td class="p-3 text-slate-600">${prod.category}</td>
-          <td class="p-3 font-bold text-shopee">RM ${prod.price.toFixed(2)}</td>
-          <td class="p-3 font-semibold ${prod.stock < 10 ? 'text-red-500' : 'text-slate-800'}">${prod.stock} unit</td>
-          <td class="p-3 text-slate-600">${prod.sold}</td>
-          <td class="p-3 text-amber-500 font-bold">★ ${prod.rating}</td>
-          <td class="p-3 text-right">
-            <button onclick="deleteProduct('${prod.id}')" class="text-red-500 hover:text-red-700 text-xs font-semibold p-1">
-              <i class="fa-solid fa-trash"></i>
-            </button>
-          </td>
-        </tr>
-      `).join('');
-    }
-
-    function handleAddNewProduct(e) {
-      e.preventDefault();
-      const name = document.getElementById('newProdName').value.trim();
-      const category = document.getElementById('newProdCategory').value;
-      const price = parseFloat(document.getElementById('newProdPrice').value);
-      const originalPrice = parseFloat(document.getElementById('newProdOriginalPrice').value) || (price * 1.25);
-      const stock = parseInt(document.getElementById('newProdStock').value);
-      let img = document.getElementById('newProdImage').value.trim();
-      const variationsStr = document.getElementById('newProdVariations').value.trim();
-
-      if (!img) {
-        img = 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=600&q=80';
-      }
-
-      const varArray = variationsStr ? variationsStr.split(',').map(s => s.trim()) : ['Standard'];
-
-      const newProd = {
-        id: `prod_${Date.now()}`,
-        sellerId: 'seller_darrez',
-        name: name,
-        category: category,
-        price: price,
-        originalPrice: originalPrice,
-        rating: 5.0,
-        sold: 0,
-        stock: stock,
-        image: img,
-        variations: varArray,
-        description: 'Produk tulen berkualiti tinggi dari kedai rasmi Darrez_Shop.'
-      };
-
-      products.unshift(newProd);
-      renderSellerInventoryTable();
-      renderProductsGrid();
-      document.getElementById('newProductForm').reset();
-      showToast(`Produk "${name}" berjaya diterbitkan!`);
-    }
-
-    function deleteProduct(prodId) {
-      if (confirm('Adakah anda pasti untuk memadam produk ini dari inventori?')) {
-        products = products.filter(p => p.id !== prodId);
-        renderSellerInventoryTable();
-        renderProductsGrid();
-        showToast('Produk telah dipadam.');
-      }
-    }
-
-    function saveSellerProfileInfo() {
-      const name = document.getElementById('accSellerName').value.trim();
-      const phone = document.getElementById('accSellerPhone').value.trim();
-      const email = document.getElementById('accSellerEmail').value.trim();
-
-      sellersData['seller_darrez'].ownerName = name;
-      sellersData['seller_darrez'].phone = phone;
-      sellersData['seller_darrez'].email = email;
-
-      showToast('Maklumat akaun penjual Mohamad Arief berjaya disimpan!');
-    }
-
-    // ----------------------------------------------------
-    // 11. BUYER TRACKING VIEW
-    // ----------------------------------------------------
-    function renderBuyerTrackingView() {
-      const container = document.getElementById('buyerTrackingList');
-      if (orders.length === 0) {
-        container.innerHTML = `<p class="text-center text-slate-400 py-6">Tiada rekod pesanan buat masa ini.</p>`;
-        return;
-      }
-
-      container.innerHTML = orders.map(ord => {
-        const steps = ['Pesanan Diterima', 'Sedia Dibungkus', 'Diserah ke Kurier', 'Dalam Penghantaran', 'Selesai'];
-
-        return `
-          <div class="border border-slate-200 rounded-2xl p-4 sm:p-5 bg-white shadow-sm space-y-4">
-            <div class="flex flex-wrap items-center justify-between pb-3 border-b border-slate-100 gap-2">
-              <div>
-                <button onclick="openOrderDetails('${ord.orderId}')" class="font-bold text-shopee hover:underline text-sm font-mono flex items-center gap-1.5">
-                  <i class="fa-solid fa-receipt"></i> #${ord.orderId}
-                </button>
-                <span class="text-xs text-slate-400">${ord.date}</span>
-              </div>
-              <div class="text-right">
-                <span class="text-xs font-bold text-slate-700 bg-slate-100 px-2 py-1 rounded">Kurier: ${ord.courier}</span>
-                <span class="text-xs font-mono text-blue-600 block mt-1 font-semibold">No: ${ord.trackingNumber}</span>
-              </div>
-            </div>
-
-            <!-- Progress Step Bar -->
-            <div class="py-2">
-              <div class="flex justify-between items-center relative">
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-slate-200 w-full z-0"></div>
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-shopee z-0 transition-all duration-500" style="width: ${((ord.statusStep - 1) / 4) * 100}%"></div>
-
-                ${steps.map((st, idx) => {
-                  const isDone = ord.statusStep >= idx + 1;
-                  return `
-                    <div class="flex flex-col items-center relative z-10">
-                      <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition ${
-                        isDone ? 'bg-shopee text-white shadow-sm' : 'bg-white border-2 border-slate-300 text-slate-400'
-                      }">
-                        ${isDone ? '<i class="fa-solid fa-check text-[10px]"></i>' : (idx + 1)}
-                      </div>
-                      <span class="text-[10px] font-semibold mt-1 hidden sm:block ${isDone ? 'text-slate-800' : 'text-slate-400'}">${st}</span>
-                    </div>
-                  `;
-                }).join('')}
-              </div>
-            </div>
-
-            <!-- Items mini preview -->
-            <div class="flex items-center justify-between pt-2 text-xs">
-              <div class="flex items-center gap-2">
-                <img src="${ord.items[0]?.image}" class="w-10 h-10 rounded-lg object-cover border">
-                <div>
-                  <span class="font-bold text-slate-800 line-clamp-1">${ord.items[0]?.name}</span>
-                  <span class="text-[11px] text-slate-500">${ord.items.length > 1 ? `+${ord.items.length - 1} item lagi` : '1 jenis item'}</span>
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <h2 class="text-2xl font-black">${seller.shopName}</h2>
+                  <span class="bg-emerald-500 text-white text-xs font-bold px-2 py-0.5 rounded shadow">${seller.badge}</span>
+                </div>
+                <p class="text-xs text-emerald-100 flex items-center gap-2">
+                  <span><i class="fa-solid fa-location-dot"></i> ${seller.location}</span>
+                  <span>•</span>
+                  <span><i class="fa-solid fa-circle-check"></i> Lesen Farmasi KKM Berdaftar</span>
+                </p>
+                <div class="flex items-center gap-4 text-xs pt-1 font-medium">
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-star text-amber-300"></i> ${seller.rating} / 5.0 (${seller.reviewsCount} Penilaian)</span>
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-user-doctor"></i> Khidmat Farmasi: ${seller.responseRate}</span>
                 </div>
               </div>
-              <button onclick="openOrderDetails('${ord.orderId}')" class="px-3 py-1.5 border border-shopee text-shopee hover:bg-orange-50 rounded-lg font-bold transition">
-                Maklumat Penuh
+            </div>
+
+            <div class="flex gap-2">
+              <button onclick="showToast('Sesi sembang ahli farmasi dibuka dengan ${seller.shopName}!')" class="px-4 py-2 bg-white/20 hover:bg-white/30 border border-white/40 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                <i class="fa-solid fa-comment-medical"></i> Tanya Ahli Farmasi
               </button>
+              ${sellerId === 'seller_darrez' ? `
+                <button onclick="openSellerAuthModal()" class="px-4 py-2 bg-white text-slate-900 hover:bg-emerald-50 rounded-xl text-xs font-bold shadow-md transition flex items-center gap-1.5">
+                  <i class="fa-solid fa-gear"></i> Portal Farmasi
+                </button>
+              ` : ''}
             </div>
           </div>
-        `;
-      }).join('');
+        </div>
+      `;
+
+      const sellerProds = products.filter(p => p.sellerId === sellerId);
+      document.getElementById('sellerStoreProductCount').innerText = `${sellerProds.length} Produk`;
+
+      const gridContainer = document.getElementById('sellerStoreProductsGrid');
+      gridContainer.innerHTML = sellerProds.map(prod => `
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-md transition flex flex-col justify-between cursor-pointer" onclick="openProductModal('${prod.id}')">
+          <div class="aspect-square bg-slate-100">
+            <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover">
+          </div>
+          <div class="p-3">
+            <div class="text-[10px] text-emerald-700 font-semibold mb-1">Iklan: ${prod.adDate || '2026-10-01'}</div>
+            <h4 class="font-medium text-xs text-slate-800 line-clamp-2">${prod.name}</h4>
+            <div class="mt-2 text-sm font-black text-emerald-700">RM ${prod.price.toFixed(2)}</div>
+            <div class="text-[10px] text-slate-400 mt-1 flex justify-between">
+              <span>★ ${prod.rating}</span>
+              <span>${prod.sold} terjual</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // ----------------------------------------------------
-    // 12. SEARCH & TOAST UTILITIES
-    // ----------------------------------------------------
     function handleSearch(event) {
-      if (event.key === 'Enter') {
-        executeSearch();
-      }
+      if (event.key === 'Enter') executeSearch();
     }
 
     function executeSearch() {
@@ -2150,7 +2421,7 @@
       }
       const matched = products.filter(p => p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
       renderProductsGrid(matched);
-      document.getElementById('productsHeading').innerHTML = `<i class="fa-solid fa-magnifying-glass text-shopee"></i> Hasil Carian: "${q}"`;
+      document.getElementById('productsHeading').innerHTML = `<i class="fa-solid fa-magnifying-glass text-emerald-600"></i> Hasil Carian Kesihatan: "${q}"`;
       switchTab('marketplace');
     }
 
