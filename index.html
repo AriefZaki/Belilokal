@@ -121,4 +121,921 @@
         <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Pilihan Utama</span>
         <span class="font-medium">Lawati kedai rasmi pilihan: <strong>Darrez_Shop</strong> (Penjual Sah & Preferred+)</span>
       </div>
-      <div class="
+      <div class="flex items-center gap-3">
+        <button onclick="viewSellerShop('seller_darrez')" class="text-shopee hover:text-shopeeDark font-bold hover:underline flex items-center gap-1">
+          Lihat Profil Kedai <i class="fa-solid fa-arrow-right text-xs"></i>
+        </button>
+        <span class="text-amber-300">|</span>
+        <button onclick="openSellerAuthModal()" class="text-slate-600 hover:text-slate-900 font-semibold underline">
+          Log Masuk Penjual
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MAIN CONTAINER ================= -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6">
+
+    <!-- VIEW 1: MARKETPLACE BROWSE (DEFAULT) -->
+    <section id="view-marketplace" class="space-y-6">
+      
+      <!-- Promo Hero Carousel & Banners -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <!-- Main Banner -->
+        <div class="lg:col-span-2 bg-gradient-to-r from-shopee via-orange-500 to-amber-500 rounded-2xl p-6 sm:p-8 text-white relative overflow-hidden shadow-md flex flex-col justify-between min-h-[220px]">
+          <div class="absolute -right-12 -bottom-12 opacity-15 text-white pointer-events-none">
+            <i class="fa-solid fa-tags text-[240px]"></i>
+          </div>
+          <div class="max-w-md z-10 space-y-2">
+            <span class="bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block">
+              Baucar Jualan Mega RM15 Percuma
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-black leading-tight drop-shadow">Diskaun Sehingga 70% & Penghantaran Percuma</h2>
+            <p class="text-xs sm:text-sm text-orange-100">Beli terus dari penjual sah tempatan termasuk kedai rasmi <strong>Darrez_Shop</strong>.</p>
+          </div>
+          <div class="pt-4 z-10 flex gap-2">
+            <button onclick="filterCategory('Semua')" class="bg-white text-shopee font-bold px-4 py-2 rounded-xl text-xs sm:text-sm shadow-md hover:bg-orange-50 transition">
+              Beli Sekarang
+            </button>
+            <button onclick="applyPromoVoucher('BELI15')" class="bg-orange-800/40 hover:bg-orange-800/60 text-white font-semibold px-4 py-2 rounded-xl text-xs sm:text-sm border border-white/30 transition">
+              Tuntut Kod: BELI15
+            </button>
+          </div>
+        </div>
+
+        <!-- Secondary Side Banners -->
+        <div class="flex flex-col gap-4">
+          <div class="bg-gradient-to-br from-indigo-900 to-blue-700 text-white rounded-2xl p-5 shadow-md flex items-center justify-between relative overflow-hidden flex-1">
+            <div class="space-y-1 z-10">
+              <span class="text-[10px] bg-blue-500/40 text-blue-200 px-2 py-0.5 rounded font-bold uppercase">Dijamin Sah</span>
+              <h3 class="font-bold text-base leading-tight">Shopee Mall & Preferred+</h3>
+              <p class="text-xs text-blue-200">100% Barangan Asli Berkualiti</p>
+            </div>
+            <i class="fa-solid fa-shield-halved text-5xl text-blue-300/30"></i>
+          </div>
+
+          <div class="bg-gradient-to-br from-emerald-800 to-teal-600 text-white rounded-2xl p-5 shadow-md flex items-center justify-between relative overflow-hidden flex-1">
+            <div class="space-y-1 z-10">
+              <span class="text-[10px] bg-teal-500/40 text-teal-100 px-2 py-0.5 rounded font-bold uppercase">Kurier Bersepadu</span>
+              <h3 class="font-bold text-base leading-tight">J&T, Pos Laju & SPX Express</h3>
+              <p class="text-xs text-teal-100">Penjejakan Penghantaran Terus</p>
+            </div>
+            <i class="fa-solid fa-truck-ramp-box text-5xl text-teal-300/30"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories Navigation -->
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider flex items-center gap-2">
+            <i class="fa-solid fa-layer-group text-shopee"></i> Kategori Produk
+          </h3>
+          <span class="text-xs text-slate-400">Pilih untuk tapis</span>
+        </div>
+        <div class="flex gap-2 overflow-x-auto scrollbar-hide pb-1" id="categoryPills">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Store Showcase / Featured Sellers -->
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h3 class="font-black text-slate-800 text-lg flex items-center gap-2">
+              <i class="fa-solid fa-circle-check text-blue-500"></i> Kedai Pilihan & Preferred+
+            </h3>
+            <p class="text-xs text-slate-500">Profil penjual sah dengan reputasi dan rating tinggi</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="sellersOverviewList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="font-black text-slate-800 text-lg flex items-center gap-2" id="productsHeading">
+            <i class="fa-solid fa-fire text-shopee"></i> Produk Terkini & Hangat Dipasarkan
+          </h3>
+          <div class="text-xs text-slate-500" id="productCountInfo">Memaparkan produk</div>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4" id="productsGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- VIEW 2: SELLER PROFILE PUBLIC VIEW (PEMBELI MELIHAT KEDAI PENJUAL) -->
+    <section id="view-seller-store" class="hidden space-y-6">
+      <button onclick="switchTab('marketplace')" class="text-xs font-bold text-shopee hover:underline flex items-center gap-1.5">
+        <i class="fa-solid fa-arrow-left"></i> Kembali ke Semua Produk
+      </button>
+
+      <!-- Shop Header Banner -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden" id="sellerStoreHeader">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Products of This Shop -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between border-b pb-2 border-slate-200">
+          <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">
+            <i class="fa-solid fa-boxes-stacked text-shopee"></i> Produk Daripada Kedai Ini
+          </h3>
+          <span class="text-xs text-slate-500" id="sellerStoreProductCount">0 Produk</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4" id="sellerStoreProductsGrid">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: SELLER DASHBOARD (DARREZ_SHOP SELLER CENTRE EXCLUSIVE) -->
+    <section id="view-seller-dashboard" class="hidden space-y-6">
+      
+      <!-- Seller Centre Topbar -->
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-orange-500 to-amber-400 text-white flex items-center justify-center font-black text-2xl shadow-md">
+            D
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 class="text-xl font-black text-slate-800">Darrez_Shop Seller Centre</h2>
+              <span class="bg-red-100 text-shopee text-[10px] font-bold px-2 py-0.5 rounded border border-red-200">Preferred+</span>
+            </div>
+            <p class="text-xs text-slate-500">Pusat Kawalan Penjual: Urus jualan, bungkusan kurier, maklumat peribadi & produk</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="viewSellerShop('seller_darrez')" class="px-3.5 py-2 text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition flex items-center gap-1.5">
+            <i class="fa-solid fa-eye"></i> Pratonton Kedai Awam
+          </button>
+          <button onclick="sellerLogout()" class="px-3.5 py-2 text-xs font-semibold bg-red-50 hover:bg-red-100 text-red-600 rounded-xl transition flex items-center gap-1.5 border border-red-200">
+            <i class="fa-solid fa-right-from-bracket"></i> Log Keluar
+          </button>
+        </div>
+      </div>
+
+      <!-- Seller Subtabs Navigation -->
+      <div class="flex border-b border-slate-200 space-x-2 sm:space-x-4 bg-white p-2 rounded-xl shadow-sm">
+        <button id="subtab-btn-orders" onclick="switchSellerSubtab('orders')" class="px-4 py-2 font-bold text-xs sm:text-sm rounded-lg text-shopee bg-orange-50 flex items-center gap-2 transition">
+          <i class="fa-solid fa-truck-fast"></i> Pengurusan Pesanan & Kurier
+        </button>
+        <button id="subtab-btn-inventory" onclick="switchSellerSubtab('inventory')" class="px-4 py-2 font-semibold text-xs sm:text-sm rounded-lg text-slate-600 hover:text-slate-900 flex items-center gap-2 transition">
+          <i class="fa-solid fa-box-open"></i> Inventori & Tambah Produk
+        </button>
+        <button id="subtab-btn-account" onclick="switchSellerSubtab('account')" class="px-4 py-2 font-semibold text-xs sm:text-sm rounded-lg text-slate-600 hover:text-slate-900 flex items-center gap-2 transition">
+          <i class="fa-solid fa-id-card"></i> Maklumat Akaun Penjual
+        </button>
+      </div>
+
+      <!-- ================= SUBTAB: ORDERS & SHIPPING ================= -->
+      <div id="seller-subtab-orders" class="space-y-6">
+        <!-- Sales Stats Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <span class="text-xs text-slate-500 font-medium">Jumlah Jualan (RM)</span>
+            <p class="text-xl sm:text-2xl font-black text-slate-800 mt-1" id="dashTotalSales">RM 8,429.50</p>
+            <span class="text-[11px] text-emerald-600 font-semibold flex items-center gap-1 mt-1">
+              <i class="fa-solid fa-arrow-trend-up"></i> +14.8% minggu ini
+            </span>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <span class="text-xs text-slate-500 font-medium">Pesanan Perlu Diproses</span>
+            <p class="text-xl sm:text-2xl font-black text-orange-600 mt-1" id="dashPendingOrders">0</p>
+            <span class="text-[11px] text-slate-400 mt-1 block">Tindakan segera</span>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <span class="text-xs text-slate-500 font-medium">Penilaian Kedai</span>
+            <p class="text-xl sm:text-2xl font-black text-yellow-500 mt-1">4.9 / 5.0</p>
+            <span class="text-[11px] text-slate-400 mt-1 block">Dari 1,240 pembeli</span>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+            <span class="text-xs text-slate-500 font-medium">Kadar Respons Sembang</span>
+            <p class="text-xl sm:text-2xl font-black text-blue-600 mt-1">98%</p>
+            <span class="text-[11px] text-slate-400 mt-1 block">Respons purata: 15 minit</span>
+          </div>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h3 class="font-bold text-slate-800 text-base">Senarai Pesanan Masuk (Darrez_Shop)</h3>
+              <p class="text-xs text-slate-500">Klik pada <strong>No. Pesanan</strong> untuk melihat maklumat terperinci barang yang dibeli.</p>
+            </div>
+            <button onclick="renderSellerOrdersTable()" class="text-xs text-shopee hover:underline font-semibold flex items-center gap-1">
+              <i class="fa-solid fa-rotate-right"></i> Segarkan Data
+            </button>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-slate-50 text-slate-500 font-semibold border-b border-slate-200">
+                <tr>
+                  <th class="p-3">No. Pesanan (Klik Info)</th>
+                  <th class="p-3">Tarikh</th>
+                  <th class="p-3">Pembeli</th>
+                  <th class="p-3">Ringkasan Produk</th>
+                  <th class="p-3">Jumlah (RM)</th>
+                  <th class="p-3">Kurier</th>
+                  <th class="p-3">Status Terkini</th>
+                  <th class="p-3 text-right">Tindakan Penghantaran</th>
+                </tr>
+              </thead>
+              <tbody id="sellerOrdersTableBody" class="divide-y divide-slate-100">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SUBTAB: INVENTORY & ADD PRODUCT ================= -->
+      <div id="seller-subtab-inventory" class="hidden space-y-6">
+        
+        <!-- Add Product Form Card -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+          <h3 class="font-bold text-slate-800 text-base mb-1 flex items-center gap-2">
+            <i class="fa-solid fa-plus-circle text-shopee"></i> Tambah & Iklankan Produk Baharu
+          </h3>
+          <p class="text-xs text-slate-500 mb-4">Produk yang ditambah akan terus dipaparkan bersama <strong>Tarikh Pengiklanan Automatik</strong>.</p>
+
+          <form id="newProductForm" onsubmit="handleAddNewProduct(event)" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs">
+            <div class="sm:col-span-2">
+              <label class="font-semibold text-slate-700 block mb-1">Nama Produk *</label>
+              <input type="text" id="newProdName" required placeholder="Cth: Premium Arabica Coffee Beans 500g" class="w-full border rounded-lg p-2.5 outline-none focus:border-shopee">
+            </div>
+
+            <div>
+              <label class="font-semibold text-slate-700 block mb-1">Kategori *</label>
+              <select id="newProdCategory" class="w-full border rounded-lg p-2.5 outline-none focus:border-shopee">
+                <option value="Makanan & Minuman">Makanan & Minuman</option>
+                <option value="Elektronik">Elektronik</option>
+                <option value="Pakaian Lelaki">Pakaian Lelaki</option>
+                <option value="Pakaian Wanita">Pakaian Wanita</option>
+                <option value="Kesihatan & Kecantikan">Kesihatan & Kecantikan</option>
+                <option value="Aksesori & Beg">Aksesori & Beg</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="font-semibold text-slate-700 block mb-1">Harga Jualan (RM) *</label>
+              <input type="number" step="0.1" id="newProdPrice" required placeholder="Cth: 28.50" class="w-full border rounded-lg p-2.5 outline-none focus:border-shopee">
+            </div>
+
+            <div>
+              <label class="font-semibold text-slate-700 block mb-1">Harga Asal (Sebelum Diskaun RM)</label>
+              <input type="number" step="0.1" id="newProdOriginalPrice" placeholder="Cth: 35.00" class="w-full border rounded-lg p-2.5 outline-none focus:border-shopee">
+            </div>
+
+            <div>
+              <label class="font-semibold text-slate-700 block mb-1">Kuantiti Stok *</label>
+              <input type="number" id="newProdStock" required placeholder="Cth: 50" class="w-full border rounded-lg p-2.5 outline-none focus:border-shopee">
+            </div>
+
+            <div class="sm:col-span-2">
+              <label class="font-semibold text-slate-700 block mb-1">Pautan Imej (URL)</label>
+              <input type="url" id="newProdImage" placeholder="https://images.unsplash.com/..." class="w-full border rounded-lg p-2.5 outline-none focus:border-shopee">
+              <span class="text-[10px] text-slate-400">Biarkan kosong untuk imej automatik mengikut kategori.</span>
+            </div>
+
+            <div>
+              <label class="font-semibold text-slate-700 block mb-1">Variasi (Asingkan dengan koma)</label>
+              <input type="text" id="newProdVariations" placeholder="Cth: 250g, 500g, 1kg" class="w-full border rounded-lg p-2.5 outline-none focus:border-shopee">
+            </div>
+
+            <div class="sm:col-span-3 flex justify-end gap-2 pt-2">
+              <button type="reset" class="px-4 py-2 border rounded-xl font-semibold hover:bg-slate-50 text-slate-600">Tetapkan Semula</button>
+              <button type="submit" class="px-5 py-2 bg-shopee hover:bg-shopeeDark text-white font-bold rounded-xl shadow-sm transition">
+                + Terbitkan & Iklankan Sekarang
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Inventory List -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+          <h3 class="font-bold text-slate-800 text-base mb-3">Senarai Inventori & Pengiklanan Produk Darrez_Shop</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-slate-50 text-slate-500 font-semibold border-b">
+                <tr>
+                  <th class="p-3">Produk</th>
+                  <th class="p-3">Tarikh Pengiklanan</th>
+                  <th class="p-3">Kategori</th>
+                  <th class="p-3">Harga (RM)</th>
+                  <th class="p-3">Baki Stok</th>
+                  <th class="p-3">Terjual</th>
+                  <th class="p-3">Penilaian</th>
+                  <th class="p-3 text-right">Tindakan</th>
+                </tr>
+              </thead>
+              <tbody id="inventoryTableBody" class="divide-y divide-slate-100">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= SUBTAB: SELLER ACCOUNT DETAILS ================= -->
+      <div id="seller-subtab-account" class="hidden space-y-6">
+        
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+          <div class="flex flex-wrap items-center justify-between pb-4 border-b border-slate-200 gap-4">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-shopee to-amber-500 text-white flex items-center justify-center text-2xl font-bold shadow-md">
+                MA
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-800">Mohamad Arief</h3>
+                <p class="text-xs text-slate-500">Pemilik & Pengurus Akaun Rasmi Darrez_Shop</p>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="inline-flex items-center gap-1 text-[11px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-semibold border border-emerald-200">
+                    <i class="fa-solid fa-check-circle"></i> Akaun Disahkan (SSM & eKYC)
+                  </span>
+                  <span class="inline-flex items-center gap-1 text-[11px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full font-semibold border border-blue-200">
+                    <i class="fa-solid fa-shield"></i> Perlindungan Penjual Aktif
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+            <button onclick="saveSellerProfileInfo()" class="px-4 py-2 bg-shopee hover:bg-shopeeDark text-white text-xs font-bold rounded-xl shadow-sm transition flex items-center gap-1.5">
+              <i class="fa-solid fa-floppy-disk"></i> Simpan Kemas Kini
+            </button>
+          </div>
+
+          <!-- Account Fields Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
+            
+            <!-- Personal Info Card -->
+            <div class="space-y-4">
+              <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                <i class="fa-solid fa-user-circle text-shopee"></i> Maklumat Pemilik & Hubungan
+              </h4>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Penuh Pemilik</label>
+                <div class="relative">
+                  <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                    <i class="fa-solid fa-user"></i>
+                  </span>
+                  <input type="text" id="accSellerName" value="Mohamad Arief" class="w-full pl-9 pr-3 py-2 text-sm border border-slate-300 rounded-lg outline-none focus:border-shopee focus:ring-1 focus:ring-shopee">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Nombor Telefon Bimbit</label>
+                <div class="relative">
+                  <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                    <i class="fa-solid fa-phone"></i>
+                  </span>
+                  <input type="text" id="accSellerPhone" value="011-12345678" class="w-full pl-9 pr-3 py-2 text-sm border border-slate-300 rounded-lg outline-none focus:border-shopee focus:ring-1 focus:ring-shopee">
+                </div>
+                <p class="text-[11px] text-slate-400 mt-1">Digunakan untuk pengesahan TAC & panggilan kurier bagi bungkusan.</p>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Alamat Emel Rasmi</label>
+                <div class="relative">
+                  <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                    <i class="fa-solid fa-envelope"></i>
+                  </span>
+                  <input type="email" id="accSellerEmail" value="darrez@coolmail.com" class="w-full pl-9 pr-3 py-2 text-sm border border-slate-300 rounded-lg outline-none focus:border-shopee focus:ring-1 focus:ring-shopee">
+                </div>
+                <p class="text-[11px] text-slate-400 mt-1">Penyata jualan mingguan dan invois cukai akan dihantar ke sini.</p>
+              </div>
+            </div>
+
+            <!-- Business & Shop Details -->
+            <div class="space-y-4">
+              <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                <i class="fa-solid fa-shop text-shopee"></i> Maklumat Kedai & Gudang Penghantaran
+              </h4>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Kedai di Pasaran</label>
+                <input type="text" id="accShopName" value="Darrez_Shop" readonly class="w-full px-3 py-2 text-sm border border-slate-200 bg-slate-50 text-slate-700 rounded-lg outline-none font-semibold">
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Alamat Gudang / Pusat Pengambilan Kurier</label>
+                <textarea id="accWarehouseAddress" rows="3" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg outline-none focus:border-shopee focus:ring-1 focus:ring-shopee">No. 18, Jalan Niaga Utama, Seksyen 51A, 46100 Petaling Jaya, Selangor Darul Ehsan, Malaysia.</textarea>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-600 mb-1">Pilihan Kurier Utama</label>
+                  <select class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg outline-none focus:border-shopee">
+                    <option selected>J&T Express (Door-to-Door)</option>
+                    <option>Pos Laju Cawangan</option>
+                    <option>Shopee Xpress Drop-off</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-600 mb-1">Waktu Operasi Bungkusan</label>
+                  <input type="text" value="Isnin - Sabtu (9AM - 6PM)" class="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg outline-none focus:border-shopee">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Payout & Banking Section -->
+          <div class="mt-8 pt-6 border-t border-slate-200">
+            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2 mb-4">
+              <i class="fa-solid fa-building-columns text-shopee"></i> Maklumat Akaun Bank (Bayaran Jualan)
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs">
+              <div>
+                <span class="text-slate-500 font-medium block">Nama Bank</span>
+                <span class="font-bold text-slate-800 text-sm">Maybank Berhad</span>
+              </div>
+              <div>
+                <span class="text-slate-500 font-medium block">Nama Pemegang Akaun</span>
+                <span class="font-bold text-slate-800 text-sm">MOHAMAD ARIEF</span>
+              </div>
+              <div>
+                <span class="text-slate-500 font-medium block">Nombor Akaun Bank</span>
+                <span class="font-mono font-bold text-slate-800 text-sm">5140 **** 8921</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- VIEW 4: TRACKING ORDERS (SEMAK PENGHANTARAN PEMBELI) -->
+    <section id="view-tracking" class="hidden space-y-6">
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div class="max-w-xl mx-auto text-center space-y-2 mb-6">
+          <div class="w-12 h-12 bg-orange-100 text-shopee rounded-2xl flex items-center justify-center mx-auto text-xl font-bold">
+            <i class="fa-solid fa-truck-ramp-box"></i>
+          </div>
+          <h2 class="text-2xl font-black text-slate-800">Semak Status Bungkusan & Penghantaran</h2>
+          <p class="text-xs text-slate-500">Ketahui fasa pesanan anda dari gudang penjual terus ke destinasi penerima.</p>
+        </div>
+
+        <div class="space-y-4 max-w-3xl mx-auto" id="buyerTrackingList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= MODAL: SELLER AUTH / LOGIN ================= -->
+  <div id="sellerAuthModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl animate-scale-up">
+      <!-- Modal Header -->
+      <div class="bg-gradient-to-r from-shopee to-red-600 p-5 text-white flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-store text-xl"></i>
+          <div>
+            <h3 class="font-bold text-base">Shopee Seller Centre</h3>
+            <p class="text-xs text-orange-100">Log masuk portal penjual rasmi</p>
+          </div>
+        </div>
+        <button onclick="closeSellerAuthModal()" class="text-white hover:text-orange-200 text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 space-y-4">
+        <!-- Credentials hint badge -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-900 space-y-1">
+          <p class="font-bold flex items-center gap-1.5"><i class="fa-solid fa-key"></i> Kredensial Log Masuk Penjual:</p>
+          <div class="grid grid-cols-2 gap-2 mt-1">
+            <div>Username: <code class="bg-white px-1.5 py-0.5 rounded font-mono font-bold text-slate-800 border">darrez</code></div>
+            <div>Password: <code class="bg-white px-1.5 py-0.5 rounded font-mono font-bold text-slate-800 border">ABCD@1234</code></div>
+          </div>
+          <button onclick="quickFillCredentials()" class="mt-1 text-[11px] text-shopee font-bold hover:underline">
+            ⚡ Tekan sini untuk isi automatik
+          </button>
+        </div>
+
+        <form id="sellerLoginForm" onsubmit="handleSellerLogin(event)" class="space-y-3.5 text-xs">
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Username Penjual</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                <i class="fa-solid fa-user"></i>
+              </span>
+              <input type="text" id="sellerUsernameInput" required placeholder="darrez" class="w-full pl-9 pr-3 py-2.5 border rounded-xl outline-none focus:border-shopee focus:ring-1 focus:ring-shopee text-sm">
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Kata Laluan (Password)</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                <i class="fa-solid fa-lock"></i>
+              </span>
+              <input type="password" id="sellerPasswordInput" required placeholder="ABCD@1234" class="w-full pl-9 pr-10 py-2.5 border rounded-xl outline-none focus:border-shopee focus:ring-1 focus:ring-shopee text-sm">
+              <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-eye" id="togglePasswordIcon"></i>
+              </button>
+            </div>
+          </div>
+
+          <div id="loginErrorMessage" class="hidden text-xs text-red-600 bg-red-50 p-2.5 rounded-lg border border-red-200">
+            Username atau kata laluan tidak tepat. Sila gunakan <code>darrez</code> & <code>ABCD@1234</code>.
+          </div>
+
+          <button type="submit" class="w-full bg-shopee hover:bg-shopeeDark text-white font-bold py-2.5 rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2">
+            <i class="fa-solid fa-right-to-bracket"></i> Log Masuk ke Darrez_Shop
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: ORDER DETAILS (KLIK DARI NO. PESANAN) ================= -->
+  <div id="orderDetailsModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+      <!-- Header -->
+      <div class="bg-slate-900 text-white p-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-receipt text-orange-400 text-lg"></i>
+          <div>
+            <h3 class="font-bold text-sm sm:text-base flex items-center gap-2">
+              Perincian Pesanan <span id="modalOrderCode" class="text-orange-400 font-mono">#ORD-00000</span>
+            </h3>
+            <p class="text-[11px] text-slate-300" id="modalOrderDate">Ditempah pada: 2026-10-05</p>
+          </div>
+        </div>
+        <button onclick="closeOrderDetailsModal()" class="text-slate-400 hover:text-white text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Scrollable Body -->
+      <div class="p-5 overflow-y-auto space-y-5 text-xs sm:text-sm">
+        
+        <!-- Status & Delivery summary badge -->
+        <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <span class="text-xs text-slate-400 font-medium block">Status Pesanan:</span>
+            <span id="modalOrderStatusBadge" class="inline-block mt-0.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">
+              Sedang Diproses
+            </span>
+          </div>
+          <div>
+            <span class="text-xs text-slate-400 font-medium block">Syarikat Kurier:</span>
+            <span id="modalOrderCourier" class="font-bold text-slate-800">J&T Express</span>
+          </div>
+          <div>
+            <span class="text-xs text-slate-400 font-medium block">No. Penjejakan (Tracking):</span>
+            <span id="modalOrderTracking" class="font-mono font-bold text-blue-600">JT-9928192MY</span>
+          </div>
+        </div>
+
+        <!-- Buyer & Shipping Info -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200 space-y-1">
+            <span class="font-bold text-slate-700 flex items-center gap-1.5 text-xs text-slate-500 uppercase">
+              <i class="fa-solid fa-user text-shopee"></i> Maklumat Pembeli
+            </span>
+            <p class="font-bold text-slate-800" id="modalBuyerName">Ahmad Zharif</p>
+            <p class="text-slate-500 text-xs" id="modalBuyerPhone">012-9876543</p>
+          </div>
+
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200 space-y-1">
+            <span class="font-bold text-slate-700 flex items-center gap-1.5 text-xs text-slate-500 uppercase">
+              <i class="fa-solid fa-location-dot text-shopee"></i> Alamat Penghantaran
+            </span>
+            <p class="text-slate-600 text-xs" id="modalShippingAddress">No. 25, Jalan Mutiara 3, Taman Seri Melati, 43000 Kajang, Selangor.</p>
+          </div>
+        </div>
+
+        <!-- Items Purchased Table -->
+        <div>
+          <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-1.5 text-xs uppercase tracking-wider text-slate-500">
+            <i class="fa-solid fa-box-open text-shopee"></i> Senarai Produk Yang Dibeli
+          </h4>
+          <div class="border border-slate-200 rounded-xl overflow-hidden">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-500 font-semibold border-b border-slate-200">
+                <tr>
+                  <th class="p-3">Produk</th>
+                  <th class="p-3 text-center">Variasi</th>
+                  <th class="p-3 text-center">Kuantiti</th>
+                  <th class="p-3 text-right">Harga Seunit</th>
+                  <th class="p-3 text-right">Jumlah</th>
+                </tr>
+              </thead>
+              <tbody id="modalOrderItemsBody" class="divide-y divide-slate-100">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Payment Breakdown -->
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5 text-xs">
+          <div class="flex justify-between text-slate-600">
+            <span>Jumlah Nilai Produk (Subtotal):</span>
+            <span id="modalSubtotal" class="font-medium">RM 0.00</span>
+          </div>
+          <div class="flex justify-between text-slate-600">
+            <span>Kos Penghantaran Kurier:</span>
+            <span id="modalShippingFee" class="font-medium">RM 4.90</span>
+          </div>
+          <div class="flex justify-between text-emerald-600 font-medium">
+            <span>Diskaun Baucar:</span>
+            <span id="modalDiscount">-RM 0.00</span>
+          </div>
+          <div class="flex justify-between text-slate-800 text-sm font-black pt-2 border-t border-slate-200">
+            <span>Jumlah Keseluruhan Pembayaran:</span>
+            <span id="modalGrandTotal" class="text-shopee">RM 0.00</span>
+          </div>
+          <div class="text-[11px] text-slate-400 pt-1">
+            Kaedah Pembayaran: <span id="modalPaymentMethod" class="font-semibold text-slate-700">TNG eWallet</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="p-3 bg-slate-100 border-t border-slate-200 flex justify-end">
+        <button onclick="closeOrderDetailsModal()" class="px-5 py-2 bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold rounded-xl">
+          Tutup
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: PRODUCT DETAIL (PEMBELI) ================= -->
+  <div id="productDetailModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]">
+      <!-- Image & Badges -->
+      <div class="md:w-1/2 bg-slate-100 relative min-h-[260px] flex items-center justify-center p-4">
+        <img id="detailImg" src="" alt="Produk" class="max-h-72 w-full object-contain rounded-xl">
+        <span id="detailBadgeDiscount" class="absolute top-3 left-3 bg-red-600 text-white text-xs font-black px-2.5 py-1 rounded-md shadow">
+          -20%
+        </span>
+      </div>
+
+      <!-- Info & Buy -->
+      <div class="md:w-1/2 p-6 flex flex-col justify-between overflow-y-auto">
+        <div>
+          <div class="flex justify-between items-start">
+            <span id="detailCategory" class="text-[10px] uppercase tracking-wider font-bold bg-orange-100 text-shopee px-2.5 py-0.5 rounded-full">Kategori</span>
+            <button onclick="closeProductModal()" class="text-slate-400 hover:text-slate-600 text-lg">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <h3 id="detailTitle" class="text-lg font-black text-slate-800 mt-2 leading-tight">Nama Produk</h3>
+
+          <!-- Seller Snippet & Advertised Date -->
+          <div class="mt-2 pb-3 border-b border-slate-100 space-y-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-full bg-shopee text-white flex items-center justify-center font-bold text-xs" id="detailSellerAvatar">D</div>
+              <div>
+                <span id="detailSellerName" class="text-xs font-bold text-slate-800">Darrez_Shop</span>
+                <span class="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded ml-1 font-semibold">Preferred+</span>
+              </div>
+              <button id="detailVisitShopBtn" class="ml-auto text-[11px] text-shopee hover:underline font-semibold">
+                Lawati Kedai
+              </button>
+            </div>
+            
+            <!-- TARIKH PENGIKLANAN PRODUK -->
+            <div class="bg-orange-50/70 border border-orange-200/60 rounded-lg px-2.5 py-1.5 flex items-center gap-2 text-[11px] text-slate-700">
+              <i class="fa-solid fa-calendar-day text-shopee"></i>
+              <span>Tarikh Diiklankan: <strong id="detailPublishedDate" class="text-slate-900">01 Okt 2026</strong></span>
+            </div>
+          </div>
+
+          <!-- Price & Rating -->
+          <div class="my-3 flex items-baseline gap-3">
+            <span id="detailPrice" class="text-2xl font-black text-shopee">RM 0.00</span>
+            <span id="detailOrigPrice" class="text-xs text-slate-400 line-through">RM 0.00</span>
+          </div>
+
+          <div class="flex items-center gap-3 text-xs text-slate-500 mb-4">
+            <span class="flex items-center text-amber-500 font-bold">
+              <i class="fa-solid fa-star mr-1"></i> <span id="detailRating">4.9</span>
+            </span>
+            <span>|</span>
+            <span id="detailSold">1.2k terjual</span>
+            <span>|</span>
+            <span id="detailStock" class="text-emerald-600 font-semibold">50 unit baki</span>
+          </div>
+
+          <!-- Variations -->
+          <div class="space-y-2 mb-4">
+            <label class="block text-xs font-bold text-slate-700">Pilihan Variasi:</label>
+            <div class="flex flex-wrap gap-2" id="detailVariations">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Quantity -->
+          <div class="flex items-center gap-3 mb-6">
+            <span class="text-xs font-bold text-slate-700">Kuantiti:</span>
+            <div class="flex items-center border rounded-lg">
+              <button onclick="changeDetailQty(-1)" class="px-3 py-1 text-slate-500 hover:bg-slate-100 font-bold">-</button>
+              <input type="number" id="detailQtyInput" value="1" min="1" class="w-12 text-center text-xs font-bold outline-none" readonly>
+              <button onclick="changeDetailQty(1)" class="px-3 py-1 text-slate-500 hover:bg-slate-100 font-bold">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 pt-3 border-t">
+          <button onclick="addToCartFromDetail()" class="py-2.5 px-4 bg-orange-100 hover:bg-orange-200 text-shopee font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition">
+            <i class="fa-solid fa-cart-plus"></i> Troli
+          </button>
+          <button onclick="buyNowFromDetail()" class="py-2.5 px-4 bg-shopee hover:bg-shopeeDark text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-md transition">
+            <i class="fa-solid fa-bolt"></i> Beli Terus
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: CART & CHECKOUT ================= -->
+  <div id="cartModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+      <!-- Header -->
+      <div class="bg-shopee text-white p-4 flex justify-between items-center">
+        <h3 class="font-bold text-base flex items-center gap-2">
+          <i class="fa-solid fa-cart-shopping"></i> Troli Pembelian & Semak Keluar
+        </h3>
+        <button onclick="closeCartModal()" class="text-white hover:text-orange-200 text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="p-5 overflow-y-auto space-y-5 text-xs">
+        
+        <!-- Cart Items List -->
+        <div>
+          <h4 class="font-bold text-slate-800 text-xs mb-2 flex items-center justify-between">
+            <span>Barang Dipilih</span>
+            <button onclick="clearCart()" class="text-red-500 hover:underline font-normal text-[11px]">Kosongkan Troli</button>
+          </h4>
+          <div id="cartItemsList" class="space-y-2 max-h-52 overflow-y-auto pr-1">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Shipping & Courier Selection -->
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+          <h4 class="font-bold text-slate-800 text-xs flex items-center gap-1.5">
+            <i class="fa-solid fa-truck-fast text-shopee"></i> Pilihan Syarikat Kurier Penghantaran
+          </h4>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <label class="border p-2.5 rounded-lg flex flex-col items-center cursor-pointer bg-white hover:border-shopee transition text-center">
+              <input type="radio" name="courierOption" value="J&T Express" checked onchange="updateShippingFee(4.90, 'J&T Express')" class="text-shopee">
+              <span class="font-bold text-slate-800 mt-1">J&T Express</span>
+              <span class="text-[10px] text-slate-400">1-2 Hari Bekerja</span>
+              <span class="text-[10px] text-shopee font-bold mt-1">RM 4.90</span>
+            </label>
+            <label class="border p-2.5 rounded-lg flex flex-col items-center cursor-pointer bg-white hover:border-shopee transition text-center">
+              <input type="radio" name="courierOption" value="Pos Laju" onchange="updateShippingFee(5.50, 'Pos Laju')" class="text-shopee">
+              <span class="font-bold text-slate-800 mt-1">Pos Laju</span>
+              <span class="text-[10px] text-slate-400">2-3 Hari Bekerja</span>
+              <span class="text-[10px] text-shopee font-bold mt-1">RM 5.50</span>
+            </label>
+            <label class="border p-2.5 rounded-lg flex flex-col items-center cursor-pointer bg-white hover:border-shopee transition text-center">
+              <input type="radio" name="courierOption" value="Shopee Xpress" onchange="updateShippingFee(4.50, 'Shopee Xpress')" class="text-shopee">
+              <span class="font-bold text-slate-800 mt-1">SPX Express</span>
+              <span class="text-[10px] text-slate-400">1-3 Hari Bekerja</span>
+              <span class="text-[10px] text-shopee font-bold mt-1">RM 4.50</span>
+            </label>
+            <label class="border p-2.5 rounded-lg flex flex-col items-center cursor-pointer bg-white hover:border-shopee transition text-center">
+              <input type="radio" name="courierOption" value="Ninja Van" onchange="updateShippingFee(5.00, 'Ninja Van')" class="text-shopee">
+              <span class="font-bold text-slate-800 mt-1">Ninja Van</span>
+              <span class="text-[10px] text-slate-400">2-4 Hari Bekerja</span>
+              <span class="text-[10px] text-shopee font-bold mt-1">RM 5.00</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Buyer Address & Payment Option -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Nama & No. Telefon Pembeli</label>
+            <input type="text" id="checkoutBuyerName" value="Ahmad Zharif (012-9876543)" class="w-full border rounded-lg p-2 outline-none focus:border-shopee text-xs">
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Kaedah Pembayaran</label>
+            <select id="checkoutPaymentMethod" class="w-full border rounded-lg p-2 outline-none focus:border-shopee text-xs">
+              <option value="TNG eWallet">Touch 'n Go eWallet</option>
+              <option value="FPX Online Banking">FPX Online Banking (Maybank, CIMB, dll.)</option>
+              <option value="Kad Debit / Kredit">Kad Debit / Kredit</option>
+              <option value="Bayar Waktu Terima (COD)">Bayar Waktu Terima (Cash On Delivery)</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="font-bold text-slate-700 block mb-1">Alamat Lengkap Penghantaran</label>
+            <input type="text" id="checkoutAddress" value="No. 25, Jalan Mutiara 3, Taman Seri Melati, 43000 Kajang, Selangor." class="w-full border rounded-lg p-2 outline-none focus:border-shopee text-xs">
+          </div>
+        </div>
+
+        <!-- Summary & Voucher -->
+        <div class="border-t pt-3 space-y-2">
+          <div class="flex gap-2">
+            <input type="text" id="voucherCodeInput" placeholder="Masukkan kod baucar (cth: BELI15)" class="flex-1 border rounded-lg px-3 py-1.5 uppercase outline-none focus:border-shopee">
+            <button onclick="applyVoucherInput()" class="bg-slate-800 hover:bg-slate-900 text-white font-semibold px-4 py-1.5 rounded-lg">Guna</button>
+          </div>
+
+          <div class="space-y-1 text-slate-600 pt-2">
+            <div class="flex justify-between">
+              <span>Subtotal Produk:</span>
+              <span id="cartSubtotal" class="font-semibold">RM 0.00</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Caj Penghantaran (<span id="cartCourierName">J&T Express</span>):</span>
+              <span id="cartShippingFee" class="font-semibold">RM 4.90</span>
+            </div>
+            <div class="flex justify-between text-emerald-600">
+              <span>Diskaun Baucar:</span>
+              <span id="cartDiscount" class="font-semibold">-RM 0.00</span>
+            </div>
+            <div class="flex justify-between text-sm font-black text-slate-900 pt-1 border-t">
+              <span>Jumlah Perlu Dibayar:</span>
+              <span id="cartGrandTotal" class="text-shopee text-base">RM 0.00</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Buttons -->
+      <div class="p-3 bg-slate-50 border-t flex justify-end gap-2">
+        <button onclick="closeCartModal()" class="px-4 py-2 border rounded-xl font-semibold text-slate-600 hover:bg-slate-100">Batal</button>
+        <button onclick="proceedToCheckout()" class="px-6 py-2 bg-shopee hover:bg-shopeeDark text-white font-bold rounded-xl shadow-md flex items-center gap-2">
+          <i class="fa-solid fa-lock"></i> Sahkan Pesanan Sekarang
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl z-50 text-xs sm:text-sm font-medium hidden flex items-center gap-3 transition">
+    <i class="fa-solid fa-circle-info text-shopee text-base" id="toastIcon"></i>
+    <span id="toastMessage">Mesej notifikasi</span>
+  </div>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    // ----------------------------------------------------
+    // 1. DATA STATE & STORE DATABASE
+    // ----------------------------------------------------
+    
+    // Penjual Rasmi (Sellers)
+    let sellersData = {
+      'seller_darrez': {
+        id: 'seller_darrez',
+        shopName: 'Darrez_Shop',
+        ownerName: 'Mohamad Arief',
+        phone: '011-12345678',
+        email: 'darrez@coolmail.com',
+        avatar: 'D',
+        badge: 'Preferred+',
+        rating: 4.9,
+        reviewsCount: 1240,
+        responseRate: '98%',
+        joined: '2 Tahun Lepas',
+        location: 'Petaling Jaya, Selangor',
+        verifiedSSM: true,
+        bannerColor: 'from-amber-600 to-orange-500'
+      },
+      'seller_tech': {
+        id: 'seller_tech',
+        shopName: 'TechMart Official Store',
+        ownerName: 'Kevin Wong',
+        phone: '012-3456789',
+        email: 'support@techmart.my',
+        avatar: 'T',
+        badge: 'Mall',
+        rating: 4.8,
+        reviewsCount: 3410,
+        responseRate: '95%',
+        joined: '3 Tahun Lepas',
+        location: 'Kuala Lumpur',
+        verifiedSSM: true,
+        bannerColor: 'from-blue-700 to-indigo-600'
+      },
+      'seller_dapur': {
+        id: 'seller_dapur',
+        shopName: 'Dapur Bonda Spices',
+        ownerName: 'Siti Aminah',
+        phone: '013-8889922',
+        email: 'bonda@spices.my',
+        avatar: 'B
