@@ -1058,103 +1058,295 @@
 
     // Health Products (Vitamins, Pain Relievers, Hypertension, etc.)
     let products = [
-  {
-    id: 'prod_1',
-    sellerId: 'seller_darrez',
-    name: 'Amlodipine Besylate 5mg / 10mg (Hypertension Blood Pressure Control)',
-    category: 'Hypertension & Cardio',
-    price: 32.00,
-    originalPrice: 45.00,
-    adDate: '2026-09-28',
-    rating: 4.9,
-    sold: 1420,
-    stock: 95,
-    // Blister pack / prescription tablets
-    image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80',
-    variations: ['5mg (Box of 30 Tablets)', '10mg (Box of 30 Tablets)', 'Value Pack 5mg (60 Tablets)'],
-    description: 'Clinical-grade calcium channel blocker for stabilizing high blood pressure with full MOH approval.'
-  },
-  {
-    id: 'prod_2',
-    sellerId: 'seller_darrez',
-    name: 'Paracetamol Extra + Caffeine 500mg/65mg (Fast Pain Relief & Migraine)',
-    category: 'Pain Relievers',
-    price: 14.50,
-    originalPrice: 19.80,
-    adDate: '2026-10-01',
-    rating: 4.9,
-    sold: 3890,
-    stock: 210,
-    // Blister foil capsules / caplets
-    image: 'https://images.unsplash.com/photo-1550572017-ed24058f62f3?auto=format&fit=crop&w=600&q=80',
-    variations: ['Blister Strip 20 Caplets', 'Box Pack 40 Caplets'],
-    description: 'Fast-acting formula to soothe throbbing headaches, toothaches, menstrual cramps, and reduce high fever.'
-  },
-  {
-    id: 'prod_3',
-    sellerId: 'seller_darrez',
-    name: 'High Strength Vitamin C 1000mg + Zinc Effervescent (Immunity Boost)',
-    category: 'Vitamins & Supplements',
-    price: 26.90,
-    originalPrice: 38.00,
-    adDate: '2026-10-03',
-    rating: 5.0,
-    sold: 2150,
-    stock: 120,
-    // Citrus effervescent / supplement tube
-    image: 'https://images.unsplash.com/photo-1616671285442-127976c66657?auto=format&fit=crop&w=600&q=80',
-    variations: ['Fresh Orange (30 Effervescent Tablets)', 'Blackcurrant (30 Effervescent Tablets)'],
-    description: 'Supports daily immune health, powerful antioxidant protection, and speeds up recovery from colds.'
-  },
-  {
-    id: 'prod_4',
-    sellerId: 'seller_darrez',
-    name: 'Ibuprofen 400mg Anti-Inflammatory & Muscle / Joint Pain',
-    category: 'Pain Relievers',
-    price: 18.00,
-    originalPrice: 24.50,
-    adDate: '2026-09-25',
-    rating: 4.8,
-    sold: 980,
-    stock: 75,
-    // Red/orange liquid gel capsules
-    image: 'https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=600&q=80',
-    variations: ['Box of 20 Softgels', 'Box of 40 Softgels'],
-    description: 'Fast-relief capsules designed to alleviate inflammation, muscle tension, and chronic joint soreness.'
-  },
-  {
-    id: 'prod_5',
-    sellerId: 'seller_caring',
-    name: 'Wild Alaskan Fish Oil Omega-3 1200mg (Cardiovascular & Heart Health)',
-    category: 'Vitamins & Supplements',
-    price: 78.00,
-    originalPrice: 110.00,
-    adDate: '2026-09-30',
-    rating: 4.9,
-    sold: 1670,
-    stock: 50,
-    // Golden amber softgels / fish oil capsules
-    image: 'https://images.unsplash.com/photo-1577401239170-897942555fb3?auto=format&fit=crop&w=600&q=80',
-    variations: ['Bottle 60 Softgels', 'Economy Bottle 120 Softgels'],
-    description: 'Pharmaceutical-grade pure fish oil packed with EPA and DHA for cholesterol and vascular support.'
-  },
-  {
-    id: 'prod_6',
-    sellerId: 'seller_herba',
-    name: 'Glucosamine + Chondroitin Complex (Knee & Cartilage Care)',
-    category: 'Joint & Bone Care',
-    price: 65.00,
-    originalPrice: 85.00,
-    adDate: '2026-10-02',
-    rating: 4.8,
-    sold: 720,
-    stock: 40,
-    // Clean amber medicine bottle with white tablets
-    image: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=600&q=80',
-    variations: ['Bottle 60 Tablets', 'Twin Pack (2 x 60 Tablets)'],
-    description: 'Lubricates knee joints and soothes popping joints, flexibility issues, and cartilage stiffness.'
-  }
-];
+      {
+        id: 'prod_1',
+        sellerId: 'seller_darrez',
+        name: 'Amlodipine Besylate 5mg / 10mg (Hypertension Blood Pressure Control)',
+        category: 'Hypertension & Cardio',
+        price: 32.00,
+        originalPrice: 45.00,
+        adDate: '2026-09-28', // Listing Date
+        rating: 4.9,
+        sold: 1420,
+        stock: 95,
+        image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80',
+        variations: ['5mg (Box of 30 Tablets)', '10mg (Box of 30 Tablets)', 'Value Pack 5mg (60 Tablets)'],
+        description: 'Clinical-grade calcium channel blocker for stabilizing high blood pressure with full MOH approval.'
+      },
+      {
+        id: 'prod_2',
+        sellerId: 'seller_darrez',
+        name: 'Paracetamol Extra + Caffeine 500mg/65mg (Fast Pain Relief & Migraine)',
+        category: 'Pain Relievers',
+        price: 14.50,
+        originalPrice: 19.80,
+        adDate: '2026-10-01', // Listing Date
+        rating: 4.9,
+        sold: 3890,
+        stock: 210,
+        image: 'https://images.unsplash.com/photo-1550572017-ed24058f62f3?auto=format&fit=crop&w=600&q=80',
+        variations: ['Blister Strip 20 Caplets', 'Box Pack 40 Caplets'],
+        description: 'Fast-acting formula to soothe throbbing headaches, toothaches, menstrual cramps, and reduce high fever.'
+      },
+      {
+        id: 'prod_3',
+        sellerId: 'seller_darrez',
+        name: 'High Strength Vitamin C 1000mg + Zinc Effervescent (Immunity Boost)',
+        category: 'Vitamins & Supplements',
+        price: 26.90,
+        originalPrice: 38.00,
+        adDate: '2026-10-03', // Listing Date
+        rating: 5.0,
+        sold: 2150,
+        stock: 120,
+        image: 'https://images.unsplash.com/photo-1577401239170-897942555fb3?auto=format&fit=crop&w=600&q=80',
+        variations: ['Fresh Orange (30 Effervescent Tablets)', 'Blackcurrant (30 Effervescent Tablets)'],
+        description: 'Supports daily immune health, powerful antioxidant protection, and speeds up recovery from colds.'
+      },
+      {
+        id: 'prod_4',
+        sellerId: 'seller_darrez',
+        name: 'Ibuprofen 400mg Anti-Inflammatory & Muscle / Joint Pain',
+        category: 'Pain Relievers',
+        price: 18.00,
+        originalPrice: 24.50,
+        adDate: '2026-09-25', // Listing Date
+        rating: 4.8,
+        sold: 980,
+        stock: 75,
+        image: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=600&q=80',
+        variations: ['Box of 20 Softgels', 'Box of 40 Softgels'],
+        description: 'Fast-relief capsules designed to alleviate inflammation, muscle tension, and chronic joint soreness.'
+      },
+      {
+        id: 'prod_5',
+        sellerId: 'seller_caring',
+        name: 'Wild Alaskan Fish Oil Omega-3 1200mg (Cardiovascular & Heart Health)',
+        category: 'Vitamins & Supplements',
+        price: 78.00,
+        originalPrice: 110.00,
+        adDate: '2026-09-30', // Listing Date
+        rating: 4.9,
+        sold: 1670,
+        stock: 50,
+        image: 'https://images.unsplash.com/photo-1550572017-4fcdbb590e59?auto=format&fit=crop&w=600&q=80',
+        variations: ['Bottle 60 Softgels', 'Economy Bottle 120 Softgels'],
+        description: 'Pharmaceutical-grade pure fish oil packed with EPA and DHA for cholesterol and vascular support.'
+      },
+      {
+        id: 'prod_6',
+        sellerId: 'seller_herba',
+        name: 'Glucosamine + Chondroitin Complex (Knee & Cartilage Care)',
+        category: 'Joint & Bone Care',
+        price: 65.00,
+        originalPrice: 85.00,
+        adDate: '2026-10-02', // Listing Date
+        rating: 4.8,
+        sold: 720,
+        stock: 40,
+        image: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&w=600&q=80',
+        variations: ['Bottle 60 Tablets', 'Twin Pack (2 x 60 Tablets)'],
+        description: 'Lubricates knee joints and soothes popping joints, flexibility issues, and cartilage stiffness.'
+      }
+    ];
+
+    // Warehouse to Buyer Doorstep Flow Data
+    let orders = [
+      {
+        orderId: 'ORD-88219',
+        sellerId: 'seller_darrez',
+        date: '2026-10-04 11:30 AM',
+        buyerName: 'Ahmad Zharif',
+        buyerPhone: '012-9876543',
+        address: 'No. 25, Jalan Mutiara 3, Taman Seri Melati, 43000 Kajang, Selangor.',
+        courier: 'J&T Express',
+        trackingNumber: 'JT892019482MY',
+        statusStep: 3, // 1: Received, 2: Packed, 3: Handed to Courier, 4: Out for Delivery, 5: Delivered
+        statusText: 'Handed to Courier',
+        paymentMethod: 'TNG eWallet',
+        shippingFee: 4.90,
+        discount: 0,
+        items: [
+          {
+            prodId: 'prod_1',
+            name: 'Amlodipine Besylate 5mg (Hypertension Medicine)',
+            variation: '5mg (Box of 30 Tablets)',
+            price: 32.00,
+            qty: 2,
+            image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=200&q=80'
+          },
+          {
+            prodId: 'prod_3',
+            name: 'High Strength Vitamin C 1000mg + Zinc Effervescent',
+            variation: 'Fresh Orange (30 Effervescent Tablets)',
+            price: 26.90,
+            qty: 1,
+            image: 'https://images.unsplash.com/photo-1577401239170-897942555fb3?auto=format&fit=crop&w=200&q=80'
+          }
+        ],
+        trackingTimeline: [
+          {
+            stepName: 'Pharmacy Warehouse',
+            location: 'PJ Section 51A Central Warehouse, Selangor',
+            time: '04 Oct 2026, 11:45 AM',
+            detail: 'Medicines verified by Pharmacy Assistant and securely packed with thermal bubble insulation.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Dispatched to Courier',
+            location: 'Darrez_Health PJ Loading Bay',
+            time: '04 Oct 2026, 03:30 PM',
+            detail: 'Parcel scanned and handed over to J&T Express Logistics collection truck.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Regional Sortation Hub',
+            location: 'J&T Gateway Hub Shah Alam, Selangor',
+            time: '04 Oct 2026, 09:15 PM',
+            detail: 'Parcel arrived at central sortation facility for transit towards Kajang destination.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Last-Mile Home Delivery',
+            location: 'J&T Kajang Distribution Centre, Selangor',
+            time: '05 Oct 2026, 08:30 AM',
+            detail: 'Package collected by rider (Muhammad Hafiz) and heading towards buyer address.',
+            status: 'active'
+          },
+          {
+            stepName: 'Buyer Doorstep',
+            location: 'No. 25, Taman Seri Melati, 43000 Kajang',
+            time: 'Est: 05 Oct 2026, Afternoon',
+            detail: 'Order will be safely delivered and signed by the recipient.',
+            status: 'pending'
+          }
+        ]
+      },
+      {
+        orderId: 'ORD-88220',
+        sellerId: 'seller_darrez',
+        date: '2026-10-03 04:15 PM',
+        buyerName: 'Nurul Huda',
+        buyerPhone: '019-3321100',
+        address: 'Block B-12-04, Impian Condominium, 50480 Bangsar, Kuala Lumpur.',
+        courier: 'Pos Laju',
+        trackingNumber: 'PL994821038MY',
+        statusStep: 4,
+        statusText: 'Out for Delivery',
+        paymentMethod: 'FPX Online Banking',
+        shippingFee: 5.50,
+        discount: 15.00,
+        items: [
+          {
+            prodId: 'prod_2',
+            name: 'Paracetamol Extra + Caffeine 500mg/65mg (Pain Reliever)',
+            variation: 'Box Pack 40 Caplets',
+            price: 14.50,
+            qty: 2,
+            image: 'https://images.unsplash.com/photo-1550572017-ed24058f62f3?auto=format&fit=crop&w=200&q=80'
+          }
+        ],
+        trackingTimeline: [
+          {
+            stepName: 'Pharmacy Warehouse',
+            location: 'Darrez_Health PJ Warehouse',
+            time: '03 Oct 2026, 04:45 PM',
+            detail: 'Medicines prepared and labeled with pharmaceutical barcode.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Handed to Courier Branch',
+            location: 'Pos Laju Petaling Jaya Branch',
+            time: '03 Oct 2026, 06:10 PM',
+            detail: 'Received at Pos Laju drop-off counter.',
+            status: 'completed'
+          },
+          {
+            stepName: 'National Mail Centre (PMN Hub)',
+            location: 'Pos Malaysia Mail Processing Centre KLIA',
+            time: '04 Oct 2026, 03:00 AM',
+            detail: 'Automated sorting for postcode 50480 Bangsar.',
+            status: 'completed'
+          },
+          {
+            stepName: 'In Delivery Van',
+            location: 'Pos Laju Brickfields / Bangsar Hub',
+            time: '05 Oct 2026, 09:00 AM',
+            detail: 'Parcel dispatched for delivery to residential unit.',
+            status: 'active'
+          },
+          {
+            stepName: 'Delivered at Buyer Residence',
+            location: 'Impian Condominium, Bangsar',
+            time: 'Expected Today',
+            detail: 'Recipient to sign proof of delivery.',
+            status: 'pending'
+          }
+        ]
+      },
+      {
+        orderId: 'ORD-88210',
+        sellerId: 'seller_darrez',
+        date: '2026-10-01 09:20 AM',
+        buyerName: 'Tan Wei Hong',
+        buyerPhone: '017-8899221',
+        address: 'No. 8, Lorong Bukit Indah 4, 79100 Iskandar Puteri, Johor.',
+        courier: 'Shopee Xpress',
+        trackingNumber: 'SPXMY0998231',
+        statusStep: 5,
+        statusText: 'Delivered',
+        paymentMethod: 'Debit / Credit Card',
+        shippingFee: 4.50,
+        discount: 0,
+        items: [
+          {
+            prodId: 'prod_4',
+            name: 'Ibuprofen 400mg Anti-Inflammatory & Joint Pain',
+            variation: 'Box of 20 Softgels',
+            price: 18.00,
+            qty: 1,
+            image: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=200&q=80'
+          }
+        ],
+        trackingTimeline: [
+          {
+            stepName: 'Pharmacy Warehouse',
+            location: 'Darrez_Health PJ Warehouse',
+            time: '01 Oct 2026, 09:40 AM',
+            detail: 'Parcel picked from cold-storage controlled zone.',
+            status: 'completed'
+          },
+          {
+            stepName: 'SPX Truck Pickup',
+            location: 'SPX Express Selangor Hub',
+            time: '01 Oct 2026, 02:00 PM',
+            detail: 'Parcel in transit via southern highway express route.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Johor Bahru Southern Hub',
+            location: 'SPX Hub Kempas Utama, Johor',
+            time: '02 Oct 2026, 04:30 AM',
+            detail: 'Parcel arrived at state destination sorting hub.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Courier Dispatch',
+            location: 'Iskandar Puteri Delivery Zone',
+            time: '02 Oct 2026, 10:15 AM',
+            detail: 'Courier en route to residential address.',
+            status: 'completed'
+          },
+          {
+            stepName: 'Successfully Delivered',
+            location: 'No. 8, Lorong Bukit Indah 4',
+            time: '02 Oct 2026, 01:25 PM',
+            detail: 'Parcel received by Tan Wei Hong (Photo POD saved).',
+            status: 'completed'
+          }
+        ]
+      }
+    ];
 
     let cart = [];
     let appliedVoucher = null;
